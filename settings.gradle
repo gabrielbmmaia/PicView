@@ -15,3 +15,5 @@ dependencyResolutionManagement {
 rootProject.name = "PicView"
 include ':app'
 include ':core'
+include ':photo_list'
+include ':photo_list:photo_list_data'
