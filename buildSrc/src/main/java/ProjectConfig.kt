@@ -1,6 +1,6 @@
 object ProjectConfig {
-    const val namespace = "com.plcoding.calorytracker"
-    const val appId = "com.plcoding.calorytracker"
+    const val namespace = "com.example.picview"
+    const val appId = "com.example.picview"
     const val compileSdk = 33
     const val minSdk = 21
     const val targetSdk = 33
