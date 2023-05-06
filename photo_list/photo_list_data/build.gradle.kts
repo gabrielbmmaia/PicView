@@ -2,6 +2,7 @@ apply{
     from("$rootDir/base-module.gradle")
 }
 
+
 dependencies {
     "implementation"(project(Modules.core))
 
@@ -13,4 +14,5 @@ dependencies {
     "kapt"(Room.roomCompiler)
     "implementation"(Room.roomKtx)
     "implementation"(Room.roomRuntime)
+    "implementation"(Room.roomPaging)
 }

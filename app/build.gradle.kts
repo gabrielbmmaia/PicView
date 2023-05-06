@@ -59,6 +59,7 @@ dependencies {
     implementation(Compose.navigation)
     implementation(Compose.viewModelCompose)
     implementation(Compose.activityCompose)
+    implementation(Compose.paging3)
 
     implementation(DaggerHilt.hiltAndroid)
     kapt(DaggerHilt.hiltCompiler)
@@ -79,12 +80,12 @@ dependencies {
     implementation(Retrofit.okHttpLoggingInterceptor)
     implementation(Retrofit.gsonConverter)
 
+    implementation(Paging.paging3)
+
     kapt(Room.roomCompiler)
     implementation(Room.roomKtx)
     implementation(Room.roomRuntime)
     implementation(Room.roomPaging)
-
-    implementation(Paging3.paging3)
 
     testImplementation(Testing.junit4)
     testImplementation(Testing.junitAndroidExt)

@@ -1,10 +1,13 @@
 object Compose {
     const val composeVersion = "1.3.0"
     const val composeCompilerVersion = "1.4.3"
-    const val materialVersion = "1.0.1"
+    const val composeMaterialVersion = "1.0.1"
+    const val composePagingVersion = "1.0.0-alpha19"
 
-    const val material3 = "androidx.compose.material3:material3:$materialVersion"
-    const val material3Window = "androidx.compose.material3:material3-window-size-class:$materialVersion"
+    const val paging3 = "androidx.paging:paging-compose:$composePagingVersion"
+
+    const val material3 = "androidx.compose.material3:material3:$composeMaterialVersion"
+    const val material3Window = "androidx.compose.material3:material3-window-size-class:$composeMaterialVersion"
 
     const val ui = "androidx.compose.ui:ui:$composeVersion"
     const val uiToolingPreview = "androidx.compose.ui:ui-tooling-preview:$composeVersion"

@@ -1,0 +1,7 @@
+package com.example.picview
+
+import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
+
+@HiltAndroidApp
+class PicViewApplication: Application()
