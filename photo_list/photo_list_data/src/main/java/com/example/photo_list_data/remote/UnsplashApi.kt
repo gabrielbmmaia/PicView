@@ -17,6 +17,7 @@ interface UnsplashApi {
 
     companion object {
         const val BASE_URL = "https://api.unsplash.com/"
+        const val PER_PAGE = 10
         private const val API_KEY = "TvSVNkSa494p9BFXTIqhYsO7spC7cNa6ewhU695aiNQ"
     }
 }
