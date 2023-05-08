@@ -5,6 +5,7 @@ object Modules {
     const val coreUi = ":core_ui"
 
     const val photoListData = ":photo_list:photo_list_data"
+    const val photoListDomain = ":photo_list:photo_list_domain"
 
 //    const val onboardingDomain = ":onboarding:onboarding_domain"
 //    const val onboardingPresentation = ":onboarding:onboarding_presentation"

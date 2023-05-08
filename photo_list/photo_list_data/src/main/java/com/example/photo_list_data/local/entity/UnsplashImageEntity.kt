@@ -12,9 +12,8 @@ data class UnsplashImageEntity(
     val id: String,
     val createdAt: String,
     val description: String?,
-    @Embedded
-    val urls: UrlsDto,
+    val imageUrl: String?,
     val likes: Int,
-    @Embedded
-    val user: UserDto
+    val userUsername: String,
+    val userUnsplashLink: String
 )

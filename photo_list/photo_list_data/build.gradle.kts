@@ -6,6 +6,8 @@ apply{
 dependencies {
     "implementation"(project(Modules.core))
 
+    "implementation"(project(Modules.photoListDomain))
+
     "implementation"(Retrofit.okHttp)
     "implementation"(Retrofit.retrofit)
     "implementation"(Retrofit.okHttpLoggingInterceptor)
