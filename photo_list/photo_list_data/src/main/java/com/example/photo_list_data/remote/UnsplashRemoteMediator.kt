@@ -13,7 +13,7 @@ import com.example.photo_list_data.mappers.toUnsplashImageEntity
 import javax.inject.Inject
 
 @OptIn(ExperimentalPagingApi::class)
-class UnsplashRemoteMediator @Inject constructor(
+class UnsplashRemoteMediator(
     private val unsplashDatabase: UnsplashDatabase,
     private val unsplashApi: UnsplashApi
 ) : RemoteMediator<Int, UnsplashImageEntity>() {
