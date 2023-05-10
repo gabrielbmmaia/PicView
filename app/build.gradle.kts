@@ -52,6 +52,7 @@ dependencies {
     implementation(Compose.compiler)
     implementation(Compose.ui)
     implementation(Compose.uiToolingPreview)
+    implementation(Compose.uiTooling)
     implementation(Compose.hiltNavigationCompose)
     implementation(Compose.material3)
     implementation(Compose.material3Window)
@@ -67,6 +68,8 @@ dependencies {
     implementation(project(Modules.core))
     implementation(project(Modules.coreUi))
     implementation(project(Modules.photoListData))
+    implementation(project(Modules.photoListDomain))
+    implementation(project(Modules.photoListPresentation))
 
     implementation(AndroidX.coreKtx)
     implementation(AndroidX.appCompat)
