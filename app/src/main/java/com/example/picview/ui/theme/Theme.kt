@@ -16,31 +16,54 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = Brown80,
+    onPrimary = Brown20,
+    primaryContainer = Brown30,
+    onPrimaryContainer = Brown90,
+    inversePrimary = Brown40,
+    secondary = RedBrown80,
+    onSecondary = RedBrown20,
+    secondaryContainer = RedBrown30,
+    onSecondaryContainer = RedBrown90,
+    error = Red80,
+    onError = Red20,
+    errorContainer = Red30,
+    onErrorContainer = Red90,
+    background = Grey10,
+    onBackground = Grey90,
+    surface = BrownGrey30,
+    onSurface = BrownGrey80,
+    inverseSurface = Grey90,
+    inverseOnSurface = Grey10,
+    surfaceVariant = BrownGrey30
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+    primary = Brown80,
+    onPrimary = Brown20,
+    primaryContainer = Brown30,
+    onPrimaryContainer = Brown90,
+    inversePrimary = Brown40,
+    secondary = RedBrown80,
+    onSecondary = RedBrown20,
+    secondaryContainer = RedBrown30,
+    onSecondaryContainer = RedBrown90,
+    error = Red80,
+    onError = Red20,
+    errorContainer = Red30,
+    onErrorContainer = Red90,
+    background = Grey10,
+    onBackground = Grey90,
+    surface = BrownGrey30,
+    onSurface = BrownGrey80,
+    inverseSurface = Grey90,
+    inverseOnSurface = Grey10,
+    surfaceVariant = BrownGrey30
 )
 
 @Composable
 fun PicViewTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
