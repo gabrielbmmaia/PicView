@@ -4,6 +4,7 @@ import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Shapes
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
@@ -18,6 +19,7 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 import com.example.core_ui.Dimensions
 import com.example.core_ui.LocalSpacing
+import com.example.core_ui.Shapes
 
 private val DarkColorScheme = darkColorScheme(
     primary = Brown80,
@@ -93,7 +95,8 @@ fun PicViewTheme(
         MaterialTheme(
             colorScheme = colorScheme,
             typography = Typography,
-            content = content
+            content = content,
+            shapes = Shapes
         )
     }
 }
