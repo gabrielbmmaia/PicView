@@ -9,7 +9,8 @@ import com.example.photo_list_presentation.components.PhotoList
 fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel()
 ) {
-    val photoList = viewModel.getImages().collectAsLazyPagingItems()
+
+    val photoList = viewModel.photoList.collectAsLazyPagingItems()
     PhotoList(photoList = photoList)
 
 }

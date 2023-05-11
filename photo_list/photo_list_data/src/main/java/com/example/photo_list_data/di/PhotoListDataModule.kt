@@ -1,16 +1,12 @@
 package com.example.photo_list_data.di
 
-import android.content.Context
 import android.util.Log
-import androidx.room.Room
-import com.example.photo_list_data.local.UnsplashDatabase
 import com.example.photo_list_data.remote.UnsplashApi
 import com.example.photo_list_data.repository.UnsplashImageRepositoryImpl
 import com.example.photo_list_domain.repository.UnsplashImageRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -46,27 +42,14 @@ object PhotoListDataModule {
             .create()
     }
 
-    @Provides
-    @Singleton
-    fun provideUnsplashDatabase(
-        @ApplicationContext context: Context
-    ): UnsplashDatabase {
-        return Room.databaseBuilder(
-            context,
-            UnsplashDatabase::class.java,
-            "unsplash_db"
-        ).build()
-    }
 
     @Provides
     @Singleton
     fun provideUnsplashImageRepository(
-        unsplashApi: UnsplashApi,
-        unsplashDatabase: UnsplashDatabase
+        unsplashApi: UnsplashApi
     ): UnsplashImageRepository {
         return UnsplashImageRepositoryImpl(
-            unsplashApi = unsplashApi,
-            unsplashDatabase = unsplashDatabase
+            unsplashApi = unsplashApi
         )
     }
 }
