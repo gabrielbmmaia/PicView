@@ -8,7 +8,7 @@ import com.example.photo_list_domain.repository.UnsplashImageRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-@OptIn(ExperimentalPagingApi::class)
+
 class UnsplashImageRepositoryImpl @Inject constructor(
     private val unsplashApi: UnsplashApi
 ) : UnsplashImageRepository {
