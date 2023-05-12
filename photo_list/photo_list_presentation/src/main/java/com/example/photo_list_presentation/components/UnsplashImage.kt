@@ -13,16 +13,14 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CardElevation
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.buildAnnotatedString
@@ -32,8 +30,8 @@ import androidx.compose.ui.unit.dp
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import com.example.core_ui.LocalSpacing
-import com.example.core_ui.Shapes
 import com.example.photo_list_domain.model.UnsplashImage
+import com.example.photo_list_domain.model.User
 import core.R
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalCoilApi::class)
@@ -44,7 +42,8 @@ fun UnsplashImage(
     isExpanded: Boolean = false
 ) {
     val spacing = LocalSpacing.current
-    Card(
+
+    ElevatedCard(
         onClick = { !isExpanded },
         modifier = modifier
             .fillMaxWidth()
@@ -54,9 +53,10 @@ fun UnsplashImage(
                     easing = LinearOutSlowInEasing
                 )
             ),
-        shape = Shapes.medium,
-        elevation = CardDefaults.cardElevation(2.dp)
-    ) {
+        elevation = CardDefaults.cardElevation(defaultElevation = 20.dp),
+        shape = CardDefaults.elevatedShape,
+
+        ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth(),
@@ -86,22 +86,19 @@ fun UnsplashImage(
                 Text(
                     text = buildAnnotatedString {
                         append("Photo by ")
-                        append(unsplashImage.userUsername)
+                        append(unsplashImage.user.username)
                         append(" on Unsplash")
                     },
                     color = MaterialTheme.colorScheme.onPrimaryContainer,
                     maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                    modifier = Modifier.weight(6f)
+                    overflow = TextOverflow.Ellipsis
                 )
                 TextCount(
                     text = unsplashImage.likes.toString(),
                     textColor = MaterialTheme.colorScheme.onPrimaryContainer,
                     imageVector = Icons.Default.Favorite,
-                    imageVectorColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                    modifier.weight(1f)
+                    imageVectorColor = MaterialTheme.colorScheme.onPrimaryContainer
                 )
-
             }
         }
     }
@@ -118,8 +115,14 @@ private fun UnsplashImagePreview() {
                 description = "",
                 imageUrl = "",
                 likes = 3,
-                userUsername = "Maia",
-                userUnsplashLink = ""
+                user = User(
+                    name = "Gabriel Maia",
+                    username = "gmaia",
+                    instagramUsername = "gbmmaia",
+                    portfolioUrl = "",
+                    profileUnsplash = "",
+                    profileImage = ""
+                )
             )
         )
     }

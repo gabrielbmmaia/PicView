@@ -6,6 +6,5 @@ data class UnsplashImage(
     val description: String?,
     val imageUrl: String?,
     val likes: Int,
-    val userUsername: String,
-    val userUnsplashLink: String?
+    val user: User
 )
