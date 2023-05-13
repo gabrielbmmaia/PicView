@@ -4,8 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import com.example.photo_list_presentation.HomeScreen
-import com.example.picview.ui.theme.PicViewTheme
-import dagger.hilt.EntryPoint
+import com.example.core_ui.PicViewTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

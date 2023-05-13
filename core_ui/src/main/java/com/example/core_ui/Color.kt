@@ -1,4 +1,4 @@
-package com.example.picview.ui.theme
+package com.example.core_ui
 
 import androidx.compose.ui.graphics.Color
 

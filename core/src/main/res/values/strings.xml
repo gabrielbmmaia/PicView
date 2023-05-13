@@ -2,4 +2,5 @@
     <string name="app_name">PicView</string>
     <string name="imagem_foto">Imagem da Foto</string>
     <string name="count_icon">Icone de Contador</string>
+    <string name="user_image">Imagem do Usuário</string>
 </resources>

@@ -15,9 +15,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.core_ui.LocalSpacing
-import com.example.picview.ui.theme.PicViewTheme
+import com.example.core_ui.PicViewTheme
 import core.R
 
 @Composable
@@ -26,7 +27,8 @@ fun TextCount(
     textColor: Color,
     imageVector: ImageVector,
     imageVectorColor: Color,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    textStyle: TextStyle = MaterialTheme.typography.bodyMedium
 ) {
     val spacing = LocalSpacing.current
 
@@ -43,7 +45,8 @@ fun TextCount(
         Spacer(modifier = Modifier.width(spacing.spaceSmall))
         Text(
             text = text,
-            color = textColor
+            color = textColor,
+            style = textStyle
         )
     }
 }
