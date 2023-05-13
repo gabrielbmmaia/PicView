@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -17,7 +16,10 @@ import com.example.photo_list_domain.model.UnsplashImage
 @Composable
 fun PhotoList(
     photoList: LazyPagingItems<UnsplashImage>,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onWebsiteClick: (String) -> Unit,
+    onInstagramClick: (String) -> Unit,
+    onProfileClick: (String?) -> Unit,
 ) {
     val context = LocalContext.current
     val spacing = LocalSpacing.current
@@ -35,7 +37,12 @@ fun PhotoList(
                 unsplashImage.id
             }) { item ->
             item?.let {
-                UnsplashImage(unsplashImage = it)
+                UnsplashImage(
+                    unsplashImage = it,
+                    onWebsiteClick = onWebsiteClick,
+                    onInstagramClick = onInstagramClick,
+                    onProfileClick = onProfileClick
+                )
             }
         }
     }

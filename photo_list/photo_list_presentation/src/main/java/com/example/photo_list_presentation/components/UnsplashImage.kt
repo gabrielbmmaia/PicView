@@ -19,17 +19,11 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Star
-import androidx.compose.material.icons.outlined.Star
-import androidx.compose.material.icons.rounded.Favorite
-import androidx.compose.material.icons.rounded.Star
-import androidx.compose.material.icons.twotone.Star
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedIconToggleButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -50,22 +44,21 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import com.example.core_ui.LocalSpacing
-import com.example.core_ui.PicViewTheme
 import com.example.core_ui.RubikLight
 import com.example.photo_list_domain.model.UnsplashImage
-import com.example.photo_list_domain.model.User
 import core.R
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalCoilApi::class)
 @Composable
 fun UnsplashImage(
     unsplashImage: UnsplashImage,
+    onWebsiteClick: (String) -> Unit,
+    onInstagramClick: (String) -> Unit,
+    onProfileClick: (String?) -> Unit,
     modifier: Modifier = Modifier,
     textColor: Color = MaterialTheme.colorScheme.onPrimary,
     textStyle: TextStyle = MaterialTheme.typography.bodySmall,
@@ -136,16 +129,17 @@ fun UnsplashImage(
                 ) {
                     Text(
                         text = buildAnnotatedString {
-                            append("Photo by ")
+                            append("${stringResource(id = R.string.photo_by)} ")
                             withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
                                 append(unsplashImage.user.username)
                             }
-                            append(" on Unsplash")
+                            append(" ${stringResource(id = R.string.on_unsplash)}")
                         },
                         color = textColor,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
-                        style = textStyle
+                        style = textStyle,
+                        modifier = Modifier.clickable { onProfileClick(unsplashImage.user.profileUnsplash) }
                     )
                     TextCount(
                         text = unsplashImage.likes,
@@ -207,6 +201,7 @@ fun UnsplashImage(
                             modifier = Modifier
                                 .size(35.dp)
                                 .clip(RoundedCornerShape(100))
+                                .clickable { onProfileClick(unsplashImage.user.profileUnsplash) }
                         )
                         Spacer(modifier = Modifier.width(spacing.spaceSmall))
                         Text(
@@ -236,10 +231,11 @@ fun UnsplashImage(
                                 contentDescription = stringResource(id = R.string.user_website),
                                 modifier = Modifier
                                     .size(24.dp)
-                                    .clickable { /*TODO*/ },
+                                    .clickable { onWebsiteClick(unsplashImage.user.portfolioUrl!!) },
                                 tint = textColor
                             )
                         }
+
                         if (shouldInstagramDisplay) {
                             Icon(
                                 painter = painterResource(id = R.drawable.ic_instagram_bold),
@@ -247,7 +243,7 @@ fun UnsplashImage(
                                 modifier = Modifier
                                     .padding(start = spacing.spaceMedium)
                                     .size(22.dp)
-                                    .clickable { /*TODO*/ },
+                                    .clickable { onInstagramClick(unsplashImage.user.instagramUsername!!) },
                                 tint = textColor
                             )
                         }

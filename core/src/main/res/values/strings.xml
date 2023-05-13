@@ -6,4 +6,8 @@
     <string name="instagram_icon">Icone do Instagram</string>
     <string name="user_website">Website do Usuário</string>
     <string name="favorite_icon">Icone de Favorito</string>
+    <string name="instagram_url">https://www.instagram.com/%1$s/</string>
+    <string name="photo_by">Photo by</string>
+    <string name="on_unsplash">on Unsplash</string>
+    <string name="instagram_package">com.instagram.android</string>
 </resources>

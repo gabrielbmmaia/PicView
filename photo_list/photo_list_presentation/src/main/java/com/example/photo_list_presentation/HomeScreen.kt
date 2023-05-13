@@ -1,8 +1,11 @@
 package com.example.photo_list_presentation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.example.core.util.UiEvent
 import com.example.photo_list_presentation.components.PhotoList
 
 @Composable
@@ -11,6 +14,31 @@ fun HomeScreen(
 ) {
 
     val photoList = viewModel.photoList.collectAsLazyPagingItems()
-    PhotoList(photoList = photoList)
 
+    val context = LocalContext.current
+
+    LaunchedEffect(key1 = Unit) {
+        viewModel.uiEvent.collect { event ->
+            when (event) {
+                is UiEvent.ShowSnackBar -> {}
+                is UiEvent.SendIntent -> {
+                    event.intent.startIntent(context)
+                }
+                else -> Unit
+            }
+        }
+    }
+
+    PhotoList(
+        photoList = photoList,
+        onWebsiteClick = { userWebsite ->
+            viewModel.onEvent(HomeEvent.OnWebsiteClick(userWebsite))
+        },
+        onInstagramClick = { userInstagram ->
+            viewModel.onEvent(HomeEvent.OnInstagramClick(userInstagram))
+        },
+        onProfileClick = { userUnsplashProfile ->
+            viewModel.onEvent(HomeEvent.OnUnsplashProfileClick(userUnsplashProfile))
+        }
+    )
 }
