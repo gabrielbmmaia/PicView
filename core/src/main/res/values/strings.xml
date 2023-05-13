@@ -3,4 +3,7 @@
     <string name="imagem_foto">Imagem da Foto</string>
     <string name="count_icon">Icone de Contador</string>
     <string name="user_image">Imagem do Usuário</string>
+    <string name="instagram_icon">Icone do Instagram</string>
+    <string name="user_website">Website do Usuário</string>
+    <string name="favorite_icon">Icone de Favorito</string>
 </resources>
