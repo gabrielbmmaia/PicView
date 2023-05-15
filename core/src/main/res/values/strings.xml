@@ -10,4 +10,9 @@
     <string name="photo_by">Photo by</string>
     <string name="on_unsplash">on Unsplash</string>
     <string name="instagram_package">com.instagram.android</string>
+    <string name="description_tag">Descrição:</string>
+    <string name="create_at_tag">Criado:</string>
+    <string name="refresh_button">Atualizar</string>
+    <string name="try_again">Tente Novamente</string>
+    <string name="connection_problem">Problema na conexão</string>
 </resources>

@@ -168,7 +168,7 @@ fun UnsplashImage(
                         Text(
                             text = buildAnnotatedString {
                                 withStyle(SpanStyle(fontWeight = FontWeight.Black)) {
-                                    append("Descrição: ")
+                                    append(stringResource(id = R.string.description_tag) + " ")
                                 }
                                 append(unsplashImage.description!!)
                             },
@@ -179,7 +179,7 @@ fun UnsplashImage(
                     Text(
                         text = buildAnnotatedString {
                             withStyle(SpanStyle(fontWeight = FontWeight.Black)) {
-                                append("Criado: ")
+                                append(stringResource(id = R.string.create_at_tag) + " ")
                             }
                             append(unsplashImage.createdAt)
                         },
