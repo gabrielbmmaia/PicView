@@ -1,14 +1,17 @@
 package com.example.photo_list_data.mappers
 
+import com.example.core.extensions.formatToFirstUppercase
+import com.example.core.extensions.toBrazilianDate
 import com.example.photo_list_data.remote.dtos.UnsplashImageDto
 import com.example.photo_list_domain.model.UnsplashImage
 import com.example.photo_list_domain.model.User
 
+
 fun UnsplashImageDto.toUnsplashImage(): UnsplashImage {
     return UnsplashImage(
         id = id,
-        createdAt = createdAt,
-        description = description,
+        createdAt = createdAt.toBrazilianDate(),
+        description = description?.formatToFirstUppercase(),
         imageUrl = urls.regular,
         likes = likes,
         user = User(

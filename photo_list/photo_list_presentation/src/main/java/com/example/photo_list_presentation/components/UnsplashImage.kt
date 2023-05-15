@@ -66,7 +66,9 @@ fun UnsplashImage(
 ) {
     val spacing = LocalSpacing.current
     val shouldDescriptionDisplay = unsplashImage.description != null
-    val shouldLocationDisplay = unsplashImage.user.name != null
+    val shouldLocationDisplay =
+        unsplashImage.user.name != null &&
+                unsplashImage.user.location != null
     val shouldWebsiteDisplay = unsplashImage.user.portfolioUrl != null
     val shouldInstagramDisplay = unsplashImage.user.instagramUsername != null
 
@@ -204,20 +206,26 @@ fun UnsplashImage(
                                 .clickable { onProfileClick(unsplashImage.user.profileUnsplash) }
                         )
                         Spacer(modifier = Modifier.width(spacing.spaceSmall))
-                        Text(
-                            text = unsplashImage.user.name ?: "",
-                            color = textColor,
-                            style = textStyle
-                        )
-                        if (shouldLocationDisplay) {
+                        Column(
+                            horizontalAlignment = Alignment.Start,
+                            verticalArrangement = Arrangement.Center
+                        ) {
                             Text(
-                                text = unsplashImage.user.location ?: "",
-                                modifier = Modifier.padding(start = spacing.spaceSmall),
+                                text = unsplashImage.user.name ?: "",
                                 color = textColor,
-                                style = textStyle.copy(fontFamily = RubikLight),
+                                style = textStyle,
                                 overflow = TextOverflow.Ellipsis,
                                 maxLines = 1
                             )
+                            if (shouldLocationDisplay) {
+                                Text(
+                                    text = unsplashImage.user.location ?: "",
+                                    color = textColor,
+                                    style = textStyle.copy(fontFamily = RubikLight),
+                                    overflow = TextOverflow.Ellipsis,
+                                    maxLines = 1
+                                )
+                            }
                         }
                     }
                     Row(
