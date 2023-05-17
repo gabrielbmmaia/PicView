@@ -1,7 +1,7 @@
 object Compose {
     const val composeVersion = "1.3.0"
     const val composeCompilerVersion = "1.4.3"
-    const val composeMaterialVersion = "1.0.1"
+    const val composeMaterialVersion = "1.1.0"
     const val composePagingVersion = "1.0.0-alpha19"
 
     const val paging3 = "androidx.paging:paging-compose:$composePagingVersion"
