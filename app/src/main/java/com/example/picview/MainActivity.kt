@@ -5,10 +5,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
-import com.example.photo_list_presentation.HomeScreen
 import com.example.core_ui.PicViewTheme
-import com.example.photo_list_presentation.SearchScreen
+import com.example.photo_list_presentation.searchScreen.SearchScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @OptIn(ExperimentalMaterial3Api::class)
