@@ -1,14 +1,17 @@
 package com.example.photo_list_presentation.searchScreen.components
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -19,43 +22,57 @@ import com.example.photo_list_presentation.searchScreen.CustomButton
 import com.example.photo_list_presentation.searchScreen.CustomButton.ImageVectorIcon
 import com.example.photo_list_presentation.searchScreen.CustomButton.SingleColorIcon
 import com.example.photo_list_presentation.searchScreen.CustomButton.TwoColorIcon
+import com.example.photo_list_presentation.searchScreen.CustomButtonUiState
 import core.R
 
 @Composable
 fun CustomRadioButton(
-    radioButton: CustomButton,
-    onButtonClick: (String) -> Unit,
+    state: CustomButtonUiState,
+    onButtonClicked: (CustomButton) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    when (radioButton) {
+    when (state.button) {
         is SingleColorIcon -> {
             Canvas(modifier = modifier
-                .clickable { onButtonClick(radioButton.colorName) }
-                .size(radioButton.size)
+                .clip(CircleShape)
+                .size(state.button.size)
+                .border(
+                    width = 1.dp,
+                    color = if(state.isSelected) Color.Black else Color.Black.copy(alpha = 0.3f),
+                    shape = CircleShape
+                )
+                .clickable { onButtonClicked(state.button) }
+
             ) {
                 drawCircle(
-                    color = if (radioButton.isEnabled) radioButton.color
-                    else radioButton.color.copy(alpha = 0.3f)
+                    color = if (state.isSelected) state.button.color
+                    else state.button.color.copy(alpha = 0.3f),
                 )
             }
         }
 
         is TwoColorIcon -> {
             Canvas(modifier = modifier
-                .clickable { onButtonClick(radioButton.colorName) }
-                .size(radioButton.size)
+                .clip(CircleShape)
+                .size(state.button.size)
+                .border(
+                    width = 1.dp,
+                    color = if(state.isSelected) Color.Black else Color.Black.copy(alpha = 0.3f),
+                    shape = CircleShape
+                )
+                .clickable { onButtonClicked(state.button) }
             ) {
                 drawArc(
-                    color = if (radioButton.isEnabled) radioButton.colorOne
-                    else radioButton.colorOne.copy(alpha = 0.3f),
+                    color = if (state.isSelected) state.button.colorOne
+                    else state.button.colorOne.copy(alpha = 0.3f),
                     startAngle = 135f,
                     sweepAngle = 180f,
                     useCenter = true,
 
                     )
                 drawArc(
-                    color = if (radioButton.isEnabled) radioButton.colorTwo
-                    else radioButton.colorTwo.copy(alpha = 0.3f),
+                    color = if (state.isSelected) state.button.colorTwo
+                    else state.button.colorTwo.copy(alpha = 0.3f),
                     startAngle = 315f,
                     sweepAngle = 180f,
                     useCenter = true
@@ -65,15 +82,16 @@ fun CustomRadioButton(
 
         is ImageVectorIcon -> {
             Icon(
-                painter = painterResource(id = radioButton.painterId),
+                painter = painterResource(id = state.button.painterId),
                 contentDescription = null,
-                tint = if (radioButton.isEnabled) Color.Black
+                tint = if (state.isSelected) Color.Black
                 else Color.Black.copy(alpha = 0.3f),
                 modifier = modifier
+                    .clip(CircleShape)
+                    .size(state.button.size)
                     .clickable {
-                        onButtonClick(radioButton.iconName)
+                        onButtonClicked(state.button)
                     }
-                    .size(radioButton.size)
             )
         }
     }
@@ -86,55 +104,68 @@ private fun CustomRadioButtonPreview() {
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 CustomRadioButton(
-                    radioButton = SingleColorIcon(
-                        color = Magenta,
-                        colorName = ""
+                    state = CustomButtonUiState(
+                        SingleColorIcon(
+                            color = Magenta,
+                            colorName = ""
+                        )
                     ),
-                    onButtonClick = {}
+                    onButtonClicked = {}
                 )
                 CustomRadioButton(
-                    radioButton = SingleColorIcon(
-                        color = Magenta,
-                        colorName = "",
-                        isEnabled = true
+                    state = CustomButtonUiState(
+                        SingleColorIcon(
+                            color = Magenta,
+                            colorName = ""
+                        ),
+                        isSelected = true
                     ),
-                    onButtonClick = {}
+                    onButtonClicked = {}
+                )
+
+            }
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                CustomRadioButton(
+                    state = CustomButtonUiState(
+                        TwoColorIcon(
+                            colorOne = Color.Black,
+                            colorTwo = Color.White,
+                            colorName = ""
+                        )
+                    ),
+                    onButtonClicked = {}
+                )
+                CustomRadioButton(
+                    state = CustomButtonUiState(
+                        TwoColorIcon(
+                            colorOne = Color.Black,
+                            colorTwo = Color.White,
+                            colorName = ""
+                        ),
+                        isSelected = true
+                    ),
+                    onButtonClicked = {}
                 )
             }
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 CustomRadioButton(
-                    radioButton = TwoColorIcon(
-                        colorOne = Color.Black,
-                        colorTwo = Color.White,
-                        colorName = ""
+                    state = CustomButtonUiState(
+                        ImageVectorIcon(
+                            painterId = R.drawable.ic_block,
+                            iconName = ""
+                        )
                     ),
-                    onButtonClick = {}
+                    onButtonClicked = {}
                 )
                 CustomRadioButton(
-                    radioButton = TwoColorIcon(
-                        colorOne = Color.Black,
-                        colorTwo = Color.White,
-                        isEnabled = true,
-                        colorName = ""
+                    state = CustomButtonUiState(
+                        ImageVectorIcon(
+                            painterId = R.drawable.ic_block,
+                            iconName = ""
+                        ),
+                        isSelected = true
                     ),
-                    onButtonClick = {}
-                )
-            }
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                CustomRadioButton(
-                    radioButton = ImageVectorIcon(
-                        painterId = R.drawable.ic_block,
-                        iconName = ""
-                    ),
-                    onButtonClick = {}
-                )
-                CustomRadioButton(
-                    radioButton = ImageVectorIcon(
-                        painterId = R.drawable.ic_block,
-                        iconName = "",
-                        isEnabled = true
-                    ),
-                    onButtonClick = {}
+                    onButtonClicked = {}
                 )
             }
         }

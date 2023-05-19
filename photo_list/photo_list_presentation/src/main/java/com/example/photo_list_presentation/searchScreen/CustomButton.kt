@@ -2,7 +2,6 @@ package com.example.photo_list_presentation.searchScreen
 
 import androidx.annotation.DrawableRes
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.core_ui.Blue
@@ -17,81 +16,103 @@ import com.example.photo_list_presentation.searchScreen.CustomButton.*
 import core.R
 
 sealed class CustomButton(
-    colorName: String?,
-    isEnabled: Boolean,
-    size: Dp
+    val tag: String,
+    val size: Dp
 ) {
-    data class SingleColorIcon(
+    class SingleColorIcon(
         val color: Color,
-        val colorName: String,
-        val isEnabled: Boolean = false,
-        val size: Dp = 24.dp
-    ) : CustomButton(colorName = colorName, isEnabled = isEnabled, size = size)
+        colorName: String,
+        size: Dp = 32.dp
+    ) : CustomButton(tag = colorName, size = size)
 
-    data class TwoColorIcon(
+    class TwoColorIcon(
         val colorOne: Color,
         val colorTwo: Color,
-        val colorName: String,
-        val isEnabled: Boolean = false,
-        val size: Dp = 24.dp
-    ) : CustomButton(colorName = colorName, isEnabled = isEnabled, size = size)
+        colorName: String,
+        size: Dp = 32.dp
+    ) : CustomButton(tag = colorName, size = size)
 
-    data class ImageVectorIcon(
+    class ImageVectorIcon(
         @DrawableRes
         val painterId: Int,
-        val iconName: String = "",
-        val isEnabled: Boolean = false,
-        val size: Dp = 24.dp
-    ) : CustomButton(colorName = iconName, isEnabled = isEnabled, size = size)
+        iconName: String,
+        size: Dp = 32.dp
+    ) : CustomButton(tag = iconName, size = size)
 }
 
 val defaultCustomRadioButtonList = listOf(
-    ImageVectorIcon(
-        painterId = R.drawable.ic_block
+    CustomButtonUiState(
+        ImageVectorIcon(
+            painterId = R.drawable.ic_block,
+            iconName = ""
+        ),
+        isSelected = true
     ),
-    TwoColorIcon(
-        colorOne = Color.Black,
-        colorTwo = Color.White,
-        colorName = "black_and_white"
+    CustomButtonUiState(
+        TwoColorIcon(
+            colorOne = Color.Black,
+            colorTwo = Color.White,
+            colorName = "black_and_white"
+        )
     ),
-    SingleColorIcon(
-        color = Color.Black,
-        colorName = "black"
+    CustomButtonUiState(
+        SingleColorIcon(
+            color = Color.Black,
+            colorName = "black"
+        )
     ),
-    SingleColorIcon(
-        color = Color.White,
-        colorName = "white"
+    CustomButtonUiState(
+        SingleColorIcon(
+            color = Color.White,
+            colorName = "white"
+        )
     ),
-    SingleColorIcon(
-        color = Yellow,
-        colorName = "yellow"
+    CustomButtonUiState(
+        SingleColorIcon(
+            color = Yellow,
+            colorName = "yellow"
+        )
     ),
-    SingleColorIcon(
-        color = Orange,
-        colorName = "orange"
+    CustomButtonUiState(
+        SingleColorIcon(
+            color = Orange,
+            colorName = "orange"
+        )
     ),
-    SingleColorIcon(
-        color = Red,
-        colorName = "red"
+    CustomButtonUiState(
+        SingleColorIcon(
+            color = Red,
+            colorName = "red"
+        )
     ),
-    SingleColorIcon(
-        color = Purple,
-        colorName = "purple"
+    CustomButtonUiState(
+        SingleColorIcon(
+            color = Purple,
+            colorName = "purple"
+        )
     ),
-    SingleColorIcon(
-        color = Magenta,
-        colorName = "magenta"
+    CustomButtonUiState(
+        SingleColorIcon(
+            color = Magenta,
+            colorName = "magenta"
+        )
     ),
-    SingleColorIcon(
-        color = Green,
-        colorName = "green"
+    CustomButtonUiState(
+        SingleColorIcon(
+            color = Green,
+            colorName = "green"
+        )
     ),
-    SingleColorIcon(
-        color = Teal,
-        colorName = "teal"
+    CustomButtonUiState(
+        SingleColorIcon(
+            color = Teal,
+            colorName = "teal"
+        )
     ),
-    SingleColorIcon(
-        color = Blue,
-        colorName = "blue"
+    CustomButtonUiState(
+        SingleColorIcon(
+            color = Blue,
+            colorName = "blue"
+        )
     )
 )

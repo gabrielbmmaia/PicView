@@ -18,4 +18,5 @@
     <string name="search_icon">Icone de Pesquisa</string>
     <string name="search">Pesquisar</string>
     <string name="cancel_icon">Icone de Cancelar</string>
+    <string name="color_filter">Filtro de Cores</string>
 </resources>
