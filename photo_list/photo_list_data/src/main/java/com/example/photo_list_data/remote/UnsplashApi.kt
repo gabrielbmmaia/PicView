@@ -15,6 +15,23 @@ interface UnsplashApi {
         @Query("per_page") perPage: Int
     ): List<UnsplashImageDto>
 
+    @Headers("Authorization: Client-ID $API_KEY")
+    @GET("/search/photos")
+    suspend fun getSearchedPhotoList(
+        @Query("query") query: String,
+        @Query("page") page: Int,
+        @Query("per_page") perPage: Int
+    ) : List<UnsplashImageDto>
+
+    @Headers("Authorization: Client-ID $API_KEY")
+    @GET("/search/photos")
+    suspend fun getSearchedPhotoList(
+        @Query("query") query: String,
+        @Query("color") color: String,
+        @Query("page") page: Int,
+        @Query("per_page") perPage: Int
+    ) : List<UnsplashImageDto>
+
     companion object {
         const val BASE_URL = "https://api.unsplash.com/"
         const val PER_PAGE = 10
