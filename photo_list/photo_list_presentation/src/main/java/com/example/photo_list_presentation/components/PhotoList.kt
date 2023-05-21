@@ -11,12 +11,12 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.items
 import com.example.core_ui.LocalSpacing
+import com.example.core_ui.components.NoImage
 import com.example.photo_list_domain.model.UnsplashImage
 import core.R
 
@@ -30,7 +30,6 @@ fun PhotoList(
 ) {
     val spacing = LocalSpacing.current
     Box(modifier = modifier.fillMaxSize()) {
-
         when (photoList.loadState.refresh) {
             is LoadState.NotLoading -> {
                 LazyColumn(
@@ -89,11 +88,11 @@ fun PhotoList(
             }
 
             LoadState.Loading -> {
-                CircularProgressIndicator(Modifier.align(Alignment.Center))
+                if (photoList.itemCount == 0) NoImage(Modifier.align(Alignment.Center))
+                else CircularProgressIndicator(Modifier.align(Alignment.Center))
             }
 
             else -> Unit
-
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.example.photo_list_presentation
+package com.example.photo_list_presentation.homeScreen
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -14,14 +14,13 @@ fun HomeScreen(
 ) {
 
     val photoList = viewModel.photoList.collectAsLazyPagingItems()
-
     val context = LocalContext.current
 
     LaunchedEffect(key1 = Unit) {
         viewModel.uiEvent.collect { event ->
             when (event) {
                 is UiEvent.ShowSnackBar -> {}
-                is UiEvent.SendIntent -> {
+                is UiEvent.Intent -> {
                     event.intent.startIntent(context)
                 }
                 else -> Unit

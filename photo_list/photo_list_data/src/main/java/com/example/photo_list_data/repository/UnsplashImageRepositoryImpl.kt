@@ -34,7 +34,7 @@ class UnsplashImageRepositoryImpl @Inject constructor(
         query: String,
         color: String
     ): Flow<PagingData<UnsplashImage>> {
-        val pagingSourceFactory = { SearchedListPagingSource(unsplashApi, query, color) }
+        val pagingSourceFactory = { SearchedListPagingSource(unsplashApi, query.trim(), color.trim()) }
         val pager = Pager(
             config = PagingConfig(pageSize = UnsplashApi.PER_PAGE),
             pagingSourceFactory = pagingSourceFactory

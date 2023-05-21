@@ -13,6 +13,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.core_ui.PicViewTheme
+import com.example.photo_list_presentation.searchListScreen.SearchedListScreen
 import com.example.photo_list_presentation.searchScreen.SearchScreen
 import com.example.picview.navigation.Route
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,28 +33,34 @@ class MainActivity : ComponentActivity() {
                         startDestination = Route.SEARCH
                     ) {
                         composable(Route.SEARCH) {
-                            SearchScreen(onSearchClick = { query, iconName ->
-                                navController.navigate(
-                                    Route.SEARCH_LIST
-                                            + "/$query"
-                                            + "/$iconName"
-                                )
-                            })
+                            SearchScreen(
+                                onSearchClick = { query, color ->
+                                    navController.navigate(
+                                        Route.SEARCH_LIST
+                                                + "/$query"
+                                                + "/$color"
+                                    )
+                                }
+                            )
                         }
                         composable(
-                            route = Route.SEARCH_LIST + "/{query}/{iconName}",
+                            route = Route.SEARCH_LIST + "/{query}/{color}",
                             arguments = listOf(
                                 navArgument("query") {
                                     type = NavType.StringType
                                 },
-                                navArgument("iconName") {
+                                navArgument("color") {
                                     type = NavType.StringType
                                 }
                             )
-                        ) {
-
+                        ) { navBackStackEntry ->
+                            val query = navBackStackEntry.arguments?.getString("query")!!
+                            val color = navBackStackEntry.arguments?.getString("color")!!
+                            SearchedListScreen(
+                                query = query,
+                                color = color
+                            )
                         }
-
                     }
                 }
             }

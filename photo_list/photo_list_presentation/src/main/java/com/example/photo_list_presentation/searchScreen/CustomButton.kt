@@ -42,13 +42,6 @@ sealed class CustomButton(
 
 val defaultCustomRadioButtonList = listOf(
     CustomButtonUiState(
-        ImageVectorIcon(
-            painterId = R.drawable.ic_block,
-            iconName = ""
-        ),
-        isSelected = true
-    ),
-    CustomButtonUiState(
         TwoColorIcon(
             colorOne = Color.Black,
             colorTwo = Color.White,

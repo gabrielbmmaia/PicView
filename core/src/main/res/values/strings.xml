@@ -19,4 +19,6 @@
     <string name="search">Pesquisar</string>
     <string name="cancel_icon">Icone de Cancelar</string>
     <string name="color_filter">Filtro de Cores</string>
+    <string name="instagram_intent_package">com.instagram.android</string>
+    <string name="instagram_username">https://www.instagram.com/%1$s/</string>
 </resources>

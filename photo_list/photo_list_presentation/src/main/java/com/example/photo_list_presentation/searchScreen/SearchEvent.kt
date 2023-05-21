@@ -5,4 +5,8 @@ sealed class SearchEvent {
     data class OnButtonClicked(val button: CustomButton): SearchEvent()
     object OnSubmitClick: SearchEvent()
     object OnCloseClick: SearchEvent()
+    data class OnActiveChange(val active: Boolean): SearchEvent()
+    data class OnInstagramClick(val userInstagram: String) : SearchEvent()
+    data class OnWebsiteClick(val websiteUrl: String) : SearchEvent()
+    data class OnUnsplashProfileClick(val unsplashProfile: String?) : SearchEvent()
 }

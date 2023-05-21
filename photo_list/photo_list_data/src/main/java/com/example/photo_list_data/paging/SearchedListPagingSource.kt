@@ -24,13 +24,13 @@ class SearchedListPagingSource(
                     color = color,
                     page = currentPage,
                     perPage = UnsplashApi.PER_PAGE
-                )
+                ).results
             } else {
                 unsplashApi.getSearchedPhotoList(
                     query = query,
                     page = currentPage,
                     perPage = UnsplashApi.PER_PAGE
-                )
+                ).results
             }
             LoadResult.Page(
                 data = response,

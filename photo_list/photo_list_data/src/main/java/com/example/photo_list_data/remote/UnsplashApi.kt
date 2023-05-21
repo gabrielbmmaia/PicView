@@ -1,8 +1,8 @@
 package com.example.photo_list_data.remote
 
+import com.example.photo_list_data.remote.dtos.SearchRequest
 import com.example.photo_list_data.remote.dtos.UnsplashImageDto
 import retrofit2.http.GET
-import retrofit2.http.Header
 import retrofit2.http.Headers
 import retrofit2.http.Query
 
@@ -21,7 +21,7 @@ interface UnsplashApi {
         @Query("query") query: String,
         @Query("page") page: Int,
         @Query("per_page") perPage: Int
-    ) : List<UnsplashImageDto>
+    ): SearchRequest
 
     @Headers("Authorization: Client-ID $API_KEY")
     @GET("/search/photos")
@@ -30,7 +30,7 @@ interface UnsplashApi {
         @Query("color") color: String,
         @Query("page") page: Int,
         @Query("per_page") perPage: Int
-    ) : List<UnsplashImageDto>
+    ): SearchRequest
 
     companion object {
         const val BASE_URL = "https://api.unsplash.com/"
