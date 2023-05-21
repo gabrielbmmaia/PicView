@@ -4,6 +4,7 @@ import com.example.photo_list_data.remote.dtos.SearchRequest
 import com.example.photo_list_data.remote.dtos.UnsplashImageDto
 import retrofit2.http.GET
 import retrofit2.http.Headers
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface UnsplashApi {
@@ -31,6 +32,14 @@ interface UnsplashApi {
         @Query("page") page: Int,
         @Query("per_page") perPage: Int
     ): SearchRequest
+
+    @Headers("Authorization: Client-ID $API_KEY")
+    @GET("/users/{username}/photos")
+    suspend fun getUserPhotoList(
+        @Path("username") username: String,
+        @Query("page") page: Int,
+        @Query("per_page") perPage: Int
+    ): List<UnsplashImageDto>
 
     companion object {
         const val BASE_URL = "https://api.unsplash.com/"
