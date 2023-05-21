@@ -7,6 +7,7 @@ import androidx.paging.map
 import com.example.photo_list_data.mappers.toUnsplashImage
 import com.example.photo_list_data.paging.SearchedListPagingSource
 import com.example.photo_list_data.paging.UnsplashPagingSource
+import com.example.photo_list_data.paging.UserPhotoListPagingSource
 import com.example.photo_list_data.remote.UnsplashApi
 import com.example.photo_list_domain.model.UnsplashImage
 import com.example.photo_list_domain.repository.UnsplashImageRepository
@@ -34,12 +35,31 @@ class UnsplashImageRepositoryImpl @Inject constructor(
         query: String,
         color: String
     ): Flow<PagingData<UnsplashImage>> {
-        val pagingSourceFactory = { SearchedListPagingSource(unsplashApi, query.trim(), color.trim()) }
+        val pagingSourceFactory = {
+            SearchedListPagingSource(
+                unsplashApi,
+                query.trim().lowercase(),
+                color.trim().lowercase()
+            )
+        }
         val pager = Pager(
             config = PagingConfig(pageSize = UnsplashApi.PER_PAGE),
             pagingSourceFactory = pagingSourceFactory
         ).flow
 
+        return pager.map { pagingData ->
+            pagingData.map { it.toUnsplashImage() }
+        }
+    }
+
+    override fun getUserPhotosList(
+        username: String
+    ): Flow<PagingData<UnsplashImage>> {
+        val pagingSourceFactory = { UserPhotoListPagingSource(unsplashApi, username) }
+        val pager = Pager(
+            config = PagingConfig(pageSize = UnsplashApi.PER_PAGE),
+            pagingSourceFactory = pagingSourceFactory
+        ).flow
         return pager.map { pagingData ->
             pagingData.map { it.toUnsplashImage() }
         }
