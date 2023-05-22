@@ -23,10 +23,12 @@ import core.R
 @Composable
 fun PhotoList(
     photoList: LazyPagingItems<UnsplashImage>,
-    modifier: Modifier = Modifier,
     onWebsiteClick: (String) -> Unit,
     onInstagramClick: (String) -> Unit,
     onProfileClick: (String?) -> Unit,
+    onSeeMoreClick:(username: String) -> Unit,
+    modifier: Modifier = Modifier,
+    shouldSeeMoreShown: Boolean = true
 ) {
     val spacing = LocalSpacing.current
     Box(modifier = modifier.fillMaxSize()) {
@@ -48,7 +50,9 @@ fun PhotoList(
                                 unsplashImage = it,
                                 onWebsiteClick = onWebsiteClick,
                                 onInstagramClick = onInstagramClick,
-                                onProfileClick = onProfileClick
+                                onProfileClick = onProfileClick,
+                                onSeeMoreClick = onSeeMoreClick,
+                                shouldSeeMoreShown = shouldSeeMoreShown
                             )
                         }
                     }

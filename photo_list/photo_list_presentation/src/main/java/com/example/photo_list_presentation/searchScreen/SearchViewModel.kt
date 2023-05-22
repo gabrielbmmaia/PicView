@@ -98,6 +98,14 @@ class SearchViewModel @Inject constructor(
                     )
                 }
             }
+
+            is SearchEvent.OnSeeMoreClick -> {
+                viewModelScope.launch {
+                    _uiEvent.send(
+                        UiEvent.Navigate
+                    )
+                }
+            }
         }
     }
 }

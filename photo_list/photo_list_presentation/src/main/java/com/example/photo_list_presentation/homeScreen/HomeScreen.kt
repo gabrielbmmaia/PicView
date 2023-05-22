@@ -10,16 +10,15 @@ import com.example.photo_list_presentation.components.PhotoList
 
 @Composable
 fun HomeScreen(
+    onSeeMoreClick: (username: String) -> Unit,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
-
     val photoList = viewModel.photoList.collectAsLazyPagingItems()
     val context = LocalContext.current
 
     LaunchedEffect(key1 = Unit) {
         viewModel.uiEvent.collect { event ->
             when (event) {
-                is UiEvent.ShowSnackBar -> {}
                 is UiEvent.Intent -> {
                     event.intent.startIntent(context)
                 }
@@ -38,6 +37,7 @@ fun HomeScreen(
         },
         onProfileClick = { userUnsplashProfile ->
             viewModel.onEvent(HomeEvent.OnUnsplashProfileClick(userUnsplashProfile))
-        }
+        },
+        onSeeMoreClick = onSeeMoreClick
     )
 }

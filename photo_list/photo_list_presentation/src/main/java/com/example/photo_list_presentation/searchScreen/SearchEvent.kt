@@ -9,4 +9,5 @@ sealed class SearchEvent {
     data class OnInstagramClick(val userInstagram: String) : SearchEvent()
     data class OnWebsiteClick(val websiteUrl: String) : SearchEvent()
     data class OnUnsplashProfileClick(val unsplashProfile: String?) : SearchEvent()
+    data class OnSeeMoreClick(val username: String) : SearchEvent()
 }

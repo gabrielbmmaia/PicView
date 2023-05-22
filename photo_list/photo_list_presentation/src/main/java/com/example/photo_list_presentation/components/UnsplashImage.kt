@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -44,12 +45,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import com.example.core_ui.LocalSpacing
+import com.example.core_ui.PicViewTheme
 import com.example.core_ui.RubikLight
 import com.example.photo_list_domain.model.UnsplashImage
+import com.example.photo_list_domain.model.User
 import core.R
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalCoilApi::class)
@@ -59,7 +63,9 @@ fun UnsplashImage(
     onWebsiteClick: (String) -> Unit,
     onInstagramClick: (String) -> Unit,
     onProfileClick: (String?) -> Unit,
+    onSeeMoreClick: (String) -> Unit,
     modifier: Modifier = Modifier,
+    shouldSeeMoreShown: Boolean = true,
     textColor: Color = MaterialTheme.colorScheme.onPrimary,
     textStyle: TextStyle = MaterialTheme.typography.bodySmall,
     backgroundColor: Color = MaterialTheme.colorScheme.primary
@@ -189,41 +195,61 @@ fun UnsplashImage(
                     )
                     Row(
                         modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.Start,
+                        horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Image(
-                            painter = rememberImagePainter(
-                                data = unsplashImage.user.profileImage
-                            ) {
-                                crossfade(500)
-                                placeholder(R.drawable.basic_placeholder)
-                                fallback(R.drawable.basic_placeholder)
-                            }, contentDescription = stringResource(id = R.string.user_image),
-                            modifier = Modifier
-                                .size(35.dp)
-                                .clip(RoundedCornerShape(100))
-                                .clickable { onProfileClick(unsplashImage.user.profileUnsplash) }
-                        )
-                        Spacer(modifier = Modifier.width(spacing.spaceSmall))
-                        Column(
-                            horizontalAlignment = Alignment.Start,
-                            verticalArrangement = Arrangement.Center
-                        ) {
-                            Text(
-                                text = unsplashImage.user.name ?: "",
-                                color = textColor,
-                                style = textStyle,
-                                overflow = TextOverflow.Ellipsis,
-                                maxLines = 1
+                        Row {
+                            Image(
+                                painter = rememberImagePainter(
+                                    data = unsplashImage.user.profileImage
+                                ) {
+                                    crossfade(500)
+                                    placeholder(R.drawable.basic_placeholder)
+                                    fallback(R.drawable.basic_placeholder)
+                                }, contentDescription = stringResource(id = R.string.user_image),
+                                modifier = Modifier
+                                    .size(35.dp)
+                                    .clip(RoundedCornerShape(100))
+                                    .clickable { onProfileClick(unsplashImage.user.profileUnsplash) }
                             )
-                            if (shouldLocationDisplay) {
+                            Spacer(modifier = Modifier.width(spacing.spaceSmall))
+                            Column(
+                                horizontalAlignment = Alignment.Start,
+                                verticalArrangement = Arrangement.Center
+                            ) {
                                 Text(
-                                    text = unsplashImage.user.location ?: "",
+                                    text = unsplashImage.user.name ?: "",
                                     color = textColor,
-                                    style = textStyle.copy(fontFamily = RubikLight),
+                                    style = textStyle,
                                     overflow = TextOverflow.Ellipsis,
                                     maxLines = 1
+                                )
+                                if (shouldLocationDisplay) {
+                                    Text(
+                                        text = unsplashImage.user.location ?: "",
+                                        color = textColor,
+                                        style = textStyle.copy(fontFamily = RubikLight),
+                                        overflow = TextOverflow.Ellipsis,
+                                        maxLines = 1
+                                    )
+                                }
+                            }
+                        }
+                        if (shouldSeeMoreShown) {
+                            Row(
+                                modifier = Modifier.clickable { onSeeMoreClick(unsplashImage.user.username) },
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(spacing.spaceExtraSmall)
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Rounded.Add, contentDescription = null,
+                                    tint = textColor,
+                                    modifier = Modifier.size(16.dp)
+                                )
+                                Text(
+                                    text = stringResource(id = R.string.see_more),
+                                    style = textStyle,
+                                    color = textColor
                                 )
                             }
                         }
@@ -259,5 +285,34 @@ fun UnsplashImage(
                 }
             }
         }
+    }
+}
+
+@Preview
+@Composable
+private fun UnsplashImagePreview() {
+    PicViewTheme {
+        UnsplashImage(
+            unsplashImage = UnsplashImage(
+                "",
+                "",
+                "oioi",
+                "",
+                232,
+                User(
+                    "Gabriel",
+                    "gabriel_teste",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "Brasil"
+                )
+            ),
+            onWebsiteClick = {},
+            onInstagramClick = {},
+            onProfileClick = {},
+            onSeeMoreClick = {}
+        )
     }
 }

@@ -50,9 +50,7 @@ fun ConnectionProblem(
             containerColor = containerColor,
             contentColor = contentColor
         )
-
     }
-
 }
 
 @Preview

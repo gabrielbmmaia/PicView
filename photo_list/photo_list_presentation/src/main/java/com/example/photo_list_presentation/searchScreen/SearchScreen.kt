@@ -38,6 +38,7 @@ import core.R
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun SearchScreen(
+    onSeeMoreClick: (username: String) -> Unit,
     viewModel: SearchViewModel = hiltViewModel()
 ) {
     val context = LocalContext.current
@@ -48,7 +49,6 @@ fun SearchScreen(
     LaunchedEffect(key1 = Unit) {
         viewModel.uiEvent.collect { event ->
             when (event) {
-                is UiEvent.ShowSnackBar -> {}
                 is UiEvent.Intent -> {
                     event.intent.startIntent(context)
                 }
@@ -141,7 +141,8 @@ fun SearchScreen(
             },
             onProfileClick = {
                 viewModel.onEvent(SearchEvent.OnUnsplashProfileClick(it))
-            }
+            },
+            onSeeMoreClick = onSeeMoreClick
         )
     }
 }
