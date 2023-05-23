@@ -49,10 +49,12 @@ object PhotoListDataModule {
     @Provides
     @Singleton
     fun provideUnsplashImageRepository(
-        unsplashApi: UnsplashApi
+        unsplashApi: UnsplashApi,
+        favoriteDatabase: FavoriteDatabase
     ): UnsplashImageRepository {
         return UnsplashImageRepositoryImpl(
-            unsplashApi = unsplashApi
+            unsplashApi = unsplashApi,
+            favoriteDatabase = favoriteDatabase
         )
     }
 

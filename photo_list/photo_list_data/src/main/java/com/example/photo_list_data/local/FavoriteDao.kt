@@ -4,19 +4,20 @@ import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Upsert
 import com.example.photo_list_data.local.entity.UnsplashImageEntity
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface FavoriteDao {
 
     @Upsert
-    fun addFavoriteItem(unsplashImage: UnsplashImageEntity)
+    suspend fun addFavoriteItem(unsplashImage: UnsplashImageEntity)
 
     @Query("DELETE FROM UnsplashImageEntity WHERE id = :id")
-    fun removeFavoriteItem(id: String)
+    suspend fun removeFavoriteItem(id: String)
 
     @Query("SELECT * FROM UnsplashImageEntity WHERE id = :id")
-    fun isFavoriteItem(id: String): List<UnsplashImageEntity>
+    suspend fun isFavoriteItem(id: String): List<UnsplashImageEntity>
 
     @Query("SELECT * FROM UnsplashImageEntity")
-    fun getFavoritePhotos(): List<UnsplashImageEntity>
+    fun getFavoritePhotos(): Flow<List<UnsplashImageEntity>>
 }

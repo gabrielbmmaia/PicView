@@ -68,20 +68,24 @@ class UnsplashImageRepositoryImpl @Inject constructor(
         }
     }
 
-    override fun getFavoritePhotosList(): List<UnsplashImage> {
-        return favoriteDatabase.dao.getFavoritePhotos().map { it.toUnsplashImage() }
+    override fun getFavoritePhotosList(): Flow<List<UnsplashImage>> {
+        return favoriteDatabase
+            .dao
+            .getFavoritePhotos().map { unsplashEntity ->
+                unsplashEntity.map { it.toUnsplashImage() }
+            }
     }
 
-    override fun addFavoriteUnsplashImage(unsplashImage: UnsplashImage) {
+    override suspend fun addFavoriteUnsplashImage(unsplashImage: UnsplashImage) {
         favoriteDatabase.dao.addFavoriteItem(unsplashImage.toUnsplashImageEntity())
     }
 
-    override fun removeFavoriteUnsplashImage(unsplashImage: UnsplashImage) {
-        favoriteDatabase.dao.removeFavoriteItem(unsplashImage.id)
+    override suspend fun removeFavoriteUnsplashImage(id: String) {
+        favoriteDatabase.dao.removeFavoriteItem(id)
     }
 
-    override fun isFavoriteItem(unsplashImage: UnsplashImage): Boolean {
-        val favoriteList = favoriteDatabase.dao.isFavoriteItem(unsplashImage.id)
+    override suspend fun isFavoritePhoto(id: String): Boolean {
+        val favoriteList = favoriteDatabase.dao.isFavoriteItem(id)
         return favoriteList.isNotEmpty()
     }
 }
