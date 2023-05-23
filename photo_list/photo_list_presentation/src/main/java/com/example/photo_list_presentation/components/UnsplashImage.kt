@@ -19,11 +19,15 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.outlined.Favorite
+import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material.icons.rounded.Add
+import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -64,7 +68,9 @@ fun UnsplashImage(
     onInstagramClick: (String) -> Unit,
     onProfileClick: (String?) -> Unit,
     onSeeMoreClick: (String) -> Unit,
+    onFavoriteClick: (UnsplashImage) -> Unit,
     modifier: Modifier = Modifier,
+    isFavorite: Boolean = false,
     shouldSeeMoreShown: Boolean = true,
     textColor: Color = MaterialTheme.colorScheme.onPrimary,
     textStyle: TextStyle = MaterialTheme.typography.bodySmall,
@@ -80,7 +86,7 @@ fun UnsplashImage(
 
     val cornerPhotoContent = 12.dp
 
-    var isExpanded by remember { mutableStateOf(false) }
+    var isExpanded by remember { mutableStateOf(true) }
 
     ElevatedCard(
         onClick = { isExpanded = !isExpanded },
@@ -257,29 +263,41 @@ fun UnsplashImage(
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.End
+                        horizontalArrangement = Arrangement.SpaceBetween
                     ) {
-                        if (shouldWebsiteDisplay) {
-                            Icon(
-                                painter = painterResource(id = R.drawable.ic_website),
-                                contentDescription = stringResource(id = R.string.user_website),
-                                modifier = Modifier
-                                    .size(24.dp)
-                                    .clickable { onWebsiteClick(unsplashImage.user.portfolioUrl!!) },
-                                tint = textColor
-                            )
-                        }
+                        Icon(
+                            if (isFavorite) painterResource(id = R.drawable.ic_filler_rounded_star)
+                            else painterResource(id = R.drawable.ic_borded_rounded_star),
+                            contentDescription = stringResource(id = R.string.star_icon),
+                            modifier = Modifier
+                                .size(26.dp)
+                                .clickable { onFavoriteClick(unsplashImage) },
+                            tint = textColor
+                        )
 
-                        if (shouldInstagramDisplay) {
-                            Icon(
-                                painter = painterResource(id = R.drawable.ic_instagram_bold),
-                                contentDescription = stringResource(id = R.string.instagram_icon),
-                                modifier = Modifier
-                                    .padding(start = spacing.spaceMedium)
-                                    .size(22.dp)
-                                    .clickable { onInstagramClick(unsplashImage.user.instagramUsername!!) },
-                                tint = textColor
-                            )
+                        Row(
+                            horizontalArrangement = Arrangement.spacedBy(spacing.spaceSmall)
+                        ) {
+                            if (shouldWebsiteDisplay) {
+                                Icon(
+                                    painter = painterResource(id = R.drawable.ic_website),
+                                    contentDescription = stringResource(id = R.string.user_website),
+                                    modifier = Modifier
+                                        .size(24.dp)
+                                        .clickable { onWebsiteClick(unsplashImage.user.portfolioUrl!!) },
+                                    tint = textColor
+                                )
+                            }
+                            if (shouldInstagramDisplay) {
+                                Icon(
+                                    painter = painterResource(id = R.drawable.ic_instagram_bold),
+                                    contentDescription = stringResource(id = R.string.instagram_icon),
+                                    modifier = Modifier
+                                        .size(22.dp)
+                                        .clickable { onInstagramClick(unsplashImage.user.instagramUsername!!) },
+                                    tint = textColor
+                                )
+                            }
                         }
                     }
                 }
@@ -312,7 +330,8 @@ private fun UnsplashImagePreview() {
             onWebsiteClick = {},
             onInstagramClick = {},
             onProfileClick = {},
-            onSeeMoreClick = {}
+            onSeeMoreClick = {},
+            onFavoriteClick = {}
         )
     }
 }

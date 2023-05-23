@@ -5,7 +5,7 @@
     <string name="user_image">Imagem do Usuário</string>
     <string name="instagram_icon">Icone do Instagram</string>
     <string name="user_website">Website do Usuário</string>
-    <string name="favorite_icon">Icone de Favorito</string>
+    <string name="favorite_icon">Icone de Like</string>
     <string name="instagram_url">https://www.instagram.com/%1$s/</string>
     <string name="photo_by">Photo by</string>
     <string name="on_unsplash">on Unsplash</string>
@@ -16,6 +16,7 @@
     <string name="try_again">Tente Novamente</string>
     <string name="connection_problem">Problema na conexão</string>
     <string name="search_icon">Icone de Pesquisa</string>
+    <string name="star_icon">Icone de Favorito</string>
     <string name="search">Pesquisar</string>
     <string name="cancel_icon">Icone de Cancelar</string>
     <string name="color_filter">Filtro de Cores</string>

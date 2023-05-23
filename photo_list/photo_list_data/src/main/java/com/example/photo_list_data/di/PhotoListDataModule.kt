@@ -10,6 +10,7 @@ import com.example.photo_list_domain.repository.UnsplashImageRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -60,7 +61,9 @@ object PhotoListDataModule {
 
     @Provides
     @Singleton
-    fun provideFavoriteDatabase(app: Application): FavoriteDatabase {
+    fun provideFavoriteDatabase(
+        app: Application
+    ): FavoriteDatabase {
         return Room.databaseBuilder(
             app,
             FavoriteDatabase::class.java,

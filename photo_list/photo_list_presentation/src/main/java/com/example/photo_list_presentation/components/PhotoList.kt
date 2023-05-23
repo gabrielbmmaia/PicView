@@ -52,7 +52,8 @@ fun PhotoList(
                                 onInstagramClick = onInstagramClick,
                                 onProfileClick = onProfileClick,
                                 onSeeMoreClick = onSeeMoreClick,
-                                shouldSeeMoreShown = shouldSeeMoreShown
+                                shouldSeeMoreShown = shouldSeeMoreShown,
+                                onFavoriteClick = {}
                             )
                         }
                     }
