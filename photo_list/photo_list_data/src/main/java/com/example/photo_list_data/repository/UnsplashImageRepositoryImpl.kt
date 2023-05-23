@@ -4,7 +4,9 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.map
+import com.example.photo_list_data.local.FavoriteDatabase
 import com.example.photo_list_data.mappers.toUnsplashImage
+import com.example.photo_list_data.mappers.toUnsplashImageEntity
 import com.example.photo_list_data.paging.SearchedListPagingSource
 import com.example.photo_list_data.paging.UnsplashPagingSource
 import com.example.photo_list_data.paging.UserPhotoListPagingSource
@@ -17,7 +19,8 @@ import javax.inject.Inject
 
 
 class UnsplashImageRepositoryImpl @Inject constructor(
-    private val unsplashApi: UnsplashApi
+    private val unsplashApi: UnsplashApi,
+    private val favoriteDatabase: FavoriteDatabase
 ) : UnsplashImageRepository {
 
     override fun getAllImages(): Flow<PagingData<UnsplashImage>> {
@@ -63,5 +66,22 @@ class UnsplashImageRepositoryImpl @Inject constructor(
         return pager.map { pagingData ->
             pagingData.map { it.toUnsplashImage() }
         }
+    }
+
+    override fun getFavoritePhotosList(): List<UnsplashImage> {
+        return favoriteDatabase.dao.getFavoritePhotos().map { it.toUnsplashImage() }
+    }
+
+    override fun addFavoriteUnsplashImage(unsplashImage: UnsplashImage) {
+        favoriteDatabase.dao.addFavoriteItem(unsplashImage.toUnsplashImageEntity())
+    }
+
+    override fun removeFavoriteUnsplashImage(unsplashImage: UnsplashImage) {
+        favoriteDatabase.dao.removeFavoriteItem(unsplashImage.id)
+    }
+
+    override fun isFavoriteItem(unsplashImage: UnsplashImage): Boolean {
+        val favoriteList = favoriteDatabase.dao.isFavoriteItem(unsplashImage.id)
+        return favoriteList.isNotEmpty()
     }
 }

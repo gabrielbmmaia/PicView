@@ -15,5 +15,8 @@ interface FavoriteDao {
     fun removeFavoriteItem(id: String)
 
     @Query("SELECT * FROM UnsplashImageEntity WHERE id = :id")
-    fun isItemFavorite(id: String): UnsplashImageEntity
+    fun isFavoriteItem(id: String): List<UnsplashImageEntity>
+
+    @Query("SELECT * FROM UnsplashImageEntity")
+    fun getFavoritePhotos(): List<UnsplashImageEntity>
 }
