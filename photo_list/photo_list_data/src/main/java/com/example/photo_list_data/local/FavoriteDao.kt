@@ -1,9 +1,9 @@
-package com.example.favorite_list_data.local
+package com.example.photo_list_data.local
 
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Upsert
-import com.example.favorite_list_data.local.model.UnsplashImageEntity
+import com.example.photo_list_data.local.entity.UnsplashImageEntity
 
 @Dao
 interface FavoriteDao {

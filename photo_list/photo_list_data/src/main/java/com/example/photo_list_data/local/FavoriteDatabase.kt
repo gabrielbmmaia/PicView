@@ -1,4 +1,4 @@
-package com.example.favorite_list_data.local
+package com.example.photo_list_data.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

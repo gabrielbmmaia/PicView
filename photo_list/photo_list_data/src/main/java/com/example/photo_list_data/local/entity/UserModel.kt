@@ -1,4 +1,4 @@
-package com.example.favorite_list_data.local.model
+package com.example.photo_list_data.local.entity
 
 import androidx.room.ColumnInfo
 

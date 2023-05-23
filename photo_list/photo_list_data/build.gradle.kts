@@ -13,4 +13,8 @@ dependencies {
     "implementation"(Retrofit.gsonConverter)
 
     "implementation"(Paging.paging3)
+
+    "kapt"(Room.roomCompiler)
+    "implementation"(Room.roomKtx)
+    "implementation"(Room.roomRuntime)
 }
