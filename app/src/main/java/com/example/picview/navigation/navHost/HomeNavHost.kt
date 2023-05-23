@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import com.example.photo_list_presentation.homeScreen.HomeScreen
 
 internal const val HOME_ROUTE = "home"
+
 fun NavGraphBuilder.homeScreen(
     onNavigateToSeeMoreScreen: (username: String) -> Unit
 ) {

@@ -66,37 +66,6 @@ class MainActivity : ComponentActivity() {
                         PicViewNavHost(navController = navController)
                     }
                 }
-
-//                Box(modifier = Modifier.fillMaxSize()) {
-//                    NavHost(
-//                        navController = navController,
-//                        startDestination = Route.SEARCH
-//                    ) {
-//                        composable(Route.SEARCH) {
-//                            SearchScreen(
-//                                onSeeMoreClick = { username ->
-//                                    navController.navigate(
-//                                        Route.SEE_MORE + "/$username"
-//                                    )
-//                                }
-//                            )
-//                        }
-//                        composable(Route.HOME) {
-//                            HomeScreen({})
-//                        }
-//                        composable(
-//                            route = Route.SEE_MORE + "/{username}",
-//                            arguments = listOf(
-//                                navArgument("username") {
-//                                    type = NavType.StringType
-//                                }
-//                            )
-//                        ) { backStack ->
-//                            val username = backStack.arguments?.getString("username")!!
-//                            SeeMoreScreen(username = username, {})
-//                        }
-//                    }
-//                }
             }
         }
     }
@@ -106,7 +75,7 @@ class MainActivity : ComponentActivity() {
 fun PicViewApp(
     onBottomAppBarItemSelectedChange: (BottomAppBarItem) -> Unit,
     isShownBottomBar: Boolean = false,
-    bottomAppBarItemSelected: BottomAppBarItem = bottomAppBarItems[1],
+    bottomAppBarItemSelected: BottomAppBarItem = bottomAppBarItems.first(),
     content: @Composable () -> Unit
 ) {
     Scaffold(
@@ -124,36 +93,3 @@ fun PicViewApp(
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

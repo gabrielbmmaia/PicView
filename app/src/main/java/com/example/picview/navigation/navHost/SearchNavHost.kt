@@ -5,7 +5,6 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
 import com.example.photo_list_presentation.searchScreen.SearchScreen
-import com.example.picview.navigation.Route
 
 internal const val SEARCH_ROUTE = "search"
 

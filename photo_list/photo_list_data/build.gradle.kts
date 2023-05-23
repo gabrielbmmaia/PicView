@@ -5,7 +5,6 @@ apply{
 
 dependencies {
     "implementation"(project(Modules.core))
-
     "implementation"(project(Modules.photoListDomain))
 
     "implementation"(Retrofit.okHttp)
@@ -13,8 +12,5 @@ dependencies {
     "implementation"(Retrofit.okHttpLoggingInterceptor)
     "implementation"(Retrofit.gsonConverter)
 
-    "kapt"(Room.roomCompiler)
-    "implementation"(Room.roomKtx)
-    "implementation"(Room.roomRuntime)
-    "implementation"(Room.roomPaging)
+    "implementation"(Paging.paging3)
 }
