@@ -5,7 +5,7 @@ import com.example.photo_list_domain.model.UnsplashImage
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 
-data class SearchScreenState(
+data class SearchUiState(
     val searchText: String = "",
     val colorSelected: String = "",
     val isBarActive: Boolean = false,

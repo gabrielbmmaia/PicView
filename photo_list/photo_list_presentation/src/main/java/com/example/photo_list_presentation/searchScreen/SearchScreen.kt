@@ -131,18 +131,18 @@ fun SearchScreen(
                 }
             }
         }
-        PhotoList(
-            photoList = photoList,
-            onWebsiteClick = {
-                viewModel.onEvent(SearchEvent.OnWebsiteClick(it))
-            },
-            onInstagramClick = {
-                viewModel.onEvent(SearchEvent.OnInstagramClick(it))
-            },
-            onProfileClick = {
-                viewModel.onEvent(SearchEvent.OnUnsplashProfileClick(it))
-            },
-            onSeeMoreClick = onSeeMoreClick
-        )
+//        PhotoList(
+//            photoList = photoList,
+//            onWebsiteClick = {
+//                viewModel.onEvent(SearchEvent.OnWebsiteClick(it))
+//            },
+//            onInstagramClick = {
+//                viewModel.onEvent(SearchEvent.OnInstagramClick(it))
+//            },
+//            onProfileClick = {
+//                viewModel.onEvent(SearchEvent.OnUnsplashProfileClick(it))
+//            },
+//            onSeeMoreClick = onSeeMoreClick
+//        )
     }
 }

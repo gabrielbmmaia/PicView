@@ -55,14 +55,14 @@ fun SeeMoreScreen(
         Column(
             Modifier.fillMaxWidth()
         ) {
-            PhotoList(
-                photoList = photoList,
-                onWebsiteClick = {},
-                onInstagramClick = {},
-                onProfileClick = {},
-                onSeeMoreClick = {},
-                shouldSeeMoreShown = false
-            )
+//            PhotoList(
+//                photoList = photoList,
+//                onWebsiteClick = {},
+//                onInstagramClick = {},
+//                onProfileClick = {},
+//                onSeeMoreClick = {},
+//                shouldSeeMoreShown = false
+//            )
         }
     }
 }

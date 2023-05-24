@@ -19,22 +19,14 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.outlined.Favorite
-import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material.icons.rounded.Add
-import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -58,24 +50,26 @@ import com.example.core_ui.PicViewTheme
 import com.example.core_ui.RubikLight
 import com.example.photo_list_domain.model.UnsplashImage
 import com.example.photo_list_domain.model.User
+import com.example.photo_list_presentation.PhotoUiState
 import core.R
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalCoilApi::class)
 @Composable
 fun UnsplashImage(
-    unsplashImage: UnsplashImage,
+    photoState: PhotoUiState,
     onWebsiteClick: (String) -> Unit,
     onInstagramClick: (String) -> Unit,
     onProfileClick: (String?) -> Unit,
     onSeeMoreClick: (String) -> Unit,
     onFavoriteClick: (UnsplashImage) -> Unit,
+    onCardClick: (PhotoUiState) -> Unit,
     modifier: Modifier = Modifier,
-    isFavorite: Boolean = false,
     shouldSeeMoreShown: Boolean = true,
     textColor: Color = MaterialTheme.colorScheme.onPrimary,
     textStyle: TextStyle = MaterialTheme.typography.bodySmall,
     backgroundColor: Color = MaterialTheme.colorScheme.primary
 ) {
+    val unsplashImage = photoState.unsplashImage
     val spacing = LocalSpacing.current
     val shouldDescriptionDisplay = unsplashImage.description != null
     val shouldLocationDisplay =
@@ -86,10 +80,8 @@ fun UnsplashImage(
 
     val cornerPhotoContent = 12.dp
 
-    var isExpanded by remember { mutableStateOf(true) }
-
     ElevatedCard(
-        onClick = { isExpanded = !isExpanded },
+        onClick = { onCardClick(photoState) },
         modifier = modifier
             .fillMaxWidth()
             .animateContentSize(
@@ -164,7 +156,7 @@ fun UnsplashImage(
                     )
                 }
             }
-            if (isExpanded) {
+            if (photoState.isExpanded) {
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -266,7 +258,7 @@ fun UnsplashImage(
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         Icon(
-                            if (isFavorite) painterResource(id = R.drawable.ic_filler_rounded_star)
+                            if (photoState.isFavorite) painterResource(id = R.drawable.ic_filler_rounded_star)
                             else painterResource(id = R.drawable.ic_borded_rounded_star),
                             contentDescription = stringResource(id = R.string.star_icon),
                             modifier = Modifier
@@ -311,27 +303,32 @@ fun UnsplashImage(
 private fun UnsplashImagePreview() {
     PicViewTheme {
         UnsplashImage(
-            unsplashImage = UnsplashImage(
-                "",
-                "",
-                "oioi",
-                "",
-                232,
-                User(
-                    "Gabriel",
-                    "gabriel_teste",
+            photoState = PhotoUiState(
+                UnsplashImage(
                     "",
                     "",
+                    "oioi",
                     "",
-                    "",
-                    "Brasil"
-                )
+                    232,
+                    User(
+                        "Gabriel",
+                        "gabriel_teste",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "Brasil"
+                    )
+                ),
+                isFavorite = false,
+                isExpanded = false
             ),
             onWebsiteClick = {},
             onInstagramClick = {},
             onProfileClick = {},
             onSeeMoreClick = {},
-            onFavoriteClick = {}
+            onFavoriteClick = {},
+            onCardClick = {}
         )
     }
 }

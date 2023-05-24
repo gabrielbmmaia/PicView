@@ -23,7 +23,7 @@ class UnsplashImageRepositoryImpl @Inject constructor(
     private val favoriteDatabase: FavoriteDatabase
 ) : UnsplashImageRepository {
 
-    override fun getAllImages(): Flow<PagingData<UnsplashImage>> {
+    override fun getAllPhotos(): Flow<PagingData<UnsplashImage>> {
         val pagingSourceFactory = { UnsplashPagingSource(unsplashApi = unsplashApi) }
         val pager = Pager(
             config = PagingConfig(pageSize = UnsplashApi.PER_PAGE),

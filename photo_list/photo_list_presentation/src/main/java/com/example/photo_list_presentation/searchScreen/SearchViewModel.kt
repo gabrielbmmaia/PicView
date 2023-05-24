@@ -20,7 +20,7 @@ class SearchViewModel @Inject constructor(
     private val repository: UnsplashImageRepository
 ) : ViewModel() {
 
-    var state by mutableStateOf(SearchScreenState())
+    var state by mutableStateOf(SearchUiState())
         private set
 
     private val _uiEvent = Channel<UiEvent>()

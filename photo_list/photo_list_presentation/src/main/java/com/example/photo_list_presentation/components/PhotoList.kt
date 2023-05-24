@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.currentCompositeKeyHash
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -18,15 +19,18 @@ import androidx.paging.compose.items
 import com.example.core_ui.LocalSpacing
 import com.example.core_ui.components.NoImage
 import com.example.photo_list_domain.model.UnsplashImage
+import com.example.photo_list_presentation.PhotoUiState
 import core.R
 
 @Composable
 fun PhotoList(
-    photoList: LazyPagingItems<UnsplashImage>,
+    photoList: LazyPagingItems<PhotoUiState>,
     onWebsiteClick: (String) -> Unit,
     onInstagramClick: (String) -> Unit,
     onProfileClick: (String?) -> Unit,
-    onSeeMoreClick:(username: String) -> Unit,
+    onSeeMoreClick: (username: String) -> Unit,
+    onFavoriteClick: (UnsplashImage) -> Unit,
+    onCardClick: (PhotoUiState) -> Unit,
     modifier: Modifier = Modifier,
     shouldSeeMoreShown: Boolean = true
 ) {
@@ -34,7 +38,8 @@ fun PhotoList(
     Box(modifier = modifier.fillMaxSize()) {
         when (photoList.loadState.refresh) {
             is LoadState.NotLoading -> {
-                LazyColumn(
+                if (photoList.itemCount == 0) NoImage(Modifier.align(Alignment.Center))
+                else LazyColumn(
                     modifier = Modifier.fillMaxSize(),
                     contentPadding = PaddingValues(spacing.spaceMedium),
                     verticalArrangement = Arrangement.spacedBy(spacing.spaceMedium),
@@ -42,18 +47,18 @@ fun PhotoList(
                 ) {
                     items(
                         items = photoList,
-                        key = { unsplashImage ->
-                            unsplashImage.id
-                        }) { unsplashImage ->
-                        unsplashImage?.let {
+                        key = { it.unsplashImage.id }
+                    ) { photoUiState ->
+                        photoUiState?.let {
                             UnsplashImage(
-                                unsplashImage = it,
+                                photoState = it,
                                 onWebsiteClick = onWebsiteClick,
                                 onInstagramClick = onInstagramClick,
                                 onProfileClick = onProfileClick,
                                 onSeeMoreClick = onSeeMoreClick,
-                                shouldSeeMoreShown = shouldSeeMoreShown,
-                                onFavoriteClick = {}
+                                onFavoriteClick = onFavoriteClick,
+                                onCardClick = onCardClick,
+                                shouldSeeMoreShown = shouldSeeMoreShown
                             )
                         }
                     }
@@ -93,8 +98,7 @@ fun PhotoList(
             }
 
             LoadState.Loading -> {
-                if (photoList.itemCount == 0) NoImage(Modifier.align(Alignment.Center))
-                else CircularProgressIndicator(Modifier.align(Alignment.Center))
+                CircularProgressIndicator(Modifier.align(Alignment.Center))
             }
 
             else -> Unit

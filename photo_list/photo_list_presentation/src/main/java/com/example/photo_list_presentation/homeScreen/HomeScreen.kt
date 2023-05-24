@@ -13,8 +13,13 @@ fun HomeScreen(
     onSeeMoreClick: (username: String) -> Unit,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
-    val photoList = viewModel.photoList.collectAsLazyPagingItems()
+
+    val photoList = viewModel.state.photoList.collectAsLazyPagingItems()
     val context = LocalContext.current
+
+    LaunchedEffect(key1 = Unit ){
+    viewModel.onEvent(HomeEvent.OnLoadPhotoList)
+    }
 
     LaunchedEffect(key1 = Unit) {
         viewModel.uiEvent.collect { event ->
@@ -22,6 +27,7 @@ fun HomeScreen(
                 is UiEvent.Intent -> {
                     event.intent.startIntent(context)
                 }
+
                 else -> Unit
             }
         }
@@ -38,6 +44,10 @@ fun HomeScreen(
         onProfileClick = { userUnsplashProfile ->
             viewModel.onEvent(HomeEvent.OnUnsplashProfileClick(userUnsplashProfile))
         },
-        onSeeMoreClick = onSeeMoreClick
+        onSeeMoreClick = onSeeMoreClick,
+        onFavoriteClick = {},
+        onCardClick = { photoUiState ->
+            viewModel.onEvent(HomeEvent.OnCardClick(photoUiState))
+        }
     )
 }
