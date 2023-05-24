@@ -35,19 +35,9 @@ fun HomeScreen(
 
     PhotoList(
         photoList = photoList,
-        onWebsiteClick = { userWebsite ->
-            viewModel.onEvent(HomeEvent.OnWebsiteClick(userWebsite))
-        },
-        onInstagramClick = { userInstagram ->
-            viewModel.onEvent(HomeEvent.OnInstagramClick(userInstagram))
-        },
-        onProfileClick = { userUnsplashProfile ->
-            viewModel.onEvent(HomeEvent.OnUnsplashProfileClick(userUnsplashProfile))
-        },
         onSeeMoreClick = onSeeMoreClick,
-        onFavoriteClick = {},
-        onCardClick = { photoUiState ->
-            viewModel.onEvent(HomeEvent.OnCardClick(photoUiState))
+        onFavoriteClick = { unsplashImage ->
+            viewModel.onEvent(HomeEvent.OnFavoriteClick(unsplashImage))
         }
     )
 }

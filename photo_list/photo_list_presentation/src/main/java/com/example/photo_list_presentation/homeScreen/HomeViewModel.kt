@@ -11,6 +11,7 @@ import androidx.paging.map
 import com.example.core.event.IntentEvent
 import com.example.core.util.UiEvent
 import com.example.photo_list_domain.repository.UnsplashImageRepository
+import com.example.photo_list_domain.useCase.AddOrRemoveFromFavoriteListUseCase
 import com.example.photo_list_presentation.PhotoUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
@@ -21,7 +22,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val repository: UnsplashImageRepository
+    private val repository: UnsplashImageRepository,
+    private val addOrRemove: AddOrRemoveFromFavoriteListUseCase
 ) : ViewModel() {
 
     val photoList = repository.getAllPhotos().cachedIn(viewModelScope)
@@ -34,37 +36,37 @@ class HomeViewModel @Inject constructor(
 
     fun onEvent(event: HomeEvent) {
         when (event) {
-            is HomeEvent.OnInstagramClick -> {
-                viewModelScope.launch {
-                    _uiEvent.send(
-                        UiEvent.Intent(
-                            IntentEvent.OnInstagramEvent(event.userInstagram)
-                        )
-                    )
-                }
-            }
-
-            is HomeEvent.OnUnsplashProfileClick -> {
-                event.unsplashProfile?.let { url ->
-                    viewModelScope.launch {
-                        _uiEvent.send(
-                            UiEvent.Intent(
-                                IntentEvent.OnUnsplashProfileEvent(url)
-                            )
-                        )
-                    }
-                }
-            }
-
-            is HomeEvent.OnWebsiteClick -> {
-                viewModelScope.launch {
-                    _uiEvent.send(
-                        UiEvent.Intent(
-                            IntentEvent.OnWebsiteEvent(event.websiteUrl)
-                        )
-                    )
-                }
-            }
+//            is HomeEvent.OnInstagramClick -> {
+//                viewModelScope.launch {
+//                    _uiEvent.send(
+//                        UiEvent.Intent(
+//                            IntentEvent.OnInstagramEvent(event.userInstagram)
+//                        )
+//                    )
+//                }
+//            }
+//
+//            is HomeEvent.OnUnsplashProfileClick -> {
+//                event.unsplashProfile?.let { url ->
+//                    viewModelScope.launch {
+//                        _uiEvent.send(
+//                            UiEvent.Intent(
+//                                IntentEvent.OnUnsplashProfileEvent(url)
+//                            )
+//                        )
+//                    }
+//                }
+//            }
+//
+//            is HomeEvent.OnWebsiteClick -> {
+//                viewModelScope.launch {
+//                    _uiEvent.send(
+//                        UiEvent.Intent(
+//                            IntentEvent.OnWebsiteEvent(event.websiteUrl)
+//                        )
+//                    )
+//                }
+//            }
 
             HomeEvent.OnLoadPhotoList -> {
                 viewModelScope.launch {
@@ -81,20 +83,10 @@ class HomeViewModel @Inject constructor(
                 }
             }
 
-            is HomeEvent.OnCardClick -> {
-                state = state.copy(
-                    photoList = state.photoList.map { pagingData ->
-                        pagingData.map {
-                            if (it == event.photoUiState){
-                                 it.copy(isExpanded = !it.isExpanded)
-                            } else it
-                        }
-                    }
-                )
-            }
-
             is HomeEvent.OnFavoriteClick -> {
-
+                viewModelScope.launch {
+                    addOrRemove(event.unsplashImage)
+                }
             }
         }
     }

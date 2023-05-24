@@ -1,5 +1,6 @@
 package com.example.photo_list_presentation.searchScreen
 
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -20,12 +21,14 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.core.util.UiEvent
@@ -52,16 +55,22 @@ fun SearchScreen(
                 is UiEvent.Intent -> {
                     event.intent.startIntent(context)
                 }
+
                 else -> Unit
             }
         }
     }
+    val searchBarPadding = if (state.isBarActive) 0.dp else 8.dp
+
+    val animationDp by animateDpAsState(targetValue = searchBarPadding)
 
     Column(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize(),
     ) {
         SearchBar(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(animationDp),
             query = state.searchText,
             onQueryChange = {
                 viewModel.onEvent(SearchEvent.OnQueryChange(it))
@@ -131,18 +140,12 @@ fun SearchScreen(
                 }
             }
         }
-//        PhotoList(
-//            photoList = photoList,
-//            onWebsiteClick = {
-//                viewModel.onEvent(SearchEvent.OnWebsiteClick(it))
-//            },
-//            onInstagramClick = {
-//                viewModel.onEvent(SearchEvent.OnInstagramClick(it))
-//            },
-//            onProfileClick = {
-//                viewModel.onEvent(SearchEvent.OnUnsplashProfileClick(it))
-//            },
-//            onSeeMoreClick = onSeeMoreClick
-//        )
+        PhotoList(
+            photoList = photoList,
+            onSeeMoreClick = onSeeMoreClick,
+            onFavoriteClick = { unsplashImage ->
+                viewModel.onEvent(SearchEvent.OnFavoriteClick(unsplashImage))
+            }
+        )
     }
 }

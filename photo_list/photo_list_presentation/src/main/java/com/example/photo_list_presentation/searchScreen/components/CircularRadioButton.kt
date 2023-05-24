@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -19,7 +20,6 @@ import androidx.compose.ui.unit.dp
 import com.example.core_ui.Magenta
 import com.example.core_ui.PicViewTheme
 import com.example.photo_list_presentation.searchScreen.CustomButton
-import com.example.photo_list_presentation.searchScreen.CustomButton.ImageVectorIcon
 import com.example.photo_list_presentation.searchScreen.CustomButton.SingleColorIcon
 import com.example.photo_list_presentation.searchScreen.CustomButton.TwoColorIcon
 import com.example.photo_list_presentation.searchScreen.CustomButtonUiState
@@ -38,7 +38,7 @@ fun CustomRadioButton(
                 .size(state.button.size)
                 .border(
                     width = 1.dp,
-                    color = if(state.isSelected) Color.Black else Color.Black.copy(alpha = 0.3f),
+                    color = if (state.isSelected) Color.Black else Color.Black.copy(alpha = 0.3f),
                     shape = CircleShape
                 )
                 .clickable { onButtonClicked(state.button) }
@@ -57,7 +57,7 @@ fun CustomRadioButton(
                 .size(state.button.size)
                 .border(
                     width = 1.dp,
-                    color = if(state.isSelected) Color.Black else Color.Black.copy(alpha = 0.3f),
+                    color = if (state.isSelected) Color.Black else Color.Black.copy(alpha = 0.3f),
                     shape = CircleShape
                 )
                 .clickable { onButtonClicked(state.button) }
@@ -79,21 +79,6 @@ fun CustomRadioButton(
                 )
             }
         }
-
-        is ImageVectorIcon -> {
-            Icon(
-                painter = painterResource(id = state.button.painterId),
-                contentDescription = null,
-                tint = if (state.isSelected) Color.Black
-                else Color.Black.copy(alpha = 0.3f),
-                modifier = modifier
-                    .clip(CircleShape)
-                    .size(state.button.size)
-                    .clickable {
-                        onButtonClicked(state.button)
-                    }
-            )
-        }
     }
 }
 
@@ -107,7 +92,7 @@ private fun CustomRadioButtonPreview() {
                     state = CustomButtonUiState(
                         SingleColorIcon(
                             color = Magenta,
-                            colorName = ""
+                            tag = ""
                         )
                     ),
                     onButtonClicked = {}
@@ -116,7 +101,7 @@ private fun CustomRadioButtonPreview() {
                     state = CustomButtonUiState(
                         SingleColorIcon(
                             color = Magenta,
-                            colorName = ""
+                            tag = ""
                         ),
                         isSelected = true
                     ),
@@ -130,7 +115,7 @@ private fun CustomRadioButtonPreview() {
                         TwoColorIcon(
                             colorOne = Color.Black,
                             colorTwo = Color.White,
-                            colorName = ""
+                            tag = ""
                         )
                     ),
                     onButtonClicked = {}
@@ -140,28 +125,7 @@ private fun CustomRadioButtonPreview() {
                         TwoColorIcon(
                             colorOne = Color.Black,
                             colorTwo = Color.White,
-                            colorName = ""
-                        ),
-                        isSelected = true
-                    ),
-                    onButtonClicked = {}
-                )
-            }
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                CustomRadioButton(
-                    state = CustomButtonUiState(
-                        ImageVectorIcon(
-                            painterId = R.drawable.ic_block,
-                            iconName = ""
-                        )
-                    ),
-                    onButtonClicked = {}
-                )
-                CustomRadioButton(
-                    state = CustomButtonUiState(
-                        ImageVectorIcon(
-                            painterId = R.drawable.ic_block,
-                            iconName = ""
+                            tag = ""
                         ),
                         isSelected = true
                     ),

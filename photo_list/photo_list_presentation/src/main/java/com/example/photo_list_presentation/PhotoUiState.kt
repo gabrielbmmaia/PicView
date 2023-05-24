@@ -20,6 +20,5 @@ data class PhotoUiState(
             location = null
         )
     ),
-    val isExpanded: Boolean = false,
     val isFavorite: Boolean = false
 )

@@ -1,5 +1,7 @@
 package com.example.photo_list_presentation.components
 
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.tween
@@ -27,11 +29,16 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
@@ -43,6 +50,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import com.example.core_ui.LocalSpacing
@@ -57,12 +65,8 @@ import core.R
 @Composable
 fun UnsplashImage(
     photoState: PhotoUiState,
-    onWebsiteClick: (String) -> Unit,
-    onInstagramClick: (String) -> Unit,
-    onProfileClick: (String?) -> Unit,
-    onSeeMoreClick: (String) -> Unit,
+    onSeeMoreClick: (String) -> Unit?,
     onFavoriteClick: (UnsplashImage) -> Unit,
-    onCardClick: (PhotoUiState) -> Unit,
     modifier: Modifier = Modifier,
     shouldSeeMoreShown: Boolean = true,
     textColor: Color = MaterialTheme.colorScheme.onPrimary,
@@ -71,6 +75,7 @@ fun UnsplashImage(
 ) {
     val unsplashImage = photoState.unsplashImage
     val spacing = LocalSpacing.current
+    val context = LocalContext.current
     val shouldDescriptionDisplay = unsplashImage.description != null
     val shouldLocationDisplay =
         unsplashImage.user.name != null &&
@@ -80,8 +85,16 @@ fun UnsplashImage(
 
     val cornerPhotoContent = 12.dp
 
+    var isExpanded by rememberSaveable {
+        mutableStateOf(false)
+    }
+
+    var isFavorite by rememberSaveable {
+        mutableStateOf(photoState.isFavorite)
+    }
+
     ElevatedCard(
-        onClick = { onCardClick(photoState) },
+        onClick = { isExpanded = !isExpanded },
         modifier = modifier
             .fillMaxWidth()
             .animateContentSize(
@@ -145,7 +158,15 @@ fun UnsplashImage(
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                         style = textStyle,
-                        modifier = Modifier.clickable { onProfileClick(unsplashImage.user.profileUnsplash) }
+                        modifier = Modifier.clickable {
+                            unsplashImage.user.profileUnsplash?.let {
+                                val intent = Intent(
+                                    Intent.ACTION_VIEW,
+                                    Uri.parse(it)
+                                )
+                                ContextCompat.startActivity(context, intent, null)
+                            }
+                        }
                     )
                     TextCount(
                         text = unsplashImage.likes,
@@ -156,7 +177,7 @@ fun UnsplashImage(
                     )
                 }
             }
-            if (photoState.isExpanded) {
+            if (isExpanded) {
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -208,7 +229,15 @@ fun UnsplashImage(
                                 modifier = Modifier
                                     .size(35.dp)
                                     .clip(RoundedCornerShape(100))
-                                    .clickable { onProfileClick(unsplashImage.user.profileUnsplash) }
+                                    .clickable {
+                                        unsplashImage.user.profileUnsplash?.let {
+                                            val intent = Intent(
+                                                Intent.ACTION_VIEW,
+                                                Uri.parse(it)
+                                            )
+                                            ContextCompat.startActivity(context, intent, null)
+                                        }
+                                    }
                             )
                             Spacer(modifier = Modifier.width(spacing.spaceSmall))
                             Column(
@@ -258,12 +287,15 @@ fun UnsplashImage(
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         Icon(
-                            if (photoState.isFavorite) painterResource(id = R.drawable.ic_filler_rounded_star)
+                            if (isFavorite) painterResource(id = R.drawable.ic_filler_rounded_star)
                             else painterResource(id = R.drawable.ic_borded_rounded_star),
                             contentDescription = stringResource(id = R.string.star_icon),
                             modifier = Modifier
                                 .size(26.dp)
-                                .clickable { onFavoriteClick(unsplashImage) },
+                                .clickable {
+                                    onFavoriteClick(unsplashImage)
+                                    isFavorite = !isFavorite
+                                },
                             tint = textColor
                         )
 
@@ -274,20 +306,56 @@ fun UnsplashImage(
                                 Icon(
                                     painter = painterResource(id = R.drawable.ic_website),
                                     contentDescription = stringResource(id = R.string.user_website),
+                                    tint = textColor,
                                     modifier = Modifier
                                         .size(24.dp)
-                                        .clickable { onWebsiteClick(unsplashImage.user.portfolioUrl!!) },
-                                    tint = textColor
+                                        .clickable {
+                                            val intent = Intent(
+                                                Intent.ACTION_VIEW,
+                                                Uri.parse(unsplashImage.user.portfolioUrl!!)
+                                            )
+                                            ContextCompat.startActivity(context, intent, null)
+                                        }
                                 )
                             }
                             if (shouldInstagramDisplay) {
                                 Icon(
                                     painter = painterResource(id = R.drawable.ic_instagram_bold),
                                     contentDescription = stringResource(id = R.string.instagram_icon),
+                                    tint = textColor,
                                     modifier = Modifier
                                         .size(22.dp)
-                                        .clickable { onInstagramClick(unsplashImage.user.instagramUsername!!) },
-                                    tint = textColor
+                                        .clickable {
+                                            val userInstagram = unsplashImage.user.instagramUsername
+                                            val instagramUri = context.getString(
+                                                R.string.instagram_username,
+                                                userInstagram
+                                            )
+                                            val instagramPackage =
+                                                context.getString(R.string.instagram_package)
+
+                                            val webIntent = Intent(
+                                                Intent.ACTION_VIEW,
+                                                Uri.parse(instagramUri)
+                                            )
+                                            val appIntent = Intent(
+                                                Intent.ACTION_VIEW,
+                                                Uri.parse(instagramUri)
+                                            ).setPackage(instagramPackage)
+                                            try {
+                                                ContextCompat.startActivity(
+                                                    context,
+                                                    appIntent,
+                                                    null
+                                                )
+                                            } catch (e: Exception) {
+                                                ContextCompat.startActivity(
+                                                    context,
+                                                    webIntent,
+                                                    null
+                                                )
+                                            }
+                                        }
                                 )
                             }
                         }
@@ -320,15 +388,10 @@ private fun UnsplashImagePreview() {
                         "Brasil"
                     )
                 ),
-                isFavorite = false,
-                isExpanded = false
+                isFavorite = false
             ),
-            onWebsiteClick = {},
-            onInstagramClick = {},
-            onProfileClick = {},
             onSeeMoreClick = {},
-            onFavoriteClick = {},
-            onCardClick = {}
+            onFavoriteClick = {}
         )
     }
 }

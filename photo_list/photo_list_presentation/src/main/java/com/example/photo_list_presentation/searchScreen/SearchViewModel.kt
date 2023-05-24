@@ -6,18 +6,22 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
-import com.example.core.event.IntentEvent
+import androidx.paging.map
 import com.example.core.util.UiEvent
 import com.example.photo_list_domain.repository.UnsplashImageRepository
+import com.example.photo_list_domain.useCase.AddOrRemoveFromFavoriteListUseCase
+import com.example.photo_list_presentation.PhotoUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class SearchViewModel @Inject constructor(
-    private val repository: UnsplashImageRepository
+    private val repository: UnsplashImageRepository,
+    private val addOrRemove: AddOrRemoveFromFavoriteListUseCase
 ) : ViewModel() {
 
     var state by mutableStateOf(SearchUiState())
@@ -62,41 +66,16 @@ class SearchViewModel @Inject constructor(
                         photoList = repository.getSearchedPhotoList(
                             query = state.searchText,
                             color = state.colorSelected
-                        ).cachedIn(viewModelScope)
+                        ).map { pagingData ->
+                            pagingData.map { image ->
+                                PhotoUiState(
+                                    unsplashImage = image,
+                                    isFavorite = repository.isFavoritePhoto(image.id)
+                                )
+                            }
+                        }.cachedIn(viewModelScope)
                     )
                 } else state.copy(isBarActive = false)
-            }
-
-            is SearchEvent.OnInstagramClick -> {
-                viewModelScope.launch {
-                    _uiEvent.send(
-                        UiEvent.Intent(
-                            IntentEvent.OnInstagramEvent(event.userInstagram)
-                        )
-                    )
-                }
-            }
-
-            is SearchEvent.OnUnsplashProfileClick -> {
-                event.unsplashProfile?.let { url ->
-                    viewModelScope.launch {
-                        _uiEvent.send(
-                            UiEvent.Intent(
-                                IntentEvent.OnUnsplashProfileEvent(url)
-                            )
-                        )
-                    }
-                }
-            }
-
-            is SearchEvent.OnWebsiteClick -> {
-                viewModelScope.launch {
-                    _uiEvent.send(
-                        UiEvent.Intent(
-                            IntentEvent.OnWebsiteEvent(event.websiteUrl)
-                        )
-                    )
-                }
             }
 
             is SearchEvent.OnSeeMoreClick -> {
@@ -104,6 +83,12 @@ class SearchViewModel @Inject constructor(
                     _uiEvent.send(
                         UiEvent.Navigate
                     )
+                }
+            }
+
+            is SearchEvent.OnFavoriteClick -> {
+                viewModelScope.launch {
+                    addOrRemove(event.unsplashImage)
                 }
             }
         }

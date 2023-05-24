@@ -8,7 +8,7 @@ class AddOrRemoveFromFavoriteListUseCase @Inject constructor(
     private val repository: UnsplashImageRepository
 ) {
     suspend operator fun invoke(unsplashImage: UnsplashImage) {
-        if (repository.isFavoritePhoto(unsplashImage.id))
+        if (!repository.isFavoritePhoto(unsplashImage.id))
 
             repository.addFavoriteUnsplashImage(unsplashImage)
 

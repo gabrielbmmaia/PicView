@@ -15,10 +15,8 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.example.core_ui.PicViewTheme
 import com.example.photo_list_presentation.components.PhotoList
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -55,22 +53,13 @@ fun SeeMoreScreen(
         Column(
             Modifier.fillMaxWidth()
         ) {
-//            PhotoList(
-//                photoList = photoList,
-//                onWebsiteClick = {},
-//                onInstagramClick = {},
-//                onProfileClick = {},
-//                onSeeMoreClick = {},
-//                shouldSeeMoreShown = false
-//            )
+            PhotoList(
+                photoList = photoList,
+                shouldSeeMoreShown = false,
+                onFavoriteClick = { unsplashImage ->
+                    viewModel.onEvent(SeeMoreEvent.OnFavoriteClick(unsplashImage))
+                }
+            )
         }
-    }
-}
-
-@Preview
-@Composable
-private fun SeeMoreScreenPreview() {
-    PicViewTheme {
-        SeeMoreScreen("",{})
     }
 }

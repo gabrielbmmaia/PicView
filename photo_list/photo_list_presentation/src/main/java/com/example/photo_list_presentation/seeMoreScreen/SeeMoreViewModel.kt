@@ -6,16 +6,22 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
+import androidx.paging.map
 import com.example.core.util.UiEvent
 import com.example.photo_list_domain.repository.UnsplashImageRepository
+import com.example.photo_list_domain.useCase.AddOrRemoveFromFavoriteListUseCase
+import com.example.photo_list_presentation.PhotoUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class SeeMoreViewModel @Inject constructor(
-    private val repository: UnsplashImageRepository
+    private val repository: UnsplashImageRepository,
+    private val addOrRemove: AddOrRemoveFromFavoriteListUseCase
 ) : ViewModel() {
 
     var state by mutableStateOf(SeeMoreState())
@@ -28,9 +34,21 @@ class SeeMoreViewModel @Inject constructor(
         when (event) {
             is SeeMoreEvent.OnLoadPhotoList -> {
                 state = state.copy(
-                    photoList = repository.getUserPhotosList(event.username)
-                        .cachedIn(viewModelScope)
+                    photoList = repository.getUserPhotosList(event.username).map { pagingData ->
+                        pagingData.map { image ->
+                            PhotoUiState(
+                                unsplashImage = image,
+                                isFavorite = repository.isFavoritePhoto(image.id)
+                            )
+                        }
+                    }.cachedIn(viewModelScope)
                 )
+            }
+
+            is SeeMoreEvent.OnFavoriteClick -> {
+                viewModelScope.launch {
+                    addOrRemove(event.unsplashImage)
+                }
             }
         }
     }
