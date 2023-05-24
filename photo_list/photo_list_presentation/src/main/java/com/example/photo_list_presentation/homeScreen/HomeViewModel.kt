@@ -6,9 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
-import androidx.paging.filter
 import androidx.paging.map
-import com.example.core.event.IntentEvent
 import com.example.core.util.UiEvent
 import com.example.photo_list_domain.repository.UnsplashImageRepository
 import com.example.photo_list_domain.useCase.AddOrRemoveFromFavoriteListUseCase

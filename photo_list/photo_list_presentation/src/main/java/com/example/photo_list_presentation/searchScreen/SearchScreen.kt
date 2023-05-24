@@ -16,22 +16,16 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SearchBar
-import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.example.core.util.UiEvent
 import com.example.core_ui.LocalSpacing
 import com.example.photo_list_presentation.components.PhotoList
 import com.example.photo_list_presentation.searchScreen.components.CustomRadioButton
@@ -44,22 +38,11 @@ fun SearchScreen(
     onSeeMoreClick: (username: String) -> Unit,
     viewModel: SearchViewModel = hiltViewModel()
 ) {
-    val context = LocalContext.current
+
     val spacing = LocalSpacing.current
     val state = viewModel.state
     val photoList = state.photoList.collectAsLazyPagingItems()
 
-    LaunchedEffect(key1 = Unit) {
-        viewModel.uiEvent.collect { event ->
-            when (event) {
-                is UiEvent.Intent -> {
-                    event.intent.startIntent(context)
-                }
-
-                else -> Unit
-            }
-        }
-    }
     val searchBarPadding = if (state.isBarActive) 0.dp else 8.dp
 
     val animationDp by animateDpAsState(targetValue = searchBarPadding)
@@ -103,15 +86,7 @@ fun SearchScreen(
                         contentDescription = stringResource(id = R.string.cancel_icon)
                     )
                 }
-            },
-            colors = SearchBarDefaults.colors(
-                containerColor = MaterialTheme.colorScheme.surface,
-                inputFieldColors = TextFieldDefaults.colors(
-                    focusedContainerColor = MaterialTheme.colorScheme.surface,
-                    unfocusedContainerColor = Color.Red,
-                    disabledContainerColor = Color.Red
-                )
-            )
+            }
         ) {
             Text(
                 text = stringResource(id = R.string.color_filter),
@@ -140,12 +115,14 @@ fun SearchScreen(
                 }
             }
         }
-        PhotoList(
-            photoList = photoList,
-            onSeeMoreClick = onSeeMoreClick,
-            onFavoriteClick = { unsplashImage ->
-                viewModel.onEvent(SearchEvent.OnFavoriteClick(unsplashImage))
-            }
-        )
+        if (photoList.itemCount != 0) {
+            PhotoList(
+                photoList = photoList,
+                onSeeMoreClick = onSeeMoreClick,
+                onFavoriteClick = { unsplashImage ->
+                    viewModel.onEvent(SearchEvent.OnFavoriteClick(unsplashImage))
+                }
+            )
+        }
     }
 }

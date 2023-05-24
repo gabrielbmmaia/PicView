@@ -15,22 +15,9 @@ fun HomeScreen(
 ) {
 
     val photoList = viewModel.state.photoList.collectAsLazyPagingItems()
-    val context = LocalContext.current
-
-    LaunchedEffect(key1 = Unit ){
-    viewModel.onEvent(HomeEvent.OnLoadPhotoList)
-    }
 
     LaunchedEffect(key1 = Unit) {
-        viewModel.uiEvent.collect { event ->
-            when (event) {
-                is UiEvent.Intent -> {
-                    event.intent.startIntent(context)
-                }
-
-                else -> Unit
-            }
-        }
+        viewModel.onEvent(HomeEvent.OnLoadPhotoList)
     }
 
     PhotoList(

@@ -17,7 +17,6 @@ import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.items
 import com.example.core_ui.LocalSpacing
-import com.example.core_ui.components.NoImage
 import com.example.photo_list_domain.model.UnsplashImage
 import com.example.photo_list_presentation.PhotoUiState
 import core.R
@@ -34,8 +33,7 @@ fun PhotoList(
     Box(modifier = modifier.fillMaxSize()) {
         when (photoList.loadState.refresh) {
             is LoadState.NotLoading -> {
-                if (photoList.itemCount == 0) NoImage(Modifier.align(Alignment.Center))
-                else LazyColumn(
+                LazyColumn(
                     modifier = Modifier.fillMaxSize(),
                     contentPadding = PaddingValues(spacing.spaceMedium),
                     verticalArrangement = Arrangement.spacedBy(spacing.spaceMedium),

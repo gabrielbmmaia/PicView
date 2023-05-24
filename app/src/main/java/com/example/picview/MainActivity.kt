@@ -88,7 +88,7 @@ fun PicViewApp(
             }
         }
     ) {
-        Box(modifier = Modifier.padding(it)) {
+        Surface(modifier = Modifier.padding(it)) {
             content()
         }
     }

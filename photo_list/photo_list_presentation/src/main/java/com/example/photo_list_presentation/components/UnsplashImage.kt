@@ -26,6 +26,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -217,7 +218,9 @@ fun UnsplashImage(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Row {
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
                             Image(
                                 painter = rememberImagePainter(
                                     data = unsplashImage.user.profileImage
@@ -253,7 +256,7 @@ fun UnsplashImage(
                                 )
                                 if (shouldLocationDisplay) {
                                     Text(
-                                        text = unsplashImage.user.location ?: "",
+                                        text = unsplashImage.user.location!!,
                                         color = textColor,
                                         style = textStyle.copy(fontFamily = RubikLight),
                                         overflow = TextOverflow.Ellipsis,
@@ -271,10 +274,11 @@ fun UnsplashImage(
                                 Icon(
                                     imageVector = Icons.Rounded.Add, contentDescription = null,
                                     tint = textColor,
-                                    modifier = Modifier.size(16.dp)
+                                    modifier = Modifier.size(18.dp)
                                 )
                                 Text(
                                     text = stringResource(id = R.string.see_more),
+                                    Modifier.padding(end = spacing.spaceSmall),
                                     style = textStyle,
                                     color = textColor
                                 )
@@ -286,77 +290,80 @@ fun UnsplashImage(
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
-                        Icon(
-                            if (isFavorite) painterResource(id = R.drawable.ic_filler_rounded_star)
-                            else painterResource(id = R.drawable.ic_borded_rounded_star),
-                            contentDescription = stringResource(id = R.string.star_icon),
-                            modifier = Modifier
-                                .size(26.dp)
-                                .clickable {
-                                    onFavoriteClick(unsplashImage)
-                                    isFavorite = !isFavorite
-                                },
-                            tint = textColor
-                        )
+                        IconButton(
+                            onClick = {
+                                onFavoriteClick(unsplashImage)
+                                isFavorite = !isFavorite
+                            }) {
+                            Icon(
+                                if (isFavorite) painterResource(id = R.drawable.ic_filler_rounded_star)
+                                else painterResource(id = R.drawable.ic_borded_rounded_star),
+                                contentDescription = stringResource(id = R.string.star_icon),
+                                tint = textColor
+                            )
+                        }
 
                         Row(
-                            horizontalArrangement = Arrangement.spacedBy(spacing.spaceSmall)
+                            verticalAlignment = Alignment.CenterVertically
                         ) {
                             if (shouldWebsiteDisplay) {
-                                Icon(
-                                    painter = painterResource(id = R.drawable.ic_website),
-                                    contentDescription = stringResource(id = R.string.user_website),
-                                    tint = textColor,
-                                    modifier = Modifier
-                                        .size(24.dp)
-                                        .clickable {
-                                            val intent = Intent(
-                                                Intent.ACTION_VIEW,
-                                                Uri.parse(unsplashImage.user.portfolioUrl!!)
-                                            )
-                                            ContextCompat.startActivity(context, intent, null)
-                                        }
-                                )
+                                IconButton(
+                                    onClick = {
+                                        val intent = Intent(
+                                            Intent.ACTION_VIEW,
+                                            Uri.parse(unsplashImage.user.portfolioUrl!!)
+                                        )
+                                        ContextCompat.startActivity(context, intent, null)
+                                    }) {
+                                    Icon(
+                                        painter = painterResource(id = R.drawable.ic_website),
+                                        contentDescription = stringResource(id = R.string.user_website),
+                                        tint = textColor
+                                    )
+                                }
                             }
-                            if (shouldInstagramDisplay) {
-                                Icon(
-                                    painter = painterResource(id = R.drawable.ic_instagram_bold),
-                                    contentDescription = stringResource(id = R.string.instagram_icon),
-                                    tint = textColor,
-                                    modifier = Modifier
-                                        .size(22.dp)
-                                        .clickable {
-                                            val userInstagram = unsplashImage.user.instagramUsername
-                                            val instagramUri = context.getString(
-                                                R.string.instagram_username,
-                                                userInstagram
-                                            )
-                                            val instagramPackage =
-                                                context.getString(R.string.instagram_package)
 
-                                            val webIntent = Intent(
-                                                Intent.ACTION_VIEW,
-                                                Uri.parse(instagramUri)
+                            if (shouldInstagramDisplay) {
+                                IconButton(
+                                    onClick = {
+                                        val userInstagram = unsplashImage.user.instagramUsername
+                                        val instagramUri = context.getString(
+                                            R.string.instagram_username,
+                                            userInstagram
+                                        )
+                                        val instagramPackage =
+                                            context.getString(R.string.instagram_package)
+
+                                        val webIntent = Intent(
+                                            Intent.ACTION_VIEW,
+                                            Uri.parse(instagramUri)
+                                        )
+                                        val appIntent = Intent(
+                                            Intent.ACTION_VIEW,
+                                            Uri.parse(instagramUri)
+                                        ).setPackage(instagramPackage)
+                                        try {
+                                            ContextCompat.startActivity(
+                                                context,
+                                                appIntent,
+                                                null
                                             )
-                                            val appIntent = Intent(
-                                                Intent.ACTION_VIEW,
-                                                Uri.parse(instagramUri)
-                                            ).setPackage(instagramPackage)
-                                            try {
-                                                ContextCompat.startActivity(
-                                                    context,
-                                                    appIntent,
-                                                    null
-                                                )
-                                            } catch (e: Exception) {
-                                                ContextCompat.startActivity(
-                                                    context,
-                                                    webIntent,
-                                                    null
-                                                )
-                                            }
+                                        } catch (e: Exception) {
+                                            ContextCompat.startActivity(
+                                                context,
+                                                webIntent,
+                                                null
+                                            )
                                         }
-                                )
+                                    }
+                                ) {
+                                    Icon(
+                                        painter = painterResource(id = R.drawable.ic_instagram_bold),
+                                        contentDescription = stringResource(id = R.string.instagram_icon),
+                                        tint = textColor,
+                                        modifier = Modifier.size(22.dp)
+                                    )
+                                }
                             }
                         }
                     }

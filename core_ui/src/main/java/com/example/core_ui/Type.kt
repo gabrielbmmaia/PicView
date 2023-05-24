@@ -40,20 +40,10 @@ val Typography = Typography(
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
     ),
-    titleLarge = TextStyle(
-        fontFamily = Rubik,
-        fontWeight = FontWeight(450),
-        fontSize = 46.sp,
-        lineHeight = 24.sp,
-        letterSpacing = 0.5.sp
-    ),
-    titleMedium = TextStyle(
-        fontFamily = Rubik,
-        fontWeight = FontWeight(450),
-        fontSize = 36.sp,
-        lineHeight = 24.sp,
-        letterSpacing = 0.5.sp
-    ),
+//    titleLarge = TextStyle(
+//        fontFamily = Rubik
+//    ),
+
     /* Other default text styles to override
     titleLarge = TextStyle(
         fontFamily = FontFamily.Default,
