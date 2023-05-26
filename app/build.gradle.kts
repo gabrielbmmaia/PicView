@@ -70,6 +70,7 @@ dependencies {
     implementation(project(Modules.photoListData))
     implementation(project(Modules.photoListDomain))
     implementation(project(Modules.photoListPresentation))
+    implementation(project(Modules.settingsPresentation))
 
     implementation(AndroidX.coreKtx)
     implementation(AndroidX.appCompat)

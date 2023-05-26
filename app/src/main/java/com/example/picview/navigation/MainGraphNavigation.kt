@@ -9,12 +9,15 @@ import com.example.picview.navigation.components.BottomAppBarItem
 import com.example.picview.navigation.navHost.FAVORITE_ROUTE
 import com.example.picview.navigation.navHost.HOME_ROUTE
 import com.example.picview.navigation.navHost.SEARCH_ROUTE
+import com.example.picview.navigation.navHost.SETTINGS_ROUTE
 import com.example.picview.navigation.navHost.favoriteScreen
 import com.example.picview.navigation.navHost.homeScreen
 import com.example.picview.navigation.navHost.navigateToFavoriteScreen
 import com.example.picview.navigation.navHost.navigateToHomeScreen
 import com.example.picview.navigation.navHost.navigateToSearchScreen
+import com.example.picview.navigation.navHost.navigateToSettingsScreen
 import com.example.picview.navigation.navHost.searchScreen
+import com.example.picview.navigation.navHost.settingsScreen
 
 internal const val MAIN_GRAPH_ROUTE = "main_graph"
 
@@ -28,6 +31,7 @@ fun NavGraphBuilder.mainGraph(
         favoriteScreen(onNavigateToSeeMoreScreen)
         homeScreen(onNavigateToSeeMoreScreen)
         searchScreen(onNavigateToSeeMoreScreen)
+        settingsScreen()
     }
 }
 
@@ -48,6 +52,11 @@ fun NavController.navigateSingleTopWithPopUpTo(
         BottomAppBarItem.Search -> Pair(
             ::navigateToSearchScreen,
             SEARCH_ROUTE
+        )
+
+        BottomAppBarItem.Settings -> Pair(
+            ::navigateToSettingsScreen,
+            SETTINGS_ROUTE
         )
     }
 

@@ -8,4 +8,5 @@ object Modules {
     const val photoListDomain = ":photo_list:photo_list_domain"
     const val photoListPresentation = ":photo_list:photo_list_presentation"
 
+    const val settingsPresentation = ":settings:settings_presentation"
 }

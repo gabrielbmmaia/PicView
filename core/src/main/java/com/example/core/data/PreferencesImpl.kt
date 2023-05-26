@@ -1,6 +1,7 @@
 package com.example.core.data
 
 import android.content.SharedPreferences
+import android.util.Log
 import com.example.core.domain.preferences.Preferences
 
 class PreferencesImpl(

@@ -3,6 +3,7 @@ package com.example.picview.navigation.components
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.Search
+import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -35,12 +36,18 @@ sealed class BottomAppBarItem(
         label = "Pesquisar",
         icon = Icons.Rounded.Search
     )
+
+    object Settings: BottomAppBarItem(
+        label = "Config",
+        icon = Icons.Rounded.Settings
+    )
 }
 
 val bottomAppBarItems = listOf(
     BottomAppBarItem.Favorite,
     BottomAppBarItem.Home,
-    BottomAppBarItem.Search
+    BottomAppBarItem.Search,
+    BottomAppBarItem.Settings
 )
 
 @Composable

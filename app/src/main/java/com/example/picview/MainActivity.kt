@@ -25,16 +25,13 @@ import com.example.picview.navigation.components.PicViewBottomAppBar
 import com.example.picview.navigation.navHost.FAVORITE_ROUTE
 import com.example.picview.navigation.navHost.HOME_ROUTE
 import com.example.picview.navigation.navHost.SEARCH_ROUTE
+import com.example.picview.navigation.navHost.SETTINGS_ROUTE
 import com.example.picview.navigation.navigateSingleTopWithPopUpTo
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-
-    @Inject
-    lateinit var preferences: Preferences
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -55,12 +52,16 @@ class MainActivity : ComponentActivity() {
                             FAVORITE_ROUTE -> BottomAppBarItem.Favorite
                             HOME_ROUTE -> BottomAppBarItem.Home
                             SEARCH_ROUTE -> BottomAppBarItem.Search
+                            SETTINGS_ROUTE -> BottomAppBarItem.Settings
                             else -> BottomAppBarItem.Home
                         }
                         mutableStateOf(item)
                     }
                     val containsInBottomAppBarItem = when (currentRoute) {
-                        FAVORITE_ROUTE, HOME_ROUTE, SEARCH_ROUTE -> true
+                        FAVORITE_ROUTE,
+                        HOME_ROUTE,
+                        SEARCH_ROUTE,
+                        SETTINGS_ROUTE -> true
                         else -> false
                     }
 
