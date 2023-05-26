@@ -1,5 +1,6 @@
 package com.example.picview.navigation
 
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -8,7 +9,9 @@ import com.example.picview.navigation.navHost.seeMoreScreen
 
 
 @Composable
-fun PicViewNavHost(navController: NavHostController) {
+fun PicViewNavHost(
+    navController: NavHostController
+) {
     NavHost(
         navController = navController,
         startDestination = MAIN_GRAPH_ROUTE

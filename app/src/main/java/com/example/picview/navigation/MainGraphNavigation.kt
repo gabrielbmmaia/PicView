@@ -1,5 +1,6 @@
 package com.example.picview.navigation
 
+import androidx.compose.material3.SnackbarHostState
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.navigation
@@ -24,7 +25,7 @@ fun NavGraphBuilder.mainGraph(
         startDestination = HOME_ROUTE,
         route = MAIN_GRAPH_ROUTE
     ) {
-        favoriteScreen()
+        favoriteScreen(onNavigateToSeeMoreScreen)
         homeScreen(onNavigateToSeeMoreScreen)
         searchScreen(onNavigateToSeeMoreScreen)
     }

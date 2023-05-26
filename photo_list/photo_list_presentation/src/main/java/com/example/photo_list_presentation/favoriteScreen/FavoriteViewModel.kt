@@ -5,21 +5,32 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.core.util.UiEvent
+import com.example.core.util.UiText
 import com.example.photo_list_domain.repository.UnsplashImageRepository
+import com.example.photo_list_domain.useCase.AddOrRemoveFromFavoriteListUseCase
 import com.example.photo_list_presentation.PhotoUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
+import core.R
+import java.util.PrimitiveIterator
 import javax.inject.Inject
 
 @HiltViewModel
 class FavoriteViewModel @Inject constructor(
-    private val repository: UnsplashImageRepository
+    private val repository: UnsplashImageRepository,
+    private val addOrRemove: AddOrRemoveFromFavoriteListUseCase
 ) : ViewModel() {
 
     var state by mutableStateOf(FavoriteState())
         private set
+
+    private val _uiEvent = Channel<UiEvent>()
+    val uiEvent = _uiEvent.receiveAsFlow()
 
     fun onEvent(event: FavoriteEvent) {
         when (event) {
@@ -35,6 +46,12 @@ class FavoriteViewModel @Inject constructor(
                             }
                         )
                     }
+                }
+            }
+
+            is FavoriteEvent.OnFavoriteClick -> {
+                viewModelScope.launch {
+                    addOrRemove(event.unsplashImage)
                 }
             }
         }

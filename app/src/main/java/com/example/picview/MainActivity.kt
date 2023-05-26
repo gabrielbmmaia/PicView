@@ -3,11 +3,12 @@ package com.example.picview
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -20,7 +21,6 @@ import com.example.core_ui.PicViewTheme
 import com.example.picview.navigation.PicViewNavHost
 import com.example.picview.navigation.components.BottomAppBarItem
 import com.example.picview.navigation.components.PicViewBottomAppBar
-import com.example.picview.navigation.components.bottomAppBarItems
 import com.example.picview.navigation.navHost.FAVORITE_ROUTE
 import com.example.picview.navigation.navHost.HOME_ROUTE
 import com.example.picview.navigation.navHost.SEARCH_ROUTE
@@ -65,7 +65,9 @@ class MainActivity : ComponentActivity() {
                         isShownBottomBar = containsInBottomAppBarItem,
                         bottomAppBarItemSelected = selectedItem
                     ) {
-                        PicViewNavHost(navController = navController)
+                        PicViewNavHost(
+                            navController = navController
+                        )
                     }
                 }
             }
