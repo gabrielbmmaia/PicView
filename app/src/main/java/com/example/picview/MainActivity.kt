@@ -21,6 +21,7 @@ import com.example.picview.navigation.PicViewNavHost
 import com.example.picview.navigation.components.BottomAppBarItem
 import com.example.picview.navigation.components.PicViewBottomAppBar
 import com.example.picview.navigation.components.bottomAppBarItems
+import com.example.picview.navigation.navHost.FAVORITE_ROUTE
 import com.example.picview.navigation.navHost.HOME_ROUTE
 import com.example.picview.navigation.navHost.SEARCH_ROUTE
 import com.example.picview.navigation.navigateSingleTopWithPopUpTo
@@ -45,6 +46,7 @@ class MainActivity : ComponentActivity() {
                     val currentRoute = currentDestination?.route
                     val selectedItem by remember(currentDestination) {
                         val item = when (currentRoute) {
+                            FAVORITE_ROUTE -> BottomAppBarItem.Favorite
                             HOME_ROUTE -> BottomAppBarItem.Home
                             SEARCH_ROUTE -> BottomAppBarItem.Search
                             else -> BottomAppBarItem.Home
@@ -52,7 +54,7 @@ class MainActivity : ComponentActivity() {
                         mutableStateOf(item)
                     }
                     val containsInBottomAppBarItem = when (currentRoute) {
-                        HOME_ROUTE, SEARCH_ROUTE -> true
+                        FAVORITE_ROUTE, HOME_ROUTE, SEARCH_ROUTE -> true
                         else -> false
                     }
 
@@ -75,7 +77,7 @@ class MainActivity : ComponentActivity() {
 fun PicViewApp(
     onBottomAppBarItemSelectedChange: (BottomAppBarItem) -> Unit,
     isShownBottomBar: Boolean = false,
-    bottomAppBarItemSelected: BottomAppBarItem = bottomAppBarItems.first(),
+    bottomAppBarItemSelected: BottomAppBarItem,
     content: @Composable () -> Unit
 ) {
     Scaffold(

@@ -1,14 +1,12 @@
 package com.example.picview.navigation.components
 
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.Search
+import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarDefaults
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.material3.surfaceColorAtElevation
@@ -23,6 +21,11 @@ sealed class BottomAppBarItem(
     val label: String,
     val icon: ImageVector
 ) {
+    object Favorite : BottomAppBarItem(
+        label = "Favorito",
+        icon = Icons.Rounded.Star
+    )
+
     object Home : BottomAppBarItem(
         label = "Home",
         icon = Icons.Rounded.Home
@@ -35,6 +38,7 @@ sealed class BottomAppBarItem(
 }
 
 val bottomAppBarItems = listOf(
+    BottomAppBarItem.Favorite,
     BottomAppBarItem.Home,
     BottomAppBarItem.Search
 )
