@@ -18,6 +18,7 @@
             <option value="$PROJECT_DIR$/photo_list/photo_list_data" />
             <option value="$PROJECT_DIR$/photo_list/photo_list_domain" />
             <option value="$PROJECT_DIR$/photo_list/photo_list_presentation" />
+            <option value="$PROJECT_DIR$/settings" />
           </set>
         </option>
       </GradleProjectSettings>

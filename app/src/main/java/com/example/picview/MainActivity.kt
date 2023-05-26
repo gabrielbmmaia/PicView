@@ -17,6 +17,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.core.domain.preferences.Preferences
 import com.example.core_ui.PicViewTheme
 import com.example.picview.navigation.PicViewNavHost
 import com.example.picview.navigation.components.BottomAppBarItem
@@ -26,12 +27,17 @@ import com.example.picview.navigation.navHost.HOME_ROUTE
 import com.example.picview.navigation.navHost.SEARCH_ROUTE
 import com.example.picview.navigation.navigateSingleTopWithPopUpTo
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
+    @Inject
+    lateinit var preferences: Preferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
 
             val navController = rememberNavController()
