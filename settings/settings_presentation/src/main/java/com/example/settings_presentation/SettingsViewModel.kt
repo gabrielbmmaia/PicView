@@ -24,11 +24,28 @@ class SettingsViewModel @Inject constructor(
                 )
                 preferences.saveShouldDisplayDoubleColumn(event.isDoubleColumn)
             }
+
             SettingsEvent.LoadSpanCountValue -> {
                 val spanCountValue = preferences.loadShouldDisplayDoubleColumn()
                 state = state.copy(
                     spanCount = spanCountValue
                 )
+            }
+
+            SettingsEvent.LoadAppThemeValue -> {
+                val appTheme = preferences.loadAppTheme()
+                appTheme?.let {
+                    state = state.copy(
+                        theme = state.theme.asString(it)
+                    )
+                }
+            }
+
+            is SettingsEvent.OnAppThemeChange -> {
+                state = state.copy(
+                    theme = state.theme.asString(event.appTheme)
+                )
+                preferences.saveAppTheme(event.appTheme)
             }
         }
     }

@@ -1,7 +1,7 @@
-package com.example.photo_list_data.remote
+package com.example.network
 
-import com.example.photo_list_data.remote.dtos.SearchRequest
-import com.example.photo_list_data.remote.dtos.UnsplashImageDto
+import com.example.network.dtos.SearchRequest
+import com.example.network.dtos.UnsplashImageDto
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Path

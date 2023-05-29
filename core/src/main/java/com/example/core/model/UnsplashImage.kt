@@ -1,6 +1,4 @@
-package com.example.photo_list_domain.model
-
-import java.util.Date
+package com.example.core.model
 
 data class UnsplashImage(
     val id: String,

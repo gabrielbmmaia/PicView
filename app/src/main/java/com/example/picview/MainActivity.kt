@@ -3,12 +3,11 @@ package com.example.picview
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -32,39 +31,59 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var preferences: Preferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContent {
+        val appTheme = preferences.loadAppTheme()
 
+        setContent {
             val navController = rememberNavController()
             val backStackEntryState by navController.currentBackStackEntryAsState()
             val currentDestination = backStackEntryState?.destination
 
-            PicViewTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.surface
-                ) {
-                    val currentRoute = currentDestination?.route
-                    val selectedItem by remember(currentDestination) {
-                        val item = when (currentRoute) {
-                            FAVORITE_ROUTE -> BottomAppBarItem.Favorite
-                            HOME_ROUTE -> BottomAppBarItem.Home
-                            SEARCH_ROUTE -> BottomAppBarItem.Search
-                            SETTINGS_ROUTE -> BottomAppBarItem.Settings
-                            else -> BottomAppBarItem.Home
-                        }
-                        mutableStateOf(item)
-                    }
-                    val containsInBottomAppBarItem = when (currentRoute) {
-                        FAVORITE_ROUTE,
-                        HOME_ROUTE,
-                        SEARCH_ROUTE,
-                        SETTINGS_ROUTE -> true
-                        else -> false
-                    }
 
+            val isDarkTheme = when (appTheme) {
+                "light" -> false
+                "dark" -> true
+                else -> isSystemInDarkTheme()
+            }
+            val shouldUseDynamicColor = when (appTheme) {
+                "light", "dark" -> false
+                else -> true
+            }
+
+            Surface(
+                modifier = Modifier.fillMaxSize(),
+                color = MaterialTheme.colorScheme.surface
+            ) {
+                val currentRoute = currentDestination?.route
+                val selectedItem by remember(currentDestination) {
+                    val item = when (currentRoute) {
+                        FAVORITE_ROUTE -> BottomAppBarItem.Favorite
+                        HOME_ROUTE -> BottomAppBarItem.Home
+                        SEARCH_ROUTE -> BottomAppBarItem.Search
+                        SETTINGS_ROUTE -> BottomAppBarItem.Settings
+                        else -> BottomAppBarItem.Home
+                    }
+                    mutableStateOf(item)
+                }
+                val containsInBottomAppBarItem = when (currentRoute) {
+                    FAVORITE_ROUTE,
+                    HOME_ROUTE,
+                    SEARCH_ROUTE,
+                    SETTINGS_ROUTE -> true
+
+                    else -> false
+                }
+
+                PicViewTheme(
+                    darkTheme = isDarkTheme,
+                    dynamicColor = shouldUseDynamicColor
+                ) {
                     PicViewApp(
                         onBottomAppBarItemSelectedChange = { item ->
                             navController.navigateSingleTopWithPopUpTo(item)

@@ -67,6 +67,7 @@ dependencies {
 
     implementation(project(Modules.core))
     implementation(project(Modules.coreUi))
+    implementation(project(Modules.network))
     implementation(project(Modules.photoListData))
     implementation(project(Modules.photoListDomain))
     implementation(project(Modules.photoListPresentation))

@@ -1,4 +1,4 @@
-package com.example.photo_list_data.remote.dtos
+package com.example.network.dtos
 
 data class UrlsDto(
     val regular: String?

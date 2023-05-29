@@ -1,6 +1,6 @@
 package com.example.photo_list_presentation.homeScreen
 
-import com.example.photo_list_domain.model.UnsplashImage
+import com.example.core.model.UnsplashImage
 import com.example.photo_list_presentation.PhotoUiState
 
 sealed class HomeEvent {

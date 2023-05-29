@@ -13,6 +13,17 @@ class PreferencesImpl(
             .apply()
     }
 
+    override fun saveAppTheme(theme: String) {
+        sharedPref.edit()
+            .putString(Preferences.KEY_APP_THEME, theme)
+            .apply()
+    }
+
+    override fun loadAppTheme(): String? {
+        return sharedPref
+            .getString(Preferences.KEY_APP_THEME, "system")
+    }
+
     override fun loadShouldDisplayDoubleColumn(): Boolean {
         return sharedPref
             .getBoolean(Preferences.KEY_SHOULD_DISPLAY_DOUBLE_COLUMN, false)

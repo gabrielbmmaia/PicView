@@ -3,14 +3,14 @@ package com.example.photo_list_data.paging
 import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.photo_list_data.remote.UnsplashApi
-import com.example.photo_list_data.remote.dtos.UnsplashImageDto
+import com.example.network.UnsplashApi
+import com.example.network.dtos.UnsplashImageDto
 
 class SearchedListPagingSource(
     private val unsplashApi: UnsplashApi,
     private val query: String,
     private val color: String
-) : PagingSource<Int, UnsplashImageDto>() {
+) : PagingSource<Int, UnsplashImageDto >() {
 
     override fun getRefreshKey(state: PagingState<Int, UnsplashImageDto>): Int? =
         state.anchorPosition

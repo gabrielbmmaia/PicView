@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -58,8 +57,8 @@ import coil.compose.rememberImagePainter
 import com.example.core_ui.LocalSpacing
 import com.example.core_ui.PicViewTheme
 import com.example.core_ui.RubikLight
-import com.example.photo_list_domain.model.UnsplashImage
-import com.example.photo_list_domain.model.User
+import com.example.core.model.UnsplashImage
+import com.example.core.model.User
 import com.example.photo_list_presentation.PhotoUiState
 import core.R
 

@@ -1,7 +1,7 @@
 package com.example.photo_list_domain.repository
 
 import androidx.paging.PagingData
-import com.example.photo_list_domain.model.UnsplashImage
+import com.example.core.model.UnsplashImage
 import kotlinx.coroutines.flow.Flow
 
 interface UnsplashImageRepository {

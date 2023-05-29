@@ -1,7 +1,7 @@
 package com.example.photo_list_presentation
 
-import com.example.photo_list_domain.model.UnsplashImage
-import com.example.photo_list_domain.model.User
+import com.example.core.model.UnsplashImage
+import com.example.core.model.User
 
 data class PhotoUiState(
     val unsplashImage: UnsplashImage = UnsplashImage(

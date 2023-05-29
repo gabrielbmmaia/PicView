@@ -1,4 +1,4 @@
-package com.example.photo_list_domain.model
+package com.example.core.model
 
 data class User(
     val name: String?,

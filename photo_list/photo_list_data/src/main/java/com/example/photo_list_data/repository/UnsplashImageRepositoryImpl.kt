@@ -4,16 +4,18 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.map
+import com.example.core.model.UnsplashImage
 import com.example.photo_list_data.local.FavoriteDatabase
-import com.example.photo_list_data.mappers.toUnsplashImage
 import com.example.photo_list_data.mappers.toUnsplashImageEntity
 import com.example.photo_list_data.paging.SearchedListPagingSource
 import com.example.photo_list_data.paging.UnsplashPagingSource
 import com.example.photo_list_data.paging.UserPhotoListPagingSource
-import com.example.photo_list_data.remote.UnsplashApi
-import com.example.photo_list_domain.model.UnsplashImage
+import com.example.network.UnsplashApi
+import com.example.network.mappers.toUnsplashImage
+import com.example.photo_list_data.mappers.toUnsplashImage
 import com.example.photo_list_domain.repository.UnsplashImageRepository
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 

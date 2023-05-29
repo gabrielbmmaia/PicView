@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PicView"
+        tools:remove="android:appComponentFactory"
         tools:targetApi="31">
         <activity
             android:name="com.example.picview.MainActivity"

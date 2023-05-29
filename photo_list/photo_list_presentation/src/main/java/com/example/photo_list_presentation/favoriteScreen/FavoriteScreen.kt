@@ -1,11 +1,13 @@
 package com.example.photo_list_presentation.favoriteScreen
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.core_ui.LocalSpacing
@@ -26,7 +28,9 @@ fun FavoriteScreen(
 
     LazyColumn(
         Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(spacing.spaceMedium)
+        contentPadding = PaddingValues(spacing.spaceMedium),
+        verticalArrangement = Arrangement.spacedBy(spacing.spaceMedium),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         items(photoStateList) { photoState ->
             UnsplashImage(

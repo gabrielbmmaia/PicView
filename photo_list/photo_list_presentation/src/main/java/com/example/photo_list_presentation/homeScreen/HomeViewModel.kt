@@ -34,38 +34,6 @@ class HomeViewModel @Inject constructor(
 
     fun onEvent(event: HomeEvent) {
         when (event) {
-//            is HomeEvent.OnInstagramClick -> {
-//                viewModelScope.launch {
-//                    _uiEvent.send(
-//                        UiEvent.Intent(
-//                            IntentEvent.OnInstagramEvent(event.userInstagram)
-//                        )
-//                    )
-//                }
-//            }
-//
-//            is HomeEvent.OnUnsplashProfileClick -> {
-//                event.unsplashProfile?.let { url ->
-//                    viewModelScope.launch {
-//                        _uiEvent.send(
-//                            UiEvent.Intent(
-//                                IntentEvent.OnUnsplashProfileEvent(url)
-//                            )
-//                        )
-//                    }
-//                }
-//            }
-//
-//            is HomeEvent.OnWebsiteClick -> {
-//                viewModelScope.launch {
-//                    _uiEvent.send(
-//                        UiEvent.Intent(
-//                            IntentEvent.OnWebsiteEvent(event.websiteUrl)
-//                        )
-//                    )
-//                }
-//            }
-
             HomeEvent.OnLoadPhotoList -> {
                 viewModelScope.launch {
                     state = state.copy(

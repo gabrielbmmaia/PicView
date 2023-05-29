@@ -23,4 +23,11 @@
     <string name="instagram_intent_package">com.instagram.android</string>
     <string name="instagram_username">https://www.instagram.com/%1$s/</string>
     <string name="see_more">ver mais</string>
+    <string name="photo_apresentation">Apresentação das Fotos</string>
+    <string name="column">Coluna</string>
+    <string name="grid">Grade</string>
+    <string name="app_theme">Tema do Aplicativo</string>
+    <string name="dark_theme">Escuro</string>
+    <string name="light_theme">Claro</string>
+    <string name="system_theme">Sistema</string>
 </resources>

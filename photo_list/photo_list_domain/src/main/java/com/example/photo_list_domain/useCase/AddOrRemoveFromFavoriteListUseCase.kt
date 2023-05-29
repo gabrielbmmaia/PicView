@@ -1,6 +1,6 @@
 package com.example.photo_list_domain.useCase
 
-import com.example.photo_list_domain.model.UnsplashImage
+import com.example.core.model.UnsplashImage
 import com.example.photo_list_domain.repository.UnsplashImageRepository
 import javax.inject.Inject
 

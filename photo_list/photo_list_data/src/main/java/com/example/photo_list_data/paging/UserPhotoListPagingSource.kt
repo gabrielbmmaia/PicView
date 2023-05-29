@@ -3,8 +3,8 @@ package com.example.photo_list_data.paging
 import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.photo_list_data.remote.UnsplashApi
-import com.example.photo_list_data.remote.dtos.UnsplashImageDto
+import com.example.network.UnsplashApi
+import com.example.network.dtos.UnsplashImageDto
 
 class UserPhotoListPagingSource(
     private val unsplashApi: UnsplashApi,

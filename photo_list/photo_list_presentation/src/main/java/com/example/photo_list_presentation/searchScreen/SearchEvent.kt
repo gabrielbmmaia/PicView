@@ -1,6 +1,6 @@
 package com.example.photo_list_presentation.searchScreen
 
-import com.example.photo_list_domain.model.UnsplashImage
+import com.example.core.model.UnsplashImage
 
 sealed class SearchEvent {
     data class OnQueryChange(val query: String): SearchEvent()
