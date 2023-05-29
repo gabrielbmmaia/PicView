@@ -79,6 +79,10 @@ dependencies {
     implementation(project(Modules.favoriteDomain))
     implementation(project(Modules.favoritePresentation))
 
+    implementation(project(Modules.searchedData))
+    implementation(project(Modules.searchedDomain))
+    implementation(project(Modules.searchedPresentation))
+
     implementation(AndroidX.coreKtx)
     implementation(AndroidX.appCompat)
 

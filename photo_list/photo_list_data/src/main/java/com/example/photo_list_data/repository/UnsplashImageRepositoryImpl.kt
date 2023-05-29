@@ -7,7 +7,6 @@ import androidx.paging.map
 import com.example.core.model.UnsplashImage
 import com.example.network.UnsplashApi
 import com.example.network.mappers.toUnsplashImage
-import com.example.photo_list_data.paging.SearchedListPagingSource
 import com.example.photo_list_data.paging.UnsplashPagingSource
 import com.example.photo_list_data.paging.UserPhotoListPagingSource
 import com.example.photo_list_domain.repository.UnsplashImageRepository
@@ -26,27 +25,6 @@ class UnsplashImageRepositoryImpl @Inject constructor(
             config = PagingConfig(pageSize = UnsplashApi.PER_PAGE),
             pagingSourceFactory = pagingSourceFactory
         ).flow
-        return pager.map { pagingData ->
-            pagingData.map { it.toUnsplashImage() }
-        }
-    }
-
-    override fun getSearchedPhotoList(
-        query: String,
-        color: String
-    ): Flow<PagingData<UnsplashImage>> {
-        val pagingSourceFactory = {
-            SearchedListPagingSource(
-                unsplashApi,
-                query.trim().lowercase(),
-                color.trim().lowercase()
-            )
-        }
-        val pager = Pager(
-            config = PagingConfig(pageSize = UnsplashApi.PER_PAGE),
-            pagingSourceFactory = pagingSourceFactory
-        ).flow
-
         return pager.map { pagingData ->
             pagingData.map { it.toUnsplashImage() }
         }

@@ -2,8 +2,8 @@ package com.example.favorite_data.repository
 
 import com.example.core.model.UnsplashImage
 import com.example.favorite_data.FavoriteDatabase
-import com.example.favorite_data.toUnsplashImage
-import com.example.favorite_data.toUnsplashImageEntity
+import com.example.favorite_data.mapper.toUnsplashImage
+import com.example.favorite_data.mapper.toUnsplashImageEntity
 import com.example.favorite_domain.repository.FavoriteRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map

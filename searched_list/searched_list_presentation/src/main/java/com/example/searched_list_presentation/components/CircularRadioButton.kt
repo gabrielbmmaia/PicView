@@ -1,4 +1,4 @@
-package com.example.photo_list_presentation.searchScreen.components
+package com.example.searched_list_presentation
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.border
@@ -8,22 +8,18 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.core_ui.Magenta
 import com.example.core_ui.PicViewTheme
-import com.example.photo_list_presentation.searchScreen.CustomButton
-import com.example.photo_list_presentation.searchScreen.CustomButton.SingleColorIcon
-import com.example.photo_list_presentation.searchScreen.CustomButton.TwoColorIcon
-import com.example.photo_list_presentation.searchScreen.CustomButtonUiState
-import core.R
+import com.example.searched_list_presentation.model.CustomButton
+import com.example.searched_list_presentation.model.CustomButton.SingleColorIcon
+import com.example.searched_list_presentation.model.CustomButton.TwoColorIcon
+import com.example.searched_list_presentation.model.CustomButtonUiState
 
 @Composable
 fun CustomRadioButton(

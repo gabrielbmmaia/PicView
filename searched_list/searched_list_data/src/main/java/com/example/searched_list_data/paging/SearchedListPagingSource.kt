@@ -1,4 +1,4 @@
-package com.example.photo_list_data.paging
+package com.example.searched_list_data.paging
 
 import android.util.Log
 import androidx.paging.PagingSource

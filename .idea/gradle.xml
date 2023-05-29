@@ -23,6 +23,10 @@
             <option value="$PROJECT_DIR$/photo_list/photo_list_data" />
             <option value="$PROJECT_DIR$/photo_list/photo_list_domain" />
             <option value="$PROJECT_DIR$/photo_list/photo_list_presentation" />
+            <option value="$PROJECT_DIR$/searched_list" />
+            <option value="$PROJECT_DIR$/searched_list/searched_list_data" />
+            <option value="$PROJECT_DIR$/searched_list/searched_list_domain" />
+            <option value="$PROJECT_DIR$/searched_list/searched_list_presentation" />
             <option value="$PROJECT_DIR$/settings" />
             <option value="$PROJECT_DIR$/settings/settings_presentation" />
           </set>

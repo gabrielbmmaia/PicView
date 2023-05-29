@@ -1,4 +1,4 @@
-package com.example.photo_list_presentation.searchScreen
+package com.example.searched_list_presentation
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -8,9 +8,9 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
 import androidx.paging.map
 import com.example.core.util.UiEvent
-import com.example.photo_list_domain.repository.UnsplashImageRepository
 import com.example.core_ui.model.PhotoUiState
 import com.example.favorite_domain.useCase.FavoriteUseCase
+import com.example.searched_list_domain.repository.SearchedRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.map
@@ -20,7 +20,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SearchViewModel @Inject constructor(
-    private val repository: UnsplashImageRepository,
+    private val repository: SearchedRepository,
     private val favoriteUseCase: FavoriteUseCase
 ) : ViewModel() {
 

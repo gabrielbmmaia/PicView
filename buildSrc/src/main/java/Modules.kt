@@ -14,5 +14,10 @@ object Modules {
     const val favoriteDomain = ":favorite:favorite_domain"
     const val favoritePresentation = ":favorite:favorite_presentation"
 
+    const val searchedData = ":searched_list:searched_list_data"
+    const val searchedDomain = ":searched_list:searched_list_domain"
+    const val searchedPresentation = ":searched_list:searched_list_presentation"
+
+
     const val settingsPresentation = ":settings:settings_presentation"
 }

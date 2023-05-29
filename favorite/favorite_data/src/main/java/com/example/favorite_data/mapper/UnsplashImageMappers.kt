@@ -1,4 +1,4 @@
-package com.example.favorite_data
+package com.example.favorite_data.mapper
 
 import com.example.core.model.UnsplashImage
 import com.example.core.model.User

@@ -1,4 +1,4 @@
-package com.example.photo_list_presentation.searchScreen
+package com.example.searched_list_presentation
 
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.layout.Arrangement
@@ -25,14 +25,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.core_ui.LocalSpacing
 import com.example.core_ui.components.PhotoList
-import com.example.photo_list_presentation.searchScreen.components.CustomRadioButton
 import core.R
 
 

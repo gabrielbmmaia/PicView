@@ -1,7 +1,9 @@
-package com.example.photo_list_presentation.searchScreen
+package com.example.searched_list_presentation
 
 import androidx.paging.PagingData
 import com.example.core_ui.model.PhotoUiState
+import com.example.searched_list_presentation.model.CustomButtonUiState
+import com.example.searched_list_presentation.model.defaultCustomRadioButtonList
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 

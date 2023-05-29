@@ -1,7 +1,7 @@
 package com.example.photo_list_data.di
 
 import android.content.Context
-import androidx.room.Room
+
 import com.example.network.UnsplashApi
 import com.example.photo_list_data.repository.UnsplashImageRepositoryImpl
 import com.example.photo_list_domain.repository.UnsplashImageRepository

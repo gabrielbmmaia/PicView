@@ -4,7 +4,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
-import com.example.photo_list_presentation.searchScreen.SearchScreen
+import com.example.searched_list_presentation.SearchScreen
 
 internal const val SEARCH_ROUTE = "search"
 

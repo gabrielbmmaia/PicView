@@ -1,4 +1,4 @@
-package com.example.photo_list_presentation.searchScreen
+package com.example.searched_list_presentation.model
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
@@ -11,7 +11,7 @@ import com.example.core_ui.Purple
 import com.example.core_ui.Red
 import com.example.core_ui.Teal
 import com.example.core_ui.Yellow
-import com.example.photo_list_presentation.searchScreen.CustomButton.*
+import com.example.searched_list_presentation.model.CustomButton.*
 
 sealed class CustomButton(
     val tag: String,

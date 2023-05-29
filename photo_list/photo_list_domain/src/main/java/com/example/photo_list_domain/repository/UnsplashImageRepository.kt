@@ -8,10 +8,5 @@ interface UnsplashImageRepository {
 
     fun getAllPhotos(): Flow<PagingData<UnsplashImage>>
 
-    fun getSearchedPhotoList(
-        query: String,
-        color: String
-    ): Flow<PagingData<UnsplashImage>>
-
     fun getUserPhotosList(username: String): Flow<PagingData<UnsplashImage>>
 }

@@ -5,8 +5,8 @@ apply{
 
 dependencies {
     "implementation"(project(Modules.core))
-    "implementation"(project(Modules.photoListDomain))
     "implementation"(project(Modules.network))
+    "implementation"(project(Modules.searchedDomain))
 
     "implementation"(Paging.paging3)
 }
