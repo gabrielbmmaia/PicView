@@ -5,7 +5,8 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
-import com.example.photo_list_presentation.favoriteScreen.FavoriteScreen
+import com.example.favorite_presentation.FavoriteScreen
+
 
 internal const val FAVORITE_ROUTE = "favorite"
 

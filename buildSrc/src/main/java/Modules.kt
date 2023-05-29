@@ -10,5 +10,9 @@ object Modules {
     const val photoListDomain = ":photo_list:photo_list_domain"
     const val photoListPresentation = ":photo_list:photo_list_presentation"
 
+    const val favoriteData = ":favorite:favorite_data"
+    const val favoriteDomain = ":favorite:favorite_domain"
+    const val favoritePresentation = ":favorite:favorite_presentation"
+
     const val settingsPresentation = ":settings:settings_presentation"
 }

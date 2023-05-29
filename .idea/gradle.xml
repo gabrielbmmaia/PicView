@@ -16,6 +16,8 @@
             <option value="$PROJECT_DIR$/core_ui" />
             <option value="$PROJECT_DIR$/favorite" />
             <option value="$PROJECT_DIR$/favorite/favorite_data" />
+            <option value="$PROJECT_DIR$/favorite/favorite_domain" />
+            <option value="$PROJECT_DIR$/favorite/favorite_presentation" />
             <option value="$PROJECT_DIR$/network" />
             <option value="$PROJECT_DIR$/photo_list" />
             <option value="$PROJECT_DIR$/photo_list/photo_list_data" />

@@ -5,24 +5,19 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.map
 import com.example.core.model.UnsplashImage
-import com.example.photo_list_data.local.FavoriteDatabase
-import com.example.photo_list_data.mappers.toUnsplashImageEntity
+import com.example.network.UnsplashApi
+import com.example.network.mappers.toUnsplashImage
 import com.example.photo_list_data.paging.SearchedListPagingSource
 import com.example.photo_list_data.paging.UnsplashPagingSource
 import com.example.photo_list_data.paging.UserPhotoListPagingSource
-import com.example.network.UnsplashApi
-import com.example.network.mappers.toUnsplashImage
-import com.example.photo_list_data.mappers.toUnsplashImage
 import com.example.photo_list_domain.repository.UnsplashImageRepository
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 
 class UnsplashImageRepositoryImpl @Inject constructor(
-    private val unsplashApi: UnsplashApi,
-    private val favoriteDatabase: FavoriteDatabase
+    private val unsplashApi: UnsplashApi
 ) : UnsplashImageRepository {
 
     override fun getAllPhotos(): Flow<PagingData<UnsplashImage>> {
@@ -68,26 +63,5 @@ class UnsplashImageRepositoryImpl @Inject constructor(
         return pager.map { pagingData ->
             pagingData.map { it.toUnsplashImage() }
         }
-    }
-
-    override fun getFavoritePhotosList(): Flow<List<UnsplashImage>> {
-        return favoriteDatabase
-            .dao
-            .getFavoritePhotos().map { unsplashEntity ->
-                unsplashEntity.map { it.toUnsplashImage() }
-            }
-    }
-
-    override suspend fun addFavoriteUnsplashImage(unsplashImage: UnsplashImage) {
-        favoriteDatabase.dao.addFavoriteItem(unsplashImage.toUnsplashImageEntity())
-    }
-
-    override suspend fun removeFavoriteUnsplashImage(id: String) {
-        favoriteDatabase.dao.removeFavoriteItem(id)
-    }
-
-    override suspend fun isFavoritePhoto(id: String): Boolean {
-        val favoriteList = favoriteDatabase.dao.isFavoriteItem(id)
-        return favoriteList.isNotEmpty()
     }
 }

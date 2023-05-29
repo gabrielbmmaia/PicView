@@ -3,7 +3,6 @@ package com.example.photo_list_data.di
 import android.content.Context
 import androidx.room.Room
 import com.example.network.UnsplashApi
-import com.example.photo_list_data.local.FavoriteDatabase
 import com.example.photo_list_data.repository.UnsplashImageRepositoryImpl
 import com.example.photo_list_domain.repository.UnsplashImageRepository
 import dagger.Module
@@ -20,24 +19,10 @@ object PhotoListDataModule {
     @Provides
     @Singleton
     fun provideUnsplashImageRepository(
-        unsplashApi: UnsplashApi,
-        favoriteDatabase: FavoriteDatabase
+        unsplashApi: UnsplashApi
     ): UnsplashImageRepository {
         return UnsplashImageRepositoryImpl(
-            unsplashApi = unsplashApi,
-            favoriteDatabase = favoriteDatabase
+            unsplashApi = unsplashApi
         )
-    }
-
-    @Provides
-    @Singleton
-    fun provideFavoriteDatabase(
-       @ApplicationContext context: Context
-    ): FavoriteDatabase {
-        return Room.databaseBuilder(
-            context,
-            FavoriteDatabase::class.java,
-            "favorite_db"
-        ).build()
     }
 }

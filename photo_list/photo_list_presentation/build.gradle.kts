@@ -8,7 +8,6 @@ dependencies {
     "implementation"(project(Modules.coreUi))
 
     "implementation"(project(Modules.photoListDomain))
+    "implementation"(project(Modules.favoriteDomain))
 
-    "implementation"(Compose.paging3)
-    "implementation"(Coil.coilCompose)
 }

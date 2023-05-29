@@ -9,8 +9,8 @@ import androidx.paging.cachedIn
 import androidx.paging.map
 import com.example.core.util.UiEvent
 import com.example.photo_list_domain.repository.UnsplashImageRepository
-import com.example.photo_list_domain.useCase.AddOrRemoveFromFavoriteListUseCase
 import com.example.core_ui.model.PhotoUiState
+import com.example.favorite_domain.useCase.FavoriteUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.map
@@ -21,7 +21,7 @@ import javax.inject.Inject
 @HiltViewModel
 class SearchViewModel @Inject constructor(
     private val repository: UnsplashImageRepository,
-    private val addOrRemove: AddOrRemoveFromFavoriteListUseCase
+    private val favoriteUseCase: FavoriteUseCase
 ) : ViewModel() {
 
     var state by mutableStateOf(SearchUiState())
@@ -70,7 +70,7 @@ class SearchViewModel @Inject constructor(
                             pagingData.map { image ->
                                 PhotoUiState(
                                     unsplashImage = image,
-                                    isFavorite = repository.isFavoritePhoto(image.id)
+                                    isFavorite = favoriteUseCase.isFavorite(image.id)
                                 )
                             }
                         }.cachedIn(viewModelScope)
@@ -88,7 +88,7 @@ class SearchViewModel @Inject constructor(
 
             is SearchEvent.OnFavoriteClick -> {
                 viewModelScope.launch {
-                    addOrRemove(event.unsplashImage)
+                    favoriteUseCase.addOrRemove(event.unsplashImage)
                 }
             }
         }

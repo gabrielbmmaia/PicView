@@ -68,10 +68,16 @@ dependencies {
     implementation(project(Modules.core))
     implementation(project(Modules.coreUi))
     implementation(project(Modules.network))
+
     implementation(project(Modules.photoListData))
     implementation(project(Modules.photoListDomain))
     implementation(project(Modules.photoListPresentation))
+
     implementation(project(Modules.settingsPresentation))
+
+    implementation(project(Modules.favoriteData))
+    implementation(project(Modules.favoriteDomain))
+    implementation(project(Modules.favoritePresentation))
 
     implementation(AndroidX.coreKtx)
     implementation(AndroidX.appCompat)

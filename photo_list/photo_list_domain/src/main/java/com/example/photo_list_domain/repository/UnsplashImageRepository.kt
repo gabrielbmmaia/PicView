@@ -14,12 +14,4 @@ interface UnsplashImageRepository {
     ): Flow<PagingData<UnsplashImage>>
 
     fun getUserPhotosList(username: String): Flow<PagingData<UnsplashImage>>
-
-    fun getFavoritePhotosList(): Flow<List<UnsplashImage>>
-
-    suspend fun addFavoriteUnsplashImage(unsplashImage: UnsplashImage)
-
-    suspend fun removeFavoriteUnsplashImage(id: String)
-
-    suspend fun isFavoritePhoto(id: String): Boolean
 }
