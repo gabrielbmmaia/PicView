@@ -6,7 +6,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.example.photo_list_presentation.seeMoreScreen.SeeMoreScreen
+import com.example.see_more_presentation.SeeMoreScreen
 
 private const val SEE_MORE_ROUTE = "see_more"
 private const val USERNAME_ARGS = "username"

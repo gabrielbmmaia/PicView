@@ -1,4 +1,4 @@
-package com.example.photo_list_presentation.homeScreen
+package com.example.photo_list_presentation
 
 import com.example.core.model.UnsplashImage
 

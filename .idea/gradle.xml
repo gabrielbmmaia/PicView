@@ -27,6 +27,10 @@
             <option value="$PROJECT_DIR$/searched_list/searched_list_data" />
             <option value="$PROJECT_DIR$/searched_list/searched_list_domain" />
             <option value="$PROJECT_DIR$/searched_list/searched_list_presentation" />
+            <option value="$PROJECT_DIR$/see_more" />
+            <option value="$PROJECT_DIR$/see_more/see_more_data" />
+            <option value="$PROJECT_DIR$/see_more/see_more_domain" />
+            <option value="$PROJECT_DIR$/see_more/see_more_presentation" />
             <option value="$PROJECT_DIR$/settings" />
             <option value="$PROJECT_DIR$/settings/settings_presentation" />
           </set>

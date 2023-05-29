@@ -83,6 +83,10 @@ dependencies {
     implementation(project(Modules.searchedDomain))
     implementation(project(Modules.searchedPresentation))
 
+    implementation(project(Modules.seeMoreData))
+    implementation(project(Modules.seeMoreDomain))
+    implementation(project(Modules.seeMorePresentation))
+
     implementation(AndroidX.coreKtx)
     implementation(AndroidX.appCompat)
 

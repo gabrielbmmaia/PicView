@@ -5,8 +5,5 @@ import com.example.core.model.UnsplashImage
 import kotlinx.coroutines.flow.Flow
 
 interface UnsplashImageRepository {
-
     fun getAllPhotos(): Flow<PagingData<UnsplashImage>>
-
-    fun getUserPhotosList(username: String): Flow<PagingData<UnsplashImage>>
 }

@@ -1,6 +1,7 @@
 package com.example.picview
 
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -79,6 +80,15 @@ class MainActivity : ComponentActivity() {
 
                     else -> false
                 }
+
+//                if (currentRoute == HOME_ROUTE) {
+//                    window.setFlags(
+//                        WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+//                        WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+//                    )
+//                } else {
+//                    window.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+//                }
 
                 PicViewTheme(
                     darkTheme = isDarkTheme,

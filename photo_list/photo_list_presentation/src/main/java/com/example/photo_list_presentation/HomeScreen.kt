@@ -1,11 +1,10 @@
-package com.example.photo_list_presentation.homeScreen
+package com.example.photo_list_presentation
 
+import android.view.WindowManager
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.example.core.util.UiEvent
 import com.example.core_ui.components.PhotoList
 
 @Composable
@@ -13,7 +12,6 @@ fun HomeScreen(
     onSeeMoreClick: (username: String) -> Unit,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
-
     val photoList = viewModel.state.photoList.collectAsLazyPagingItems()
 
     LaunchedEffect(key1 = Unit) {

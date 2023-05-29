@@ -4,7 +4,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
-import com.example.photo_list_presentation.homeScreen.HomeScreen
+import com.example.photo_list_presentation.HomeScreen
 
 internal const val HOME_ROUTE = "home"
 

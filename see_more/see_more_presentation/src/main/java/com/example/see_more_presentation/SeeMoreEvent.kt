@@ -1,4 +1,4 @@
-package com.example.photo_list_presentation.seeMoreScreen
+package com.example.see_more_presentation
 
 import com.example.core.model.UnsplashImage
 

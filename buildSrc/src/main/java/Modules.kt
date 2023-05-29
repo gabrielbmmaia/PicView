@@ -18,6 +18,10 @@ object Modules {
     const val searchedDomain = ":searched_list:searched_list_domain"
     const val searchedPresentation = ":searched_list:searched_list_presentation"
 
+    const val seeMoreData = ":see_more:see_more_data"
+    const val seeMoreDomain = ":see_more:see_more_domain"
+    const val seeMorePresentation = ":see_more:see_more_presentation"
+
 
     const val settingsPresentation = ":settings:settings_presentation"
 }
