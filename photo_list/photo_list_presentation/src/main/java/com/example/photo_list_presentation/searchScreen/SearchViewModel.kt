@@ -10,7 +10,7 @@ import androidx.paging.map
 import com.example.core.util.UiEvent
 import com.example.photo_list_domain.repository.UnsplashImageRepository
 import com.example.photo_list_domain.useCase.AddOrRemoveFromFavoriteListUseCase
-import com.example.photo_list_presentation.PhotoUiState
+import com.example.core_ui.model.PhotoUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.map

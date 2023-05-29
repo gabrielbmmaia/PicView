@@ -1,4 +1,4 @@
-package com.example.photo_list_presentation
+package com.example.core_ui.model
 
 import com.example.core.model.UnsplashImage
 import com.example.core.model.User

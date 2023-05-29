@@ -1,4 +1,4 @@
-package com.example.photo_list_presentation.components
+package com.example.core_ui.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -17,7 +17,7 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.items
 import com.example.core_ui.LocalSpacing
 import com.example.core.model.UnsplashImage
-import com.example.photo_list_presentation.PhotoUiState
+import com.example.core_ui.model.PhotoUiState
 import core.R
 
 @Composable

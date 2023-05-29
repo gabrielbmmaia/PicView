@@ -11,7 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.core_ui.LocalSpacing
-import com.example.photo_list_presentation.components.UnsplashImage
+import com.example.core_ui.components.UnsplashImage
 
 @Composable
 fun FavoriteScreen(

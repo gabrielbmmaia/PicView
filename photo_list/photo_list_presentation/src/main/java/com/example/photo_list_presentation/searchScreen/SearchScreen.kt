@@ -31,7 +31,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.core_ui.LocalSpacing
-import com.example.photo_list_presentation.components.PhotoList
+import com.example.core_ui.components.PhotoList
 import com.example.photo_list_presentation.searchScreen.components.CustomRadioButton
 import core.R
 

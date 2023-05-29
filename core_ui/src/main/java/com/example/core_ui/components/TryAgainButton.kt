@@ -1,4 +1,4 @@
-package com.example.photo_list_presentation.components
+package com.example.core_ui.components
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons

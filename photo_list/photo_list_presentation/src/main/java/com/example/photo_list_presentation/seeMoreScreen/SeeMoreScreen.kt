@@ -33,7 +33,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.core_ui.Rubik
-import com.example.photo_list_presentation.components.PhotoList
+import com.example.core_ui.components.PhotoList
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

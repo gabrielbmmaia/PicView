@@ -6,7 +6,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.core.util.UiEvent
-import com.example.photo_list_presentation.components.PhotoList
+import com.example.core_ui.components.PhotoList
 
 @Composable
 fun HomeScreen(

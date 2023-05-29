@@ -1,4 +1,4 @@
-package com.example.photo_list_presentation.components
+package com.example.core_ui.components
 
 import android.content.Intent
 import android.net.Uri
@@ -59,7 +59,7 @@ import com.example.core_ui.PicViewTheme
 import com.example.core_ui.RubikLight
 import com.example.core.model.UnsplashImage
 import com.example.core.model.User
-import com.example.photo_list_presentation.PhotoUiState
+import com.example.core_ui.model.PhotoUiState
 import core.R
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalCoilApi::class)
