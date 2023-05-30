@@ -1,13 +1,15 @@
 package com.example.picview.navigation.navHost
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
-import androidx.navigation.compose.composable
+import com.google.accompanist.navigation.animation.composable
 import com.example.searched_list_presentation.SearchScreen
 
 internal const val SEARCH_ROUTE = "search"
 
+@OptIn(ExperimentalAnimationApi::class)
 fun NavGraphBuilder.searchScreen(
     onNavigateToSeeMoreScreen: (username: String) -> Unit
 ) {

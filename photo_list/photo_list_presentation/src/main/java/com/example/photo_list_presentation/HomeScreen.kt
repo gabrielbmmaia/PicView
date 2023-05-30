@@ -1,8 +1,10 @@
 package com.example.photo_list_presentation
 
 import android.view.WindowManager
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.core_ui.components.PhotoList
@@ -19,6 +21,7 @@ fun HomeScreen(
     }
 
     PhotoList(
+        modifier = Modifier.fillMaxSize(),
         photoList = photoList,
         onSeeMoreClick = onSeeMoreClick,
         onFavoriteClick = { unsplashImage ->

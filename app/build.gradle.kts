@@ -93,6 +93,7 @@ dependencies {
     implementation(Coil.coilCompose)
 
     implementation(Lottie.lottie)
+    implementation(Accompanist.animation)
 
     implementation(Google.material)
 

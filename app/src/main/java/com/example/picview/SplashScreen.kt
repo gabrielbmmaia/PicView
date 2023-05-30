@@ -27,6 +27,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
@@ -72,7 +73,8 @@ fun SplashScreen(
         LottieAnimation(
             modifier = Modifier.fillMaxSize(),
             composition = composition.value,
-            progress = { progress }
+            progress = { progress },
+            contentScale = ContentScale.FillWidth
         )
         Column(
             modifier = Modifier

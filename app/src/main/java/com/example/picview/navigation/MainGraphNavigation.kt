@@ -1,10 +1,19 @@
 package com.example.picview.navigation
 
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.material3.SnackbarHostState
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
-import androidx.navigation.compose.navigation
+import com.google.accompanist.navigation.animation.navigation
 import androidx.navigation.navOptions
 import com.example.picview.navigation.components.BottomAppBarItem
 import com.example.picview.navigation.navHost.FAVORITE_ROUTE
@@ -23,6 +32,7 @@ import com.example.picview.navigation.navHost.settingsScreen
 
 internal const val MAIN_GRAPH_ROUTE = "main_graph"
 
+@OptIn(ExperimentalAnimationApi::class)
 fun NavGraphBuilder.mainGraph(
     onNavigateToSeeMoreScreen: (username: String) -> Unit
 ) {
@@ -39,7 +49,6 @@ fun NavGraphBuilder.mainGraph(
 
 fun NavController.navigateToMainGraph() {
     val navOptions = navOptions {
-        launchSingleTop = true
         popUpTo(SPLASH_ROUTE)
     }
     navigate(MAIN_GRAPH_ROUTE, navOptions)
