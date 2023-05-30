@@ -92,6 +92,8 @@ dependencies {
 
     implementation(Coil.coilCompose)
 
+    implementation(Lottie.lottie)
+
     implementation(Google.material)
 
     implementation(Retrofit.okHttp)

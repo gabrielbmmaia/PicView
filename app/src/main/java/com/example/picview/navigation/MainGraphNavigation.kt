@@ -3,6 +3,7 @@ package com.example.picview.navigation
 import androidx.compose.material3.SnackbarHostState
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavOptions
 import androidx.navigation.compose.navigation
 import androidx.navigation.navOptions
 import com.example.picview.navigation.components.BottomAppBarItem
@@ -10,6 +11,7 @@ import com.example.picview.navigation.navHost.FAVORITE_ROUTE
 import com.example.picview.navigation.navHost.HOME_ROUTE
 import com.example.picview.navigation.navHost.SEARCH_ROUTE
 import com.example.picview.navigation.navHost.SETTINGS_ROUTE
+import com.example.picview.navigation.navHost.SPLASH_ROUTE
 import com.example.picview.navigation.navHost.favoriteScreen
 import com.example.picview.navigation.navHost.homeScreen
 import com.example.picview.navigation.navHost.navigateToFavoriteScreen
@@ -33,6 +35,14 @@ fun NavGraphBuilder.mainGraph(
         searchScreen(onNavigateToSeeMoreScreen)
         settingsScreen()
     }
+}
+
+fun NavController.navigateToMainGraph() {
+    val navOptions = navOptions {
+        launchSingleTop = true
+        popUpTo(SPLASH_ROUTE)
+    }
+    navigate(MAIN_GRAPH_ROUTE, navOptions)
 }
 
 fun NavController.navigateSingleTopWithPopUpTo(

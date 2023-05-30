@@ -4,8 +4,10 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import com.example.picview.navigation.navHost.SPLASH_ROUTE
 import com.example.picview.navigation.navHost.navigateToSeeMoreScreen
 import com.example.picview.navigation.navHost.seeMoreScreen
+import com.example.picview.navigation.navHost.splashScreen
 
 
 @Composable
@@ -14,7 +16,7 @@ fun PicViewNavHost(
 ) {
     NavHost(
         navController = navController,
-        startDestination = MAIN_GRAPH_ROUTE
+        startDestination = SPLASH_ROUTE
     ) {
         mainGraph(
             onNavigateToSeeMoreScreen = { username ->
@@ -23,6 +25,9 @@ fun PicViewNavHost(
         )
         seeMoreScreen(
             onPopBackStack = { navController.navigateUp() }
+        )
+        splashScreen(
+            onNavigateToMainGraph = {navController.navigateToMainGraph()}
         )
     }
 }

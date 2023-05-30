@@ -26,6 +26,7 @@ import com.example.picview.navigation.navHost.FAVORITE_ROUTE
 import com.example.picview.navigation.navHost.HOME_ROUTE
 import com.example.picview.navigation.navHost.SEARCH_ROUTE
 import com.example.picview.navigation.navHost.SETTINGS_ROUTE
+import com.example.picview.navigation.navHost.SPLASH_ROUTE
 import com.example.picview.navigation.navigateSingleTopWithPopUpTo
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -81,14 +82,14 @@ class MainActivity : ComponentActivity() {
                     else -> false
                 }
 
-//                if (currentRoute == HOME_ROUTE) {
-//                    window.setFlags(
-//                        WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-//                        WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-//                    )
-//                } else {
-//                    window.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
-//                }
+                if (currentRoute == SPLASH_ROUTE) {
+                    window.setFlags(
+                        WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                        WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+                    )
+                } else {
+                    window.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+                }
 
                 PicViewTheme(
                     darkTheme = isDarkTheme,
