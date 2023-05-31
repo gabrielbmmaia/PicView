@@ -3,8 +3,6 @@ package com.example.searched_list_presentation
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -97,24 +95,44 @@ fun SearchScreen(
                 fontSize = 26.sp,
                 style = MaterialTheme.typography.titleMedium
             )
-
-            Row(
+            Column(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(
-                    spacing.spaceLarge
-                ),
-                verticalAlignment = Alignment.CenterVertically
+                horizontalAlignment = CenterHorizontally
             ) {
-                viewModel.state.buttonList.forEach { customButton ->
-                    CustomRadioButton(
-                        modifier = Modifier.padding(top = spacing.spaceMedium),
-                        state = customButton,
-                        onButtonClicked = {
-                            viewModel.onEvent(SearchEvent.OnButtonClicked(it))
-                        }
-                    )
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(
+                        spacing.spaceLarge
+                    ),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    viewModel.state.firstButtonList.forEach { customButton ->
+                        CustomRadioButton(
+                            modifier = Modifier.padding(top = spacing.spaceMedium),
+                            state = customButton,
+                            onButtonClicked = {
+                                viewModel.onEvent(SearchEvent.OnButtonClicked(it))
+                            }
+                        )
+                    }
+                }
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(
+                        spacing.spaceLarge
+                    ),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    viewModel.state.secondButtonList.forEach { customButton ->
+                        CustomRadioButton(
+                            modifier = Modifier.padding(top = spacing.spaceMedium),
+                            state = customButton,
+                            onButtonClicked = {
+                                viewModel.onEvent(SearchEvent.OnButtonClicked(it))
+                            }
+                        )
+                    }
                 }
             }
+
         }
         if (photoList.itemCount != 0) {
             PhotoList(

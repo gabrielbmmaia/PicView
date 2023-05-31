@@ -34,7 +34,14 @@ class SearchViewModel @Inject constructor(
         when (event) {
             is SearchEvent.OnButtonClicked -> {
                 state = state.copy(
-                    buttonList = state.buttonList.map {
+                    firstButtonList = state.firstButtonList.map {
+                        if (it.button == event.button && it.isSelected) {
+                            it.copy(isSelected = false)
+                        } else if (it.button == event.button) {
+                            it.copy(isSelected = true)
+                        } else it.copy(isSelected = false)
+                    },
+                    secondButtonList = state.secondButtonList.map {
                         if (it.button == event.button && it.isSelected) {
                             it.copy(isSelected = false)
                         } else if (it.button == event.button) {

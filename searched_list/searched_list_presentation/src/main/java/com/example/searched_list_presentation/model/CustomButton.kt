@@ -31,7 +31,7 @@ sealed class CustomButton(
     ) : CustomButton(tag = tag, size = size)
 }
 
-val defaultCustomRadioButtonList = listOf(
+val firstCustomButtonList = listOf(
     CustomButtonUiState(
         TwoColorIcon(
             colorOne = Color.Black,
@@ -68,7 +68,10 @@ val defaultCustomRadioButtonList = listOf(
             color = Red,
             tag = "red"
         )
-    ),
+    )
+)
+
+val secondCustomButtonList = listOf(
     CustomButtonUiState(
         SingleColorIcon(
             color = Purple,

@@ -50,14 +50,14 @@ fun SplashScreen(
         R.raw.background_coffee,
         R.raw.background_cat,
         R.raw.background_mountain
-    )
+    ).random()
 
-    val composition = rememberLottieComposition(
-        LottieCompositionSpec.RawRes(listOfImages.random())
+    val composition by rememberLottieComposition(
+        LottieCompositionSpec.RawRes(listOfImages)
     )
 
     val progress by animateLottieCompositionAsState(
-        composition = composition.value,
+        composition = composition,
         iterations = LottieConstants.IterateForever
     )
 
@@ -77,7 +77,7 @@ fun SplashScreen(
     ) {
         LottieAnimation(
             modifier = Modifier.fillMaxSize(),
-            composition = composition.value,
+            composition = composition,
             progress = { progress },
             contentScale = ContentScale.FillWidth
         )
