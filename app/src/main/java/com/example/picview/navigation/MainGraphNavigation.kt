@@ -35,7 +35,7 @@ fun NavGraphBuilder.mainGraph(
 
 fun NavController.navigateToMainGraph() {
     val navOptions = navOptions {
-        popUpTo(SPLASH_ROUTE)
+        popUpTo(MAIN_GRAPH_ROUTE)
     }
     navigate(MAIN_GRAPH_ROUTE, navOptions)
 }

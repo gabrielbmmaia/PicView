@@ -63,10 +63,7 @@ class MainActivity : ComponentActivity() {
 
                         else -> false
                     }
-                    window.setFlags(
-                        WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-                        WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-                    )
+
 //                    if (currentRoute == SPLASH_ROUTE) {
 //                        window.setFlags(
 //                            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
