@@ -1,7 +1,5 @@
 package com.example.picview
 
-import android.graphics.fonts.FontStyle
-import android.window.SplashScreen
 import androidx.compose.animation.animateColor
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
@@ -16,7 +14,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -26,7 +23,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
@@ -47,8 +43,17 @@ fun SplashScreen(
     onArrowClick: () -> Unit
 ) {
     val spacing = LocalSpacing.current
+
+    val listOfImages = listOf(
+        R.raw.background_forest,
+        R.raw.background_fox,
+        R.raw.background_coffee,
+        R.raw.background_cat,
+        R.raw.background_mountain
+    )
+
     val composition = rememberLottieComposition(
-        LottieCompositionSpec.RawRes(R.raw.background_forest)
+        LottieCompositionSpec.RawRes(listOfImages.random())
     )
 
     val progress by animateLottieCompositionAsState(

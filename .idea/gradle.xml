@@ -31,8 +31,6 @@
             <option value="$PROJECT_DIR$/see_more/see_more_data" />
             <option value="$PROJECT_DIR$/see_more/see_more_domain" />
             <option value="$PROJECT_DIR$/see_more/see_more_presentation" />
-            <option value="$PROJECT_DIR$/settings" />
-            <option value="$PROJECT_DIR$/settings/settings_presentation" />
           </set>
         </option>
       </GradleProjectSettings>

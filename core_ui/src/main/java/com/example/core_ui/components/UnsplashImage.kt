@@ -125,9 +125,10 @@ fun UnsplashImage(
                         .fillMaxWidth()
                         .height(300.dp),
                     painter = rememberImagePainter(data = unsplashImage.imageUrl) {
-                        crossfade(durationMillis = 1000)
-                        placeholder(R.drawable.ic_placeholder)
-                        fallback(R.drawable.ic_placeholder)
+                        crossfade(durationMillis = 500)
+                        placeholder(R.drawable.placeholder)
+                        fallback(R.drawable.placeholder)
+                        error(R.drawable.placeholder)
                     },
                     contentDescription = stringResource(id = R.string.imagem_foto),
                     contentScale = ContentScale.Crop

@@ -73,8 +73,6 @@ dependencies {
     implementation(project(Modules.photoListDomain))
     implementation(project(Modules.photoListPresentation))
 
-    implementation(project(Modules.settingsPresentation))
-
     implementation(project(Modules.favoriteData))
     implementation(project(Modules.favoriteDomain))
     implementation(project(Modules.favoritePresentation))

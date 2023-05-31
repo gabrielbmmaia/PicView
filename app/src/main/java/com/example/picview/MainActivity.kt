@@ -23,11 +23,11 @@ import com.example.picview.navigation.components.PicViewBottomAppBar
 import com.example.picview.navigation.navHost.FAVORITE_ROUTE
 import com.example.picview.navigation.navHost.HOME_ROUTE
 import com.example.picview.navigation.navHost.SEARCH_ROUTE
-import com.example.picview.navigation.navHost.SETTINGS_ROUTE
 import com.example.picview.navigation.navHost.SPLASH_ROUTE
 import com.example.picview.navigation.navigateSingleTopWithPopUpTo
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 
 
 @OptIn(ExperimentalAnimationApi::class)
@@ -52,7 +52,6 @@ class MainActivity : ComponentActivity() {
                             FAVORITE_ROUTE -> BottomAppBarItem.Favorite
                             HOME_ROUTE -> BottomAppBarItem.Home
                             SEARCH_ROUTE -> BottomAppBarItem.Search
-                            SETTINGS_ROUTE -> BottomAppBarItem.Settings
                             else -> BottomAppBarItem.Home
                         }
                         mutableStateOf(item)
@@ -60,12 +59,14 @@ class MainActivity : ComponentActivity() {
                     val containsInBottomAppBarItem = when (currentRoute) {
                         FAVORITE_ROUTE,
                         HOME_ROUTE,
-                        SEARCH_ROUTE,
-                        SETTINGS_ROUTE -> true
+                        SEARCH_ROUTE -> true
 
                         else -> false
                     }
-
+                    window.setFlags(
+                        WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                        WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+                    )
 //                    if (currentRoute == SPLASH_ROUTE) {
 //                        window.setFlags(
 //                            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,

@@ -4,8 +4,8 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
-import com.google.accompanist.navigation.animation.composable
 import com.example.searched_list_presentation.SearchScreen
+import com.google.accompanist.navigation.animation.composable
 
 internal const val SEARCH_ROUTE = "search"
 

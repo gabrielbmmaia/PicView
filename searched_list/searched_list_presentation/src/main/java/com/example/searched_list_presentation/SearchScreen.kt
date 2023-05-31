@@ -101,8 +101,7 @@ fun SearchScreen(
             FlowRow(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(
-                    spacing.spaceLarge,
-                    CenterHorizontally
+                    spacing.spaceLarge
                 ),
                 verticalAlignment = Alignment.CenterVertically
             ) {
