@@ -92,6 +92,7 @@ dependencies {
 
     implementation(Lottie.lottie)
     implementation(Accompanist.animation)
+    implementation(Accompanist.systemUiController)
 
     implementation(Google.material)
 

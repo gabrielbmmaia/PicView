@@ -2,19 +2,50 @@ package com.example.core_ui
 
 import androidx.compose.ui.graphics.Color
 
-val Brown10 = Color(0xff221711)
-val Brown20 = Color(0xff442f22)
-val Brown30 = Color(0xff664633)
-val Brown40 = Color(0xff885d44)
-val Brown80 = Color(0xffddc8bb)
-val Brown90 = Color(0xffeee3dd)
+val lightPrimary = Color(0xFF006C4D)
+val lightOnPrimary = Color(0xFFFFFFFF)
+val lightPrimaryContainer = Color(0xFF87F8C8)
+val lightOnPrimaryContainer = Color(0xFF002115)
 
-val RedBrown10 = Color(0xff221711)
-val RedBrown20 = Color(0xff442f22)
-val RedBrown30 = Color(0xff664633)
-val RedBrown40 = Color(0xff885d44)
-val RedBrown80 = Color(0xffddc8bb)
-val RedBrown90 = Color(0xffeee3dd)
+val lightSecondary = Color(0xFF643102)
+val lightOnSecondary = Color(0xFFe6c7b3)
+val lightSecondaryContainer = Color(0xFFFFDCC6)
+val lightOnSecondaryContainer = Color(0xFF4d2e19)
+
+val lightBackground = Color(0xFFFBFDF9)
+val lightOnBackground = Color(0xFF191C1A)
+
+val lightInverseOnSurface = Color(0xFFEFF1ED)
+val lightInverseSurface = Color(0xFF2E312F)
+
+val lightSurface = Color(0xFFF8FAF6)
+val lightOnSurface = Color(0xFF191C1A)
+val lightSurfaceVariant = Color(0xFFDBE5DE)
+val lightOnSurfaceVariant = Color(0xFF404944)
+
+val darkPrimary = Color(0xFF6ADBAD)
+val darkOnPrimary = Color(0xFF003826)
+val darkPrimaryContainer = Color(0xFF005139)
+val darkOnPrimaryContainer = Color(0xFF87F8C8)
+
+val darkSecondary = Color(0xFFfcb069)
+val darkOnSecondary = Color(0xFF502400)
+val darkSecondaryContainer = Color(0xFF723600)
+val darkOnSecondaryContainer = Color(0xFFFFDCC6)
+
+val darkBackground = Color(0xFF201A19)
+val darkOnBackground = Color(0xFFEDE0DE)
+
+val darkInverseOnSurface = Color(0xFF201A19)
+val darkInverseSurface = Color(0xFFEDE0DE)
+
+val darkSurface = Color(0xFF181211)
+val darkOnSurface = Color(0xFFD0C4C2)
+val darkSurfaceVariant = Color(0xFF404944)
+val darkOnSurfaceVariant = Color(0xFFBFC9C2)
+
+val Brown80 = Color(0xffe6c7b3)
+val Grey10 = Color(0xFFECF0F2)
 
 val Red10 = Color (0xFF410001)
 val Red20 = Color (0xFF680003)
@@ -22,18 +53,6 @@ val Red30 = Color (0xFF930006)
 val Red40 = Color (0xFFBA1B1B)
 val Red80 = Color (0xFFFFB4A9)
 val Red90 = Color (0xFFFFDAD4)
-
-val Grey10 = Color(0xff191C1D)
-val Grey20 = Color(0xff2D3132)
-val Grey90 = Color(0xffE0E3E3)
-val Grey95 = Color(0xffEFF1F1)
-val Grey99 = Color(0xffFBFDFD)
-
-val BrownGrey30 = Color(0xFF584C41)
-val BrownGrey50 = Color(0xFF937E6C)
-val BrownGrey60 = Color(0xFFA8988A)
-val BrownGrey80 = Color(0xFFD4CBC4)
-val BrownGrey90 = Color(0xFFE9E5E2)
 
 val Yellow = Color(0xFFFFE81B)
 val Orange = Color(0xFFF7861B)

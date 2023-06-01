@@ -11,55 +11,56 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Brown80,
-    onPrimary = Brown20,
-    primaryContainer = Brown30,
-    onPrimaryContainer = Brown90,
-    inversePrimary = Brown40,
-    secondary = RedBrown80,
-    onSecondary = RedBrown20,
-    secondaryContainer = RedBrown30,
-    onSecondaryContainer = RedBrown90,
+    primary = darkPrimary,
+    onPrimary = darkOnPrimary,
+    primaryContainer = darkPrimaryContainer,
+    onPrimaryContainer = darkOnPrimaryContainer,
+    secondary = darkSecondary,
+    onSecondary = darkOnSecondary,
+    secondaryContainer = darkSecondaryContainer,
+    onSecondaryContainer = darkOnSecondaryContainer,
     error = Red80,
     onError = Red20,
     errorContainer = Red30,
     onErrorContainer = Red90,
-    background = Grey10,
-    onBackground = Grey90,
-    surface = BrownGrey30,
-    onSurface = BrownGrey80,
-    inverseSurface = Grey90,
-    inverseOnSurface = Grey10,
-    surfaceVariant = BrownGrey30
+    background = darkBackground,
+    onBackground = darkOnBackground,
+    surface = darkSurface,
+    onSurface = darkOnSurface,
+    inverseSurface = darkInverseSurface,
+    inverseOnSurface = darkInverseOnSurface,
+    surfaceVariant = darkSurfaceVariant,
+    onSurfaceVariant = darkOnSurfaceVariant
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Brown80,
-    onPrimary = Brown20,
-    primaryContainer = Brown30,
-    onPrimaryContainer = Brown90,
-    inversePrimary = Brown40,
-    secondary = RedBrown80,
-    onSecondary = RedBrown20,
-    secondaryContainer = RedBrown30,
-    onSecondaryContainer = RedBrown90,
+    primary = lightPrimary,
+    onPrimary = lightOnPrimary,
+    primaryContainer = lightPrimaryContainer,
+    onPrimaryContainer = lightOnPrimaryContainer,
+    secondary = lightSecondary,
+    onSecondary = lightOnSecondary,
+    secondaryContainer = lightSecondaryContainer,
+    onSecondaryContainer = lightOnSecondaryContainer,
     error = Red80,
     onError = Red20,
     errorContainer = Red30,
     onErrorContainer = Red90,
-    background = Grey10,
-    onBackground = Grey90,
-    surface = BrownGrey30,
-    onSurface = BrownGrey80,
-    inverseSurface = Grey90,
-    inverseOnSurface = Grey10,
-    surfaceVariant = BrownGrey30
+    background = lightBackground,
+    onBackground = lightOnBackground,
+    surface = lightSurface,
+    onSurface = lightOnSurface,
+    inverseSurface = lightInverseSurface,
+    inverseOnSurface = lightInverseOnSurface,
+    surfaceVariant = lightSurfaceVariant,
+    onSurfaceVariant = lightOnSurfaceVariant
 )
 
 @Composable
@@ -77,11 +78,12 @@ fun PicViewTheme(
         darkTheme -> DarkColorScheme
         else -> LightColorScheme
     }
+
     val view = LocalView.current
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.primary.toArgb()
+            window.statusBarColor = Color.Black.toArgb()
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
         }
     }

@@ -1,12 +1,15 @@
 package com.example.picview
 
 import android.os.Bundle
-import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.windowInsetsBottomHeight
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -23,11 +26,9 @@ import com.example.picview.navigation.components.PicViewBottomAppBar
 import com.example.picview.navigation.navHost.FAVORITE_ROUTE
 import com.example.picview.navigation.navHost.HOME_ROUTE
 import com.example.picview.navigation.navHost.SEARCH_ROUTE
-import com.example.picview.navigation.navHost.SPLASH_ROUTE
 import com.example.picview.navigation.navigateSingleTopWithPopUpTo
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
 
 
 @OptIn(ExperimentalAnimationApi::class)
@@ -38,6 +39,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             PicViewTheme {
+
                 val navController = rememberAnimatedNavController()
                 val backStackEntryState by navController.currentBackStackEntryAsState()
                 val currentDestination = backStackEntryState?.destination
@@ -63,15 +65,6 @@ class MainActivity : ComponentActivity() {
 
                         else -> false
                     }
-
-//                    if (currentRoute == SPLASH_ROUTE) {
-//                        window.setFlags(
-//                            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-//                            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-//                        )
-//                    } else {
-//                        window.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
-//                    }
 
                     PicViewApp(
                         onBottomAppBarItemSelectedChange = { item ->
@@ -104,10 +97,13 @@ fun PicViewApp(
                     item = bottomAppBarItemSelected,
                     onItemChange = onBottomAppBarItemSelectedChange
                 )
+                Spacer(Modifier.windowInsetsBottomHeight(WindowInsets.navigationBars))
             }
         }
     ) {
-        Surface(modifier = Modifier.padding(it)) {
+        Surface(
+            modifier = Modifier.padding(it)
+        ) {
             content()
         }
     }

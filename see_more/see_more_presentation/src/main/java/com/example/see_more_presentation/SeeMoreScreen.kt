@@ -21,7 +21,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.example.core_ui.Rubik
+import com.example.core_ui.Cabin
 import com.example.core_ui.components.PhotoList
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -37,8 +37,7 @@ fun SeeMoreScreen(
     val photoList = viewModel.state.photoList.collectAsLazyPagingItems()
 
     Column(
-        Modifier.fillMaxSize()
-            .background(MaterialTheme.colorScheme.surfaceVariant),
+        Modifier.fillMaxSize(),
     ) {
         CenterAlignedTopAppBar(
             title = {
@@ -46,7 +45,7 @@ fun SeeMoreScreen(
                     text = username,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
-                    style = LocalTextStyle.current.copy(fontFamily = Rubik)
+                    style = LocalTextStyle.current.copy(fontFamily = Cabin)
                 )
             },
             navigationIcon = {
@@ -58,7 +57,9 @@ fun SeeMoreScreen(
                 }
             },
             colors = TopAppBarDefaults.topAppBarColors(
-                containerColor = MaterialTheme.colorScheme.surfaceColorAtElevation(3.dp)
+                containerColor = MaterialTheme.colorScheme.surfaceVariant,
+                navigationIconContentColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                titleContentColor = MaterialTheme.colorScheme.onSurfaceVariant
             )
         )
         PhotoList(

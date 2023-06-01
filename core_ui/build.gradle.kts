@@ -4,5 +4,6 @@ apply {
 
 dependencies {
     "implementation"(project(Modules.core))
+    "implementation"(Accompanist.systemUiController)
 
 }

@@ -17,6 +17,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SearchBar
+import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -24,6 +25,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -66,7 +69,10 @@ fun SearchScreen(
                 viewModel.onEvent(SearchEvent.OnActiveChange(it))
             },
             placeholder = {
-                Text(text = stringResource(id = R.string.search))
+                Text(
+                    text = stringResource(id = R.string.search),
+                    style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Normal)
+                )
             },
             leadingIcon = {
                 Icon(
@@ -86,14 +92,15 @@ fun SearchScreen(
                         contentDescription = stringResource(id = R.string.cancel_icon)
                     )
                 }
-            }
+            },
+
         ) {
             Spacer(modifier = Modifier.height(spacing.spaceMedium))
             Text(
                 text = stringResource(id = R.string.color_filter),
                 modifier = Modifier.align(CenterHorizontally),
                 fontSize = 26.sp,
-                style = MaterialTheme.typography.titleMedium
+                style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Normal)
             )
             Column(
                 modifier = Modifier.fillMaxWidth(),

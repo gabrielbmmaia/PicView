@@ -8,9 +8,14 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.windowInsetsBottomHeight
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Home
@@ -66,20 +71,22 @@ fun PicViewBottomAppBar(
     onItemChange: (BottomAppBarItem) -> Unit,
     modifier: Modifier = Modifier,
     items: List<BottomAppBarItem> = bottomAppBarItems,
+    backgroundColor: Color = MaterialTheme.colorScheme.surfaceVariant,
+    contentSelectedColor: Color = MaterialTheme.colorScheme.secondary,
+    contentColor: Color = MaterialTheme.colorScheme.onSurfaceVariant
 ) {
 
     val interactionSource = remember { MutableInteractionSource() }
 
     Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.surfaceColorAtElevation(4.dp)),
+        modifier = modifier.fillMaxWidth()
+            .background(backgroundColor),
         horizontalArrangement = Arrangement.SpaceEvenly
     ) {
         items.forEach {
             val isSelected = it.label == item.label
-            val color = if (isSelected) MaterialTheme.colorScheme.onSurface
-            else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.3f)
+            val color = if (isSelected) contentSelectedColor
+            else contentColor.copy(alpha = 0.3f)
 
             Column(
                 Modifier

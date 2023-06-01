@@ -54,11 +54,10 @@ import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
-import com.example.core_ui.LocalSpacing
-import com.example.core_ui.PicViewTheme
-import com.example.core_ui.RubikLight
 import com.example.core.model.UnsplashImage
 import com.example.core.model.User
+import com.example.core_ui.LocalSpacing
+import com.example.core_ui.PicViewTheme
 import com.example.core_ui.model.PhotoUiState
 import core.R
 
@@ -70,9 +69,10 @@ fun UnsplashImage(
     onFavoriteClick: (UnsplashImage) -> Unit,
     modifier: Modifier = Modifier,
     shouldSeeMoreShown: Boolean = true,
-    textColor: Color = MaterialTheme.colorScheme.onPrimary,
     textStyle: TextStyle = MaterialTheme.typography.bodySmall,
-    backgroundColor: Color = MaterialTheme.colorScheme.primary
+    textColor: Color = MaterialTheme.colorScheme.onSurfaceVariant,
+    iconColor: Color = MaterialTheme.colorScheme.secondary,
+    backgroundColor: Color = MaterialTheme.colorScheme.surfaceVariant
 ) {
     val unsplashImage = photoState.unsplashImage
     val spacing = LocalSpacing.current
@@ -103,14 +103,16 @@ fun UnsplashImage(
                     durationMillis = 300,
                     easing = LinearOutSlowInEasing
                 )
-            ),
+            )
+            .padding(4.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
         shape = RoundedCornerShape(
             topEnd = spacing.spaceSmall,
             topStart = spacing.spaceSmall,
             bottomStart = cornerPhotoContent,
             bottomEnd = cornerPhotoContent
-        )
+        ),
+        colors = CardDefaults.cardColors(containerColor = backgroundColor)
     ) {
         Column(
             modifier = Modifier.fillMaxWidth(),
@@ -151,7 +153,7 @@ fun UnsplashImage(
                     Text(
                         text = buildAnnotatedString {
                             append("${stringResource(id = R.string.photo_by)} ")
-                            withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                            withStyle(style = SpanStyle(fontWeight = FontWeight.Bold, color = iconColor)) {
                                 append(unsplashImage.user.username)
                             }
                             append(" ${stringResource(id = R.string.on_unsplash)}")
@@ -183,7 +185,7 @@ fun UnsplashImage(
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .background(MaterialTheme.colorScheme.primary)
+                        .background(backgroundColor)
                         .padding(
                             start = spacing.spaceSmall,
                             end = spacing.spaceSmall,
@@ -259,7 +261,7 @@ fun UnsplashImage(
                                     Text(
                                         text = unsplashImage.user.location!!,
                                         color = textColor,
-                                        style = textStyle.copy(fontFamily = RubikLight),
+                                        style = textStyle.copy(fontWeight = FontWeight(200)),
                                         overflow = TextOverflow.Ellipsis,
                                         maxLines = 1
                                     )
@@ -274,14 +276,14 @@ fun UnsplashImage(
                             ) {
                                 Icon(
                                     imageVector = Icons.Rounded.Add, contentDescription = null,
-                                    tint = textColor,
+                                    tint = iconColor,
                                     modifier = Modifier.size(18.dp)
                                 )
                                 Text(
                                     text = stringResource(id = R.string.see_more),
                                     Modifier.padding(end = spacing.spaceSmall),
                                     style = textStyle,
-                                    color = textColor
+                                    color = iconColor
                                 )
                             }
                         }
@@ -300,7 +302,7 @@ fun UnsplashImage(
                                 if (isFavorite) painterResource(id = R.drawable.ic_filler_rounded_star)
                                 else painterResource(id = R.drawable.ic_borded_rounded_star),
                                 contentDescription = stringResource(id = R.string.star_icon),
-                                tint = textColor
+                                tint = iconColor
                             )
                         }
 
@@ -319,7 +321,7 @@ fun UnsplashImage(
                                     Icon(
                                         painter = painterResource(id = R.drawable.ic_website),
                                         contentDescription = stringResource(id = R.string.user_website),
-                                        tint = textColor
+                                        tint = iconColor
                                     )
                                 }
                             }
@@ -361,7 +363,7 @@ fun UnsplashImage(
                                     Icon(
                                         painter = painterResource(id = R.drawable.ic_instagram_bold),
                                         contentDescription = stringResource(id = R.string.instagram_icon),
-                                        tint = textColor,
+                                        tint = iconColor,
                                         modifier = Modifier.size(22.dp)
                                     )
                                 }

@@ -17,10 +17,10 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -36,6 +36,8 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
+import com.example.core_ui.Brown80
+import com.example.core_ui.Grey10
 import com.example.core_ui.LocalSpacing
 
 @Composable
@@ -50,25 +52,17 @@ fun SplashScreen(
         R.raw.background_coffee,
         R.raw.background_cat,
         R.raw.background_mountain
-    ).random()
+    )
+
+    val randomImage = remember {listOfImages.random()}
 
     val composition by rememberLottieComposition(
-        LottieCompositionSpec.RawRes(listOfImages)
+        LottieCompositionSpec.RawRes(randomImage)
     )
 
     val progress by animateLottieCompositionAsState(
         composition = composition,
         iterations = LottieConstants.IterateForever
-    )
-
-    val infiniteTransition = rememberInfiniteTransition()
-    val color by infiniteTransition.animateColor(
-        initialValue = MaterialTheme.colorScheme.primary,
-        targetValue = MaterialTheme.colorScheme.secondary,
-        animationSpec = infiniteRepeatable(
-            animation = tween(durationMillis = 3000, easing = LinearEasing),
-            repeatMode = RepeatMode.Reverse
-        )
     )
 
     Box(
@@ -79,7 +73,7 @@ fun SplashScreen(
             modifier = Modifier.fillMaxSize(),
             composition = composition,
             progress = { progress },
-            contentScale = ContentScale.FillWidth
+            contentScale = ContentScale.FillBounds,
         )
         Column(
             modifier = Modifier
@@ -90,7 +84,7 @@ fun SplashScreen(
             Text(
                 text = stringResource(id = core.R.string.app_name),
                 fontSize = 64.sp,
-                color = color,
+                color = Grey10,
                 style = TextStyle(
                     fontFamily = FontFamily(
                         Font(resId = core_ui.R.font.brawler_regular)
@@ -100,7 +94,7 @@ fun SplashScreen(
 
             IconButton(onClick = onArrowClick) {
                 Icon(
-                    tint = color,
+                    tint = Grey10,
                     imageVector = Icons.Default.KeyboardArrowDown,
                     contentDescription = null,
                     modifier = Modifier.size(160.dp)

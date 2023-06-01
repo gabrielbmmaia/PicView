@@ -5,36 +5,31 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.font.FontWeight.Companion.W300
 import androidx.compose.ui.unit.sp
 import core_ui.R
 
-val Rubik = FontFamily(
-    Font(R.font.rubik_regular)
+val Cabin = FontFamily(
+    Font(R.font.cabin_regular)
 )
-val RubikLight = FontFamily(
-    Font(R.font.rubik_light)
-)
-
 
 // Set of Material typography styles to start with
 val Typography = Typography(
     bodyLarge = TextStyle(
-        fontFamily = Rubik,
-        fontWeight = FontWeight.Normal,
+        fontFamily = Cabin,
+        fontWeight = FontWeight.Bold,
         fontSize = 16.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
     ),
     bodyMedium = TextStyle(
-        fontFamily = Rubik,
-        fontWeight = FontWeight.Normal,
+        fontFamily = Cabin,
+        fontWeight = FontWeight.Bold,
         fontSize = 14.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
     ),
     bodySmall = TextStyle(
-        fontFamily = Rubik,
+        fontFamily = Cabin,
         fontWeight = FontWeight(300),
         fontSize = 14.sp,
         lineHeight = 24.sp,
