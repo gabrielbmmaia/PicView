@@ -1,14 +1,7 @@
 package com.example.picview
 
-import androidx.compose.animation.animateColor
-import androidx.compose.animation.core.LinearEasing
-import androidx.compose.animation.core.RepeatMode
-import androidx.compose.animation.core.infiniteRepeatable
-import androidx.compose.animation.core.rememberInfiniteTransition
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -36,10 +29,14 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
-import com.example.core_ui.Brown80
 import com.example.core_ui.Grey10
 import com.example.core_ui.LocalSpacing
 
+/**
+ * SplashScreen com 5 possíveis telas animadas.
+ * A foto é escolhida randomicamente apartir da
+ * listOfImages
+ * */
 @Composable
 fun SplashScreen(
     onArrowClick: () -> Unit
@@ -54,7 +51,7 @@ fun SplashScreen(
         R.raw.background_mountain
     )
 
-    val randomImage = remember {listOfImages.random()}
+    val randomImage = remember { listOfImages.random() }
 
     val composition by rememberLottieComposition(
         LottieCompositionSpec.RawRes(randomImage)
@@ -78,7 +75,7 @@ fun SplashScreen(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(PaddingValues(spacing.spaceExtraLarge)),
+                .padding(spacing.spaceLarge),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(

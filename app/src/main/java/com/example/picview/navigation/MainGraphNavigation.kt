@@ -8,7 +8,6 @@ import com.example.picview.navigation.components.BottomAppBarItem
 import com.example.picview.navigation.navHost.FAVORITE_ROUTE
 import com.example.picview.navigation.navHost.HOME_ROUTE
 import com.example.picview.navigation.navHost.SEARCH_ROUTE
-import com.example.picview.navigation.navHost.SPLASH_ROUTE
 import com.example.picview.navigation.navHost.favoriteScreen
 import com.example.picview.navigation.navHost.homeScreen
 import com.example.picview.navigation.navHost.navigateToFavoriteScreen
@@ -21,23 +20,22 @@ internal const val MAIN_GRAPH_ROUTE = "main_graph"
 
 @OptIn(ExperimentalAnimationApi::class)
 fun NavGraphBuilder.mainGraph(
-    onNavigateToSeeMoreScreen: (username: String) -> Unit
+    onNavigateToSeeMoreScreen: (username: String) -> Unit,
+    screenConfiguration: Boolean
 ) {
     navigation(
         startDestination = HOME_ROUTE,
         route = MAIN_GRAPH_ROUTE
     ) {
-        favoriteScreen(onNavigateToSeeMoreScreen)
-        homeScreen(onNavigateToSeeMoreScreen)
-        searchScreen(onNavigateToSeeMoreScreen)
+        favoriteScreen(onNavigateToSeeMoreScreen, screenConfiguration)
+        homeScreen(onNavigateToSeeMoreScreen, screenConfiguration)
+        searchScreen(onNavigateToSeeMoreScreen, screenConfiguration)
     }
 }
 
 fun NavController.navigateToMainGraph() {
-    val navOptions = navOptions {
-        popUpTo(MAIN_GRAPH_ROUTE)
-    }
-    navigate(MAIN_GRAPH_ROUTE, navOptions)
+    popBackStack()
+    navigate(MAIN_GRAPH_ROUTE)
 }
 
 fun NavController.navigateSingleTopWithPopUpTo(

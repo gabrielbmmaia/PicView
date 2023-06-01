@@ -1,5 +1,6 @@
 package com.example.picview.navigation.navHost
 
+import android.content.res.Configuration
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
@@ -12,11 +13,13 @@ internal const val FAVORITE_ROUTE = "favorite"
 
 @OptIn(ExperimentalAnimationApi::class)
 fun NavGraphBuilder.favoriteScreen(
-    onNavigateToSeeMoreScreen: (username: String) -> Unit
+    onNavigateToSeeMoreScreen: (username: String) -> Unit,
+    screenConfiguration: Boolean
 ) {
     composable(FAVORITE_ROUTE) {
         FavoriteScreen(
-            onSeeMoreClick = onNavigateToSeeMoreScreen
+            onSeeMoreClick = onNavigateToSeeMoreScreen,
+            isLandScapeConfiguration = screenConfiguration
         )
     }
 }

@@ -12,6 +12,7 @@ import com.example.core_ui.components.PhotoList
 @Composable
 fun HomeScreen(
     onSeeMoreClick: (username: String) -> Unit,
+    isLandScapeConfiguration: Boolean,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
     val photoList = viewModel.state.photoList.collectAsLazyPagingItems()
@@ -26,6 +27,7 @@ fun HomeScreen(
         onSeeMoreClick = onSeeMoreClick,
         onFavoriteClick = { unsplashImage ->
             viewModel.onEvent(HomeEvent.OnFavoriteClick(unsplashImage))
-        }
+        },
+        isLandScapeConfiguration = isLandScapeConfiguration
     )
 }

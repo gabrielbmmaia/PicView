@@ -11,11 +11,13 @@ internal const val SEARCH_ROUTE = "search"
 
 @OptIn(ExperimentalAnimationApi::class)
 fun NavGraphBuilder.searchScreen(
-    onNavigateToSeeMoreScreen: (username: String) -> Unit
+    onNavigateToSeeMoreScreen: (username: String) -> Unit,
+    screenConfiguration: Boolean
 ) {
     composable(SEARCH_ROUTE) {
         SearchScreen(
-            onSeeMoreClick = onNavigateToSeeMoreScreen
+            onSeeMoreClick = onNavigateToSeeMoreScreen,
+            isLandScapeConfiguration = screenConfiguration
         )
     }
 }

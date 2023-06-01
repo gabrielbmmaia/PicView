@@ -48,7 +48,7 @@ fun TextCount(
             text = text.toString(),
             color = textColor,
             style = textStyle,
-            overflow = if(text < 1000) TextOverflow.Visible else TextOverflow.Ellipsis
+            overflow = if (text < 1000) TextOverflow.Visible else TextOverflow.Ellipsis
         )
     }
 }

@@ -16,7 +16,8 @@ import com.google.accompanist.navigation.animation.AnimatedNavHost
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun PicViewNavHost(
-    navController: NavHostController
+    navController: NavHostController,
+    screenConfiguration: Boolean
 ) {
     AnimatedNavHost(
         navController = navController,
@@ -27,13 +28,17 @@ fun PicViewNavHost(
         mainGraph(
             onNavigateToSeeMoreScreen = { username ->
                 navController.navigateToSeeMoreScreen(username)
-            }
+            },
+            screenConfiguration = screenConfiguration
         )
         seeMoreScreen(
-            onPopBackStack = { navController.navigateUp() }
+            onPopBackStack = { navController.navigateUp() },
+            screenConfiguration = screenConfiguration
         )
         splashScreen(
-            onNavigateToMainGraph = {navController.navigateToMainGraph()}
+            onNavigateToMainGraph = {
+                navController.navigateToMainGraph()
+            }
         )
     }
 }

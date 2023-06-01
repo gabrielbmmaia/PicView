@@ -11,11 +11,13 @@ internal const val HOME_ROUTE = "home"
 
 @OptIn(ExperimentalAnimationApi::class)
 fun NavGraphBuilder.homeScreen(
-    onNavigateToSeeMoreScreen: (username: String) -> Unit
+    onNavigateToSeeMoreScreen: (username: String) -> Unit,
+    screenConfiguration: Boolean
 ) {
     composable(HOME_ROUTE) {
         HomeScreen(
-            onSeeMoreClick = onNavigateToSeeMoreScreen
+            onSeeMoreClick = onNavigateToSeeMoreScreen,
+            isLandScapeConfiguration = screenConfiguration
         )
     }
 }

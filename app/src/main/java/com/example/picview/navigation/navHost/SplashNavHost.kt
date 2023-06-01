@@ -18,7 +18,7 @@ fun NavGraphBuilder.splashScreen(
         route = SPLASH_ROUTE,
         exitTransition = {
             slideOutVertically(
-                targetOffsetY = {-300},
+                targetOffsetY = { -300 },
                 animationSpec = tween(300)
             ) + fadeOut(animationSpec = tween(300))
         }

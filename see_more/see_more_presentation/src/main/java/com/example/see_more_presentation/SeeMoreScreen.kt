@@ -1,6 +1,5 @@
 package com.example.see_more_presentation
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.icons.Icons
@@ -13,12 +12,10 @@ import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.core_ui.Cabin
@@ -29,6 +26,7 @@ import com.example.core_ui.components.PhotoList
 fun SeeMoreScreen(
     username: String,
     onBackArrowClick: () -> Unit,
+    isLandScapeConfiguration: Boolean,
     viewModel: SeeMoreViewModel = hiltViewModel()
 ) {
     LaunchedEffect(key1 = Unit) {
@@ -67,7 +65,8 @@ fun SeeMoreScreen(
             shouldSeeMoreShown = false,
             onFavoriteClick = { unsplashImage ->
                 viewModel.onEvent(SeeMoreEvent.OnFavoriteClick(unsplashImage))
-            }
+            },
+            isLandScapeConfiguration = isLandScapeConfiguration
         )
     }
 }
