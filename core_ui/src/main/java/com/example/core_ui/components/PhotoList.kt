@@ -7,16 +7,13 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.GridItemSpan
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
@@ -38,9 +35,15 @@ fun PhotoList(
     onFavoriteClick: (UnsplashImage) -> Unit,
     modifier: Modifier = Modifier,
     onSeeMoreClick: (username: String) -> Unit? = { null },
-    shouldSeeMoreShown: Boolean = true,
-    isLandScapeConfiguration: Boolean = false
+    shouldSeeMoreShown: Boolean = true
 ) {
+
+    val screenConfiguration = LocalConfiguration.current
+    val spanCount = when (screenConfiguration.orientation) {
+        Configuration.ORIENTATION_LANDSCAPE -> StaggeredGridCells.Fixed(2)
+        Configuration.ORIENTATION_PORTRAIT -> StaggeredGridCells.Fixed(1)
+        else -> StaggeredGridCells.Fixed(1)
+    }
 
     val spacing = LocalSpacing.current
     Box(modifier = modifier.fillMaxSize()) {
@@ -51,8 +54,7 @@ fun PhotoList(
                     contentPadding = PaddingValues(spacing.spaceMedium),
                     verticalItemSpacing = spacing.spaceMedium,
                     horizontalArrangement = Arrangement.spacedBy(spacing.spaceMedium),
-                    columns = if (isLandScapeConfiguration) StaggeredGridCells.Fixed(2)
-                else StaggeredGridCells.Fixed(1)
+                    columns = spanCount
                 ) {
                     items(
                         count = photoList.itemCount,

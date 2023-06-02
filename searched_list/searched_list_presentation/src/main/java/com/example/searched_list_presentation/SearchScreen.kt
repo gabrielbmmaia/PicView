@@ -39,7 +39,6 @@ import core.R
 @Composable
 fun SearchScreen(
     onSeeMoreClick: (username: String) -> Unit,
-    isLandScapeConfiguration: Boolean,
     viewModel: SearchViewModel = hiltViewModel()
 ) {
 
@@ -48,7 +47,6 @@ fun SearchScreen(
     val photoList = state.photoList.collectAsLazyPagingItems()
 
     val searchBarPadding = if (state.isBarActive) 0.dp else 8.dp
-
     val animationDp by animateDpAsState(targetValue = searchBarPadding)
 
     Column(
@@ -140,7 +138,6 @@ fun SearchScreen(
                     }
                 }
             }
-
         }
         if (photoList.itemCount != 0) {
             PhotoList(
@@ -148,8 +145,7 @@ fun SearchScreen(
                 onSeeMoreClick = onSeeMoreClick,
                 onFavoriteClick = { unsplashImage ->
                     viewModel.onEvent(SearchEvent.OnFavoriteClick(unsplashImage))
-                },
-                isLandScapeConfiguration = isLandScapeConfiguration
+                }
             )
         }
     }

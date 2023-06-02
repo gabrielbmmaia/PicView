@@ -28,12 +28,10 @@ fun PicViewNavHost(
         mainGraph(
             onNavigateToSeeMoreScreen = { username ->
                 navController.navigateToSeeMoreScreen(username)
-            },
-            screenConfiguration = screenConfiguration
+            }
         )
         seeMoreScreen(
-            onPopBackStack = { navController.navigateUp() },
-            screenConfiguration = screenConfiguration
+            onPopBackStack = { navController.navigateUp() }
         )
         splashScreen(
             onNavigateToMainGraph = {

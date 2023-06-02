@@ -14,8 +14,7 @@ private const val USERNAME_ARGS = "username"
 
 @OptIn(ExperimentalAnimationApi::class)
 fun NavGraphBuilder.seeMoreScreen(
-    onPopBackStack: () -> Unit,
-    screenConfiguration: Boolean
+    onPopBackStack: () -> Unit
 ) {
     composable(
         route = "$SEE_MORE_ROUTE/{$USERNAME_ARGS}",
@@ -28,8 +27,7 @@ fun NavGraphBuilder.seeMoreScreen(
         navBackStackEntry.arguments?.getString(USERNAME_ARGS)?.let { username ->
             SeeMoreScreen(
                 username = username,
-                onBackArrowClick = onPopBackStack,
-                isLandScapeConfiguration = screenConfiguration
+                onBackArrowClick = onPopBackStack
             )
         } ?: LaunchedEffect(Unit) { onPopBackStack() }
     }

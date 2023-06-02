@@ -13,13 +13,11 @@ internal const val FAVORITE_ROUTE = "favorite"
 
 @OptIn(ExperimentalAnimationApi::class)
 fun NavGraphBuilder.favoriteScreen(
-    onNavigateToSeeMoreScreen: (username: String) -> Unit,
-    screenConfiguration: Boolean
+    onNavigateToSeeMoreScreen: (username: String) -> Unit
 ) {
     composable(FAVORITE_ROUTE) {
         FavoriteScreen(
-            onSeeMoreClick = onNavigateToSeeMoreScreen,
-            isLandScapeConfiguration = screenConfiguration
+            onSeeMoreClick = onNavigateToSeeMoreScreen
         )
     }
 }

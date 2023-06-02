@@ -26,7 +26,6 @@ import com.example.core_ui.components.PhotoList
 fun SeeMoreScreen(
     username: String,
     onBackArrowClick: () -> Unit,
-    isLandScapeConfiguration: Boolean,
     viewModel: SeeMoreViewModel = hiltViewModel()
 ) {
     LaunchedEffect(key1 = Unit) {
@@ -65,8 +64,7 @@ fun SeeMoreScreen(
             shouldSeeMoreShown = false,
             onFavoriteClick = { unsplashImage ->
                 viewModel.onEvent(SeeMoreEvent.OnFavoriteClick(unsplashImage))
-            },
-            isLandScapeConfiguration = isLandScapeConfiguration
+            }
         )
     }
 }

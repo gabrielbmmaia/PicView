@@ -20,16 +20,15 @@ internal const val MAIN_GRAPH_ROUTE = "main_graph"
 
 @OptIn(ExperimentalAnimationApi::class)
 fun NavGraphBuilder.mainGraph(
-    onNavigateToSeeMoreScreen: (username: String) -> Unit,
-    screenConfiguration: Boolean
+    onNavigateToSeeMoreScreen: (username: String) -> Unit
 ) {
     navigation(
         startDestination = HOME_ROUTE,
         route = MAIN_GRAPH_ROUTE
     ) {
-        favoriteScreen(onNavigateToSeeMoreScreen, screenConfiguration)
-        homeScreen(onNavigateToSeeMoreScreen, screenConfiguration)
-        searchScreen(onNavigateToSeeMoreScreen, screenConfiguration)
+        favoriteScreen(onNavigateToSeeMoreScreen)
+        homeScreen(onNavigateToSeeMoreScreen)
+        searchScreen(onNavigateToSeeMoreScreen)
     }
 }
 

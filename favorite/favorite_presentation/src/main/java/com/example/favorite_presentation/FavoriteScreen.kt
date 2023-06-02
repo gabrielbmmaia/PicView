@@ -1,4 +1,5 @@
 package com.example.favorite_presentation
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -8,6 +9,7 @@ import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.core_ui.LocalSpacing
 import com.example.core_ui.components.UnsplashImage
@@ -15,12 +17,17 @@ import com.example.core_ui.components.UnsplashImage
 @Composable
 fun FavoriteScreen(
     onSeeMoreClick: (username: String) -> Unit,
-    isLandScapeConfiguration: Boolean,
     viewModel: FavoriteViewModel = hiltViewModel()
 ) {
-
     LaunchedEffect(key1 = Unit) {
         viewModel.onEvent(FavoriteEvent.OnLoadPhotoList)
+    }
+
+    val screenConfiguration = LocalConfiguration.current
+    val spanCount = when (screenConfiguration.orientation) {
+        Configuration.ORIENTATION_LANDSCAPE -> StaggeredGridCells.Fixed(2)
+        Configuration.ORIENTATION_PORTRAIT -> StaggeredGridCells.Fixed(1)
+        else -> StaggeredGridCells.Fixed(1)
     }
 
     val spacing = LocalSpacing.current
@@ -31,8 +38,7 @@ fun FavoriteScreen(
         contentPadding = PaddingValues(spacing.spaceMedium),
         verticalItemSpacing = spacing.spaceMedium,
         horizontalArrangement = Arrangement.spacedBy(spacing.spaceMedium),
-        columns = if (isLandScapeConfiguration) StaggeredGridCells.Fixed(2)
-        else StaggeredGridCells.Fixed(1)
+        columns = spanCount
     ) {
         items(photoStateList) { photoState ->
             UnsplashImage(
