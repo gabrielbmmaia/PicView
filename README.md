@@ -1,4 +1,8 @@
 # PicView
 
 
-![Design-sem-nome](https://github.com/gabrielbmmaia/PicView/assets/109977155/24cde29d-43ca-4c4f-be4b-b4b44971dbc8)
+![splash-screen-fox](https://github.com/gabrielbmmaia/PicView/assets/109977155/24cde29d-43ca-4c4f-be4b-b4b44971dbc8)
+![splash-screen-mountain](https://github.com/gabrielbmmaia/PicView/assets/109977155/7aff006e-82dc-49a2-93b6-8a32ce7ced5a)
+![splash-screen-forest](https://github.com/gabrielbmmaia/PicView/assets/109977155/d22dbe30-afa5-4b06-a6b6-81a5f0576450)
+![splash-screen-coffee](https://github.com/gabrielbmmaia/PicView/assets/109977155/13428386-d8cb-4f8f-bc0c-57b7f0497a7c)
+![splash-screen-cat](https://github.com/gabrielbmmaia/PicView/assets/109977155/dbfa8586-722d-43a1-93b6-de8f5e46163c)
