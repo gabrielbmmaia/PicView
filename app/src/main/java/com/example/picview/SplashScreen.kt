@@ -1,5 +1,6 @@
 package com.example.picview
 
+import android.content.pm.ActivityInfo
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -31,6 +32,7 @@ import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.example.core_ui.Grey10
 import com.example.core_ui.LocalSpacing
+import com.example.core_ui.components.LockScreenOrientation
 
 /**
  * SplashScreen com 5 possíveis telas animadas.
@@ -42,6 +44,8 @@ fun SplashScreen(
     onArrowClick: () -> Unit
 ) {
     val spacing = LocalSpacing.current
+
+    LockScreenOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
 
     val listOfImages = listOf(
         R.raw.background_forest,
