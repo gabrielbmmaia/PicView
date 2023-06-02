@@ -11,7 +11,9 @@ import com.example.core_ui.Purple
 import com.example.core_ui.Red
 import com.example.core_ui.Teal
 import com.example.core_ui.Yellow
-import com.example.searched_list_presentation.model.CustomButton.*
+import com.example.searched_list_presentation.model.CustomButton.SingleColorIcon
+import com.example.searched_list_presentation.model.CustomButton.TwoColorIcon
+
 
 sealed class CustomButton(
     val tag: String,

@@ -7,14 +7,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
 import androidx.paging.map
-import com.example.core.util.UiEvent
 import com.example.core_ui.model.PhotoUiState
 import com.example.favorite_domain.useCase.FavoriteUseCase
 import com.example.see_more_domain.repository.SeeMoreRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -26,9 +23,6 @@ class SeeMoreViewModel @Inject constructor(
 
     var state by mutableStateOf(SeeMoreState())
         private set
-
-    private val _uiEvent = Channel<UiEvent>()
-    val uiEvent = _uiEvent.receiveAsFlow()
 
     fun onEvent(event: SeeMoreEvent) {
         when (event) {

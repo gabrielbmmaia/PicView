@@ -8,9 +8,9 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
 import androidx.paging.map
 import com.example.core.util.UiEvent
-import com.example.photo_list_domain.repository.UnsplashImageRepository
 import com.example.core_ui.model.PhotoUiState
 import com.example.favorite_domain.useCase.FavoriteUseCase
+import com.example.photo_list_domain.repository.UnsplashImageRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.map
@@ -24,13 +24,8 @@ class HomeViewModel @Inject constructor(
     private val favoriteUseCase: FavoriteUseCase
 ) : ViewModel() {
 
-    val photoList = repository.getAllPhotos().cachedIn(viewModelScope)
-
     var state by mutableStateOf(HomeUiState())
         private set
-
-    private val _uiEvent = Channel<UiEvent>()
-    val uiEvent = _uiEvent.receiveAsFlow()
 
     fun onEvent(event: HomeEvent) {
         when (event) {

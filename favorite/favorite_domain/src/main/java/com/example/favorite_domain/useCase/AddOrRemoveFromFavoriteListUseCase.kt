@@ -4,6 +4,11 @@ import com.example.core.model.UnsplashImage
 import com.example.favorite_domain.repository.FavoriteRepository
 import javax.inject.Inject
 
+/**
+ * UseCase utilizado para adicionar um UnsplashImage ao
+ * FavoriteDatabase caso ele ainda não esteja e caso ele
+ * já exista no banco de dados é removido.
+ * */
 class AddOrRemoveFromFavoriteListUseCase @Inject constructor(
     private val repository: FavoriteRepository
 ) {

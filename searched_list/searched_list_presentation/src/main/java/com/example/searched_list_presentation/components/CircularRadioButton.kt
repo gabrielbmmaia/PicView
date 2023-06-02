@@ -1,4 +1,4 @@
-package com.example.searched_list_presentation
+package com.example.searched_list_presentation.components
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.border
@@ -21,6 +21,17 @@ import com.example.searched_list_presentation.model.CustomButton.SingleColorIcon
 import com.example.searched_list_presentation.model.CustomButton.TwoColorIcon
 import com.example.searched_list_presentation.model.CustomButtonUiState
 
+/**
+ * Leva em consideração CustomButtonUiState onde tem acesso ao
+ * CustomButton e o estado de Seleção do botão.
+ *
+ * O Composable tem duas formas de display:
+ * CustomButton.SingleColorIcon -> Um circulo de cor sólida e tamanaho
+ * indicados na classe CustomButton.SingleColorIcon
+ *
+ * CustomButton.TwoColorIcon -> Um circulo dividido ao meio por duas
+ * cores e tamanho indicadas na class CustomButton.TwoColorIcon
+ * */
 @Composable
 fun CustomRadioButton(
     state: CustomButtonUiState,

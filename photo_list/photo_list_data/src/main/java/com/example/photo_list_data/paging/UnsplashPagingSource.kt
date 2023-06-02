@@ -6,6 +6,9 @@ import androidx.paging.PagingState
 import com.example.network.UnsplashApi
 import com.example.network.dtos.UnsplashImageDto
 
+/**
+ * Lista de UnsplashImageDto do serviço getPhotoList de UnsplashApi
+ * */
 class UnsplashPagingSource(
     private val unsplashApi: UnsplashApi
 ) : PagingSource<Int, UnsplashImageDto>() {

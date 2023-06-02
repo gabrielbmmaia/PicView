@@ -1,6 +1,5 @@
 package com.example.photo_list_presentation
 
-import android.view.WindowManager
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect

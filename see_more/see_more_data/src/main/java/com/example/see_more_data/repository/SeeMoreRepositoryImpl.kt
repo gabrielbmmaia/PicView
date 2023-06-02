@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 class SeeMoreRepositoryImpl @Inject constructor(
     private val unsplashApi: UnsplashApi
-): SeeMoreRepository {
+) : SeeMoreRepository {
 
     override fun getUserPhotosList(
         username: String

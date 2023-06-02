@@ -61,6 +61,12 @@ import com.example.core_ui.PicViewTheme
 import com.example.core_ui.model.PhotoUiState
 import core.R
 
+/**
+ * Composable para dar Display em um modelo de UnsplashImage.
+ *
+ * É possivel retirar a visibilidade do botão de "ver mais"
+ * alterando o valor de shouldSeeMoreShown para false.
+ * */
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalCoilApi::class)
 @Composable
 fun UnsplashImage(
@@ -153,7 +159,12 @@ fun UnsplashImage(
                     Text(
                         text = buildAnnotatedString {
                             append("${stringResource(id = R.string.photo_by)} ")
-                            withStyle(style = SpanStyle(fontWeight = FontWeight.Bold, color = iconColor)) {
+                            withStyle(
+                                style = SpanStyle(
+                                    fontWeight = FontWeight.Bold,
+                                    color = iconColor
+                                )
+                            ) {
                                 append(unsplashImage.user.username)
                             }
                             append(" ${stringResource(id = R.string.on_unsplash)}")

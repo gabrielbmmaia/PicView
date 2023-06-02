@@ -18,7 +18,6 @@ import androidx.compose.ui.unit.dp
 import com.example.core_ui.PicViewTheme
 import core.R
 
-
 @Composable
 fun TryAgainButton(
     text: String,

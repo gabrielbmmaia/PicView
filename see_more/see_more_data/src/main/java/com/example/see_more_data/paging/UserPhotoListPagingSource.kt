@@ -6,6 +6,9 @@ import androidx.paging.PagingState
 import com.example.network.UnsplashApi
 import com.example.network.dtos.UnsplashImageDto
 
+/**
+ * Lista de UnsplashImageDto do serviço getUserPhotoList de UnsplashApi
+ * */
 class UserPhotoListPagingSource(
     private val unsplashApi: UnsplashApi,
     private val username: String

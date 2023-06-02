@@ -17,7 +17,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SearchBar
-import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -25,7 +24,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -33,6 +31,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.core_ui.LocalSpacing
 import com.example.core_ui.components.PhotoList
+import com.example.searched_list_presentation.components.CustomRadioButton
 import core.R
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -41,7 +40,6 @@ fun SearchScreen(
     onSeeMoreClick: (username: String) -> Unit,
     viewModel: SearchViewModel = hiltViewModel()
 ) {
-
     val spacing = LocalSpacing.current
     val state = viewModel.state
     val photoList = state.photoList.collectAsLazyPagingItems()
@@ -93,7 +91,7 @@ fun SearchScreen(
                 }
             },
 
-        ) {
+            ) {
             Spacer(modifier = Modifier.height(spacing.spaceMedium))
             Text(
                 text = stringResource(id = R.string.color_filter),

@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 class SearchedRepositoryImpl @Inject constructor(
     private val unsplashApi: UnsplashApi
-): SearchedRepository {
+) : SearchedRepository {
 
     override fun getSearchedPhotoList(
         query: String,

@@ -27,9 +27,6 @@ class SearchViewModel @Inject constructor(
     var state by mutableStateOf(SearchUiState())
         private set
 
-    private val _uiEvent = Channel<UiEvent>()
-    val uiEvent = _uiEvent.receiveAsFlow()
-
     fun onEvent(event: SearchEvent) {
         when (event) {
             is SearchEvent.OnButtonClicked -> {
@@ -83,14 +80,6 @@ class SearchViewModel @Inject constructor(
                         }.cachedIn(viewModelScope)
                     )
                 } else state.copy(isBarActive = false)
-            }
-
-            is SearchEvent.OnSeeMoreClick -> {
-                viewModelScope.launch {
-                    _uiEvent.send(
-                        UiEvent.Navigate
-                    )
-                }
             }
 
             is SearchEvent.OnFavoriteClick -> {

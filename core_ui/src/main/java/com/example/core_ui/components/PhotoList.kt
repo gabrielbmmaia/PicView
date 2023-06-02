@@ -28,6 +28,11 @@ import core.R
  * Lista paginada de PhotoUiState.
  * Internamente é utilizado @Composable UnsplashImage
  * para dar display nas imagens da lista.
+ *
+ * PhotoList leva em consideração a configuração da tela
+ * para dar display em:
+ * LandScape -> spanCount2,
+ * Portrait -> SpanCount1
  * */
 @Composable
 fun PhotoList(

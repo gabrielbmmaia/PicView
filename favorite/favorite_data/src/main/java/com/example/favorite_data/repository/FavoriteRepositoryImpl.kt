@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 class FavoriteRepositoryImpl @Inject constructor(
     private val favoriteDatabase: FavoriteDatabase
-): FavoriteRepository {
+) : FavoriteRepository {
 
     override fun getFavoritePhotosList(): Flow<List<UnsplashImage>> {
         return favoriteDatabase

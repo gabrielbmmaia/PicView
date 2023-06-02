@@ -8,6 +8,6 @@ import com.example.favorite_data.entity.UnsplashImageEntity
     entities = [UnsplashImageEntity::class],
     version = 1
 )
-abstract class FavoriteDatabase: RoomDatabase() {
+abstract class FavoriteDatabase : RoomDatabase() {
     abstract val dao: FavoriteDao
 }
