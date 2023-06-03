@@ -2,16 +2,27 @@
 
 
 ## 📱 Layouts do Projeto
-
 ![resumo-de-telas](https://github.com/gabrielbmmaia/PicView/assets/109977155/bdd8f25f-e017-422d-9df5-f9920e63e3f5)
 
 
 
 ## 📱 Temas do Projeto
-  O PicView além de ter um tema claro e escuro padrão ele também suporta Dynamic Colors que está disponível para usuários com Android 12+.
+O PicView além de ter um tema claro e escuro padrão ele também suporta Dynamic Colors que está disponível para usuários com Android 12+.
 
 ![dynamic-colors](https://github.com/gabrielbmmaia/PicView/assets/109977155/4f26b1fd-a44f-4d4a-88de-9b00d852331f)
 
+
+## 📱 Funcionalidade Card de Foto
+O Card de Foto é o Composable principal do aplicativo e aqui podemos ver todas as funcionalidades que o usuário pode ter.
+![funcionalidades-card-foto](https://github.com/gabrielbmmaia/PicView/assets/109977155/a45ea746-6d7d-4d09-b427-cddfd1163b0f)
+
+Além dessas funcionalidades, a lista de Card de Foto se ajusta de acordo com a rotação da tela colocando a lista com 2 colunas.
+
+![double-span-demo](https://github.com/gabrielbmmaia/PicView/assets/109977155/b0e2efd4-8831-40c4-9086-1af0e30d3d06)
+
+
+## 📱 Navegação entre Features
+![navegacao-features](https://github.com/gabrielbmmaia/PicView/assets/109977155/f4052999-31b3-4e36-8f4c-00e46226005b)
 
 
 ![splash-screen-fox](https://github.com/gabrielbmmaia/PicView/assets/109977155/24cde29d-43ca-4c4f-be4b-b4b44971dbc8)
