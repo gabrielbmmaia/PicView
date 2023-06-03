@@ -1,6 +1,17 @@
 # PicView
 O PicView é um aplicativo que utiliza a Unsplash API para obter acesso aos dados necessários. Através dele, é possível visualizar uma ampla variedade de fotografias disponibilizadas por artistas no site da Unsplash. A intenção por trás do desenvolvimento do PicView foi a de colocar em prática a modularização de um aplicativo, bem como a vontade de construir um aplicativo completamente novo utilizando o Jetpack Compose.
 
+# Índice 
+
+* [Layouts do Projeto](#layouts-do-projeto)
+* [Funcionalidades do projeto](#funcionalidades-do-projeto)
+* [Técnicas e tecnologias utilizadas](#técnicas-e-tecnologias-utilizadas)
+* [Funcionalidades do Card de Foto](#funcionalidades-do-card-de-foto)
+* [Navegação entre Features](#navegação-entre-features)
+* [Api Utilizada](#api-utilizada-03/06/2023)
+* [Abrir e rodar o projeto](#abrir-e-rodar-o-projeto)
+* [Showcase do aplicativo](#showcase-do-aplicativo)
+
 ## 📱 Layouts do Projeto
 Aqui é possível visualizar um resumo das telas esperadas do aplicativo.
 ![resumo-de-telas](https://github.com/gabrielbmmaia/PicView/assets/109977155/bdd8f25f-e017-422d-9df5-f9920e63e3f5)
