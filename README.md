@@ -67,10 +67,15 @@ https://unsplash.com/documentation
 ## 🛠️ Abrir e rodar o projeto
 
 ### Pela APK: <br>
-Para baixar a APK do aplicativo é só você clicar em MyPokedex dentro de Releases localizado na direita da página ou caso estaja no celular ficará localizado logo abaixo do Readme do projeto. Clicando em MyPokedex três arquivos aparecerão e clique em "app-debug-apk" e depois em Baixar. Caso mão esteja permitido o celular baixar aplicativos por outras fontes sem ser a PlayStore será necessário permitir em configurações. Após isso é só abrir e se divertir.
+Para baixar a APK do aplicativo é só você clicar em PicView dentro de Releases localizado na direita da página ou caso estaja no celular ficará localizado logo abaixo do Readme do projeto. Clicando em PicView três arquivos aparecerão e clique em "pic-view.apk" e depois em Baixar. Caso não esteja permitido o celular baixar aplicativos por outras fontes sem ser a PlayStore será necessário permitir em configurações. Após isso é só abrir e se divertir.
 
 ### Pelo Android Studio: <br>
 Após baixar o projeto, você pode abrir com o Android Studio. Para isso, na tela de launcher clique em:
 Open an Existing Project (ou alguma opção similar) Procure o local onde o projeto está e o selecione (Caso o projeto seja baixado via zip, é necessário extraí-lo
 antes de procurá-lo) Por fim clique em OK, O Android Studio deve executar algumas tasks do Gradle para configurar o projeto, aguarde até finalizar. Ao finalizar as 
 tasks, você pode executar o App.
+
+## 🎥 Showcase do aplicativo
+<div align="center">
+ <video src=https://github.com/gabrielbmmaia/PicView/assets/109977155/8f4e7a6c-462d-423c-80b8-82667ee1ff4a width=800/>
+<div/>
