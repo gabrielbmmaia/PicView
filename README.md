@@ -8,7 +8,8 @@ O PicView é um aplicativo que utiliza a Unsplash API para obter acesso aos dado
 * [Técnicas e tecnologias utilizadas](#técnicas-e-tecnologias-utilizadas)
 * [Funcionalidades do Card de Foto](#funcionalidades-do-card-de-foto)
 * [Navegação entre Features](#navegação-entre-features)
-* [Api Utilizada](#api)
+* [Features](#features)
+* [Api](#api)
 * [Abrir e rodar o projeto](#abrir-e-rodar-o-projeto)
 * [Showcase do aplicativo](#showcase-do-aplicativo)
 
@@ -31,7 +32,7 @@ Aqui é possível visualizar um resumo das telas esperadas do aplicativo.
 # Técnicas e tecnologias utilizadas
 `Kotlin`: linguagem utilizada no projeto. <br>
 `Jetpack Compose`: projeto completamente construido em Jetpack Compose. <br>
-`Modularização`: projeto foi moduralizado dividio por feature utilizando Gradle.kts. <br>
+`Modularização`: projeto foi moduralizado dividido por feature utilizando Gradle.kts. <br>
 `Flow`: fazer atualizações da tela em tempo real. <br>
 `Courutines`: usado para colocar ações demoradas. <br>
 `Git`: usado para versionar o código no github. <br>
@@ -65,12 +66,26 @@ Além dessas funcionalidades, a lista de Card de Foto é adaptada automaticament
 # Navegação entre Features
 ![navegacao-features](https://github.com/gabrielbmmaia/PicView/assets/109977155/f4052999-31b3-4e36-8f4c-00e46226005b)
 
+# Features
 
+### Splash Screen
+A Splash Screen exibe uma seleção de 5 imagens animadas distintas, fornecendo uma variedade de opções ao iniciar o aplicativo.
 ![splash-screen-fox](https://github.com/gabrielbmmaia/PicView/assets/109977155/24cde29d-43ca-4c4f-be4b-b4b44971dbc8)
 ![splash-screen-mountain](https://github.com/gabrielbmmaia/PicView/assets/109977155/7aff006e-82dc-49a2-93b6-8a32ce7ced5a)
 ![splash-screen-forest](https://github.com/gabrielbmmaia/PicView/assets/109977155/d22dbe30-afa5-4b06-a6b6-81a5f0576450)
 ![splash-screen-coffee](https://github.com/gabrielbmmaia/PicView/assets/109977155/13428386-d8cb-4f8f-bc0c-57b7f0497a7c)
 ![splash-screen-cat](https://github.com/gabrielbmmaia/PicView/assets/109977155/dbfa8586-722d-43a1-93b6-de8f5e46163c)
+
+### Home Screen
+A Home Screen apresenta uma lista de fotografias que são regularmente atualizadas pela Unsplash API, exibindo as imagens mais recentes disponíveis. Nessa tela, o usuário tem a capacidade de explorar uma variedade de fotografias de diversos artistas e categorias.
+
+![Screenshot_20230602_180415_PicView](https://github.com/gabrielbmmaia/PicView/assets/109977155/24e74a93-da65-4029-bbc9-4cd4ce6a40c4)
+![Screenshot_20230602_180419_PicView](https://github.com/gabrielbmmaia/PicView/assets/109977155/d150a809-9963-4efb-9961-ca64fd4c0376)
+
+### Search Screen
+
+![feature-search](https://github.com/gabrielbmmaia/PicView/assets/109977155/c12e9de8-4537-4560-866a-17fc05513f38)
+
 
 # Api
 https://unsplash.com/documentation ( utilizada 03/06/2023 )
