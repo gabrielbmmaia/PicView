@@ -3,21 +3,21 @@ O PicView é um aplicativo que utiliza a Unsplash API para obter acesso aos dado
 
 # Índice 
 
-* [Layouts do Projeto](#-📱-layouts-do-projeto)
+* [Layouts do Projeto](#layouts-do-projeto)
 * [Funcionalidades do projeto](#funcionalidades-do-projeto)
 * [Técnicas e tecnologias utilizadas](#técnicas-e-tecnologias-utilizadas)
 * [Funcionalidades do Card de Foto](#funcionalidades-do-card-de-foto)
 * [Navegação entre Features](#navegação-entre-features)
-* [Api Utilizada](#api-utilizada-03/06/2023)
+* [Api Utilizada](#api)
 * [Abrir e rodar o projeto](#abrir-e-rodar-o-projeto)
 * [Showcase do aplicativo](#showcase-do-aplicativo)
 
-## 📱 Layouts do Projeto
+# Layouts do Projeto
 Aqui é possível visualizar um resumo das telas esperadas do aplicativo.
 ![resumo-de-telas](https://github.com/gabrielbmmaia/PicView/assets/109977155/bdd8f25f-e017-422d-9df5-f9920e63e3f5)
 
 
-## Funcionalidades do projeto
+# Funcionalidades do projeto
 `Listar fotos mais recentes da Unsplash` <br>
 `Listar todas as fotos de um determinado artista` <br>
 `Display de mais informações de uma foto` <br>
@@ -28,7 +28,7 @@ Aqui é possível visualizar um resumo das telas esperadas do aplicativo.
 `Navegar usuário para o Portifólio do artista` <br>
 `Navegar usuário para o perfil do Unsplash do artista` <br>
 
-## ✔️ Técnicas e tecnologias utilizadas
+# Técnicas e tecnologias utilizadas
 `Kotlin`: linguagem utilizada no projeto. <br>
 `Jetpack Compose`: projeto completamente construido em Jetpack Compose. <br>
 `Modularização`: projeto foi moduralizado dividio por feature utilizando Gradle.kts. <br>
@@ -47,12 +47,12 @@ Aqui é possível visualizar um resumo das telas esperadas do aplicativo.
 `Paging3`: biblioteca para paginação de dados. <br>
 
 
-## ☀️🌙 Temas do Projeto
+# Temas do Projeto
 O PicView oferece não somente um tema claro e escuro padrão, mas também suporta Dynamic Colors, permitindo uma infinidade de possibilidades de temas ao aplicativo. Essa funcionalidade está disponível para usuários que possuem o sistema operacional Android 12 ou versões superiores.
 
 ![dynamic-colors](https://github.com/gabrielbmmaia/PicView/assets/109977155/4f26b1fd-a44f-4d4a-88de-9b00d852331f)
 
-## 📱 Funcionalidades do Card de Foto
+# Funcionalidades do Card de Foto
 O Card de Foto é o Composable principal do aplicativo e aqui podemos ver todas as funcionalidades que ele proporciona ao usuário.
 
 ![funcionalidades-card-foto](https://github.com/gabrielbmmaia/PicView/assets/109977155/a45ea746-6d7d-4d09-b427-cddfd1163b0f)
@@ -62,7 +62,7 @@ Além dessas funcionalidades, a lista de Card de Foto é adaptada automaticament
 ![double-span-demo](https://github.com/gabrielbmmaia/PicView/assets/109977155/b0e2efd4-8831-40c4-9086-1af0e30d3d06)
 
 
-## ⛴️ Navegação entre Features
+# Navegação entre Features
 ![navegacao-features](https://github.com/gabrielbmmaia/PicView/assets/109977155/f4052999-31b3-4e36-8f4c-00e46226005b)
 
 
@@ -72,10 +72,10 @@ Além dessas funcionalidades, a lista de Card de Foto é adaptada automaticament
 ![splash-screen-coffee](https://github.com/gabrielbmmaia/PicView/assets/109977155/13428386-d8cb-4f8f-bc0c-57b7f0497a7c)
 ![splash-screen-cat](https://github.com/gabrielbmmaia/PicView/assets/109977155/dbfa8586-722d-43a1-93b6-de8f5e46163c)
 
-## 🌎 Api utilizada 03/06/2023
-https://unsplash.com/documentation
+# Api
+https://unsplash.com/documentation ( utilizada 03/06/2023 )
 
-## 🛠️ Abrir e rodar o projeto
+# Abrir e rodar o projeto
 
 ### Pela APK: <br>
 Para baixar a APK do aplicativo é só você clicar em PicView dentro de Releases localizado na direita da página ou caso estaja no celular ficará localizado logo abaixo do Readme do projeto. Clicando em PicView três arquivos aparecerão e clique em "pic-view.apk" e depois em Baixar. Caso não esteja permitido o celular baixar aplicativos por outras fontes sem ser a PlayStore será necessário permitir em configurações. Após isso é só abrir e se divertir.
@@ -86,7 +86,7 @@ Open an Existing Project (ou alguma opção similar) Procure o local onde o proj
 antes de procurá-lo) Por fim clique em OK, O Android Studio deve executar algumas tasks do Gradle para configurar o projeto, aguarde até finalizar. Ao finalizar as 
 tasks, você pode executar o App.
 
-## 🎥 Showcase do aplicativo
+# Showcase do aplicativo
 <div align="center">
  <video src=https://github.com/gabrielbmmaia/PicView/assets/109977155/8f4e7a6c-462d-423c-80b8-82667ee1ff4a width=800/>
 <div/>
