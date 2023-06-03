@@ -3,8 +3,8 @@ O PicView é um aplicativo que utiliza a Unsplash API para obter acesso aos dado
 
 # Índice 
 
-* [Layouts do Projeto](#layouts-do-projeto)
-* [Funcionalidades do projeto](#funcionalidades-do-projeto)
+* [Layouts do Projeto](#-📱-layouts-do-projeto)
+* [Funcionalidades do projeto](##funcionalidades-do-projeto)
 * [Técnicas e tecnologias utilizadas](#técnicas-e-tecnologias-utilizadas)
 * [Funcionalidades do Card de Foto](#funcionalidades-do-card-de-foto)
 * [Navegação entre Features](#navegação-entre-features)
