@@ -68,24 +68,34 @@ Além dessas funcionalidades, a lista de Card de Foto é adaptada automaticament
 
 # Features
 
-### Splash Screen
+### Splash
 A Splash Screen exibe uma seleção de 5 imagens animadas distintas, fornecendo uma variedade de opções ao iniciar o aplicativo.
+
 ![splash-screen-fox](https://github.com/gabrielbmmaia/PicView/assets/109977155/24cde29d-43ca-4c4f-be4b-b4b44971dbc8)
 ![splash-screen-mountain](https://github.com/gabrielbmmaia/PicView/assets/109977155/7aff006e-82dc-49a2-93b6-8a32ce7ced5a)
 ![splash-screen-forest](https://github.com/gabrielbmmaia/PicView/assets/109977155/d22dbe30-afa5-4b06-a6b6-81a5f0576450)
 ![splash-screen-coffee](https://github.com/gabrielbmmaia/PicView/assets/109977155/13428386-d8cb-4f8f-bc0c-57b7f0497a7c)
 ![splash-screen-cat](https://github.com/gabrielbmmaia/PicView/assets/109977155/dbfa8586-722d-43a1-93b6-de8f5e46163c)
 
-### Home Screen
-A Home Screen apresenta uma lista de fotografias que são regularmente atualizadas pela Unsplash API, exibindo as imagens mais recentes disponíveis. Nessa tela, o usuário tem a capacidade de explorar uma variedade de fotografias de diversos artistas e categorias.
+### Home
+A tela inicial apresenta uma lista de fotografias que são regularmente atualizadas pela Unsplash API, exibindo as imagens mais recentes disponíveis. Nessa tela, o usuário tem a capacidade de explorar uma variedade de fotografias de diversos artistas e categorias.
 
-![Screenshot_20230602_180415_PicView](https://github.com/gabrielbmmaia/PicView/assets/109977155/24e74a93-da65-4029-bbc9-4cd4ce6a40c4)
-![Screenshot_20230602_180419_PicView](https://github.com/gabrielbmmaia/PicView/assets/109977155/d150a809-9963-4efb-9961-ca64fd4c0376)
+![home-screen](https://github.com/gabrielbmmaia/PicView/assets/109977155/9a6f87d4-44af-46b7-83c2-680e851cda36)
 
-### Search Screen
+### Search
+Na tela de pesquisa, os usuários têm a capacidade de realizar pesquisas de imagens associadas a palavras-chave específicas. Além disso, é possível aplicar um filtro de cor que será utilizado para filtrar as imagens exibidas com base na cor selecionada.
 
 ![feature-search](https://github.com/gabrielbmmaia/PicView/assets/109977155/c12e9de8-4537-4560-866a-17fc05513f38)
 
+### Favorite
+Na tela de Favoritos, o usuário tem acesso a todas as imagens que foram guardadas como favoritas, permitindo-lhe visualizar uma variedade de obras de artistas pelos quais ele demonstrou maior apreço.
+
+![favorite-screen](https://github.com/gabrielbmmaia/PicView/assets/109977155/8240b627-4e6f-444b-8936-f9b3b8300be5)
+
+### See More
+Na tela "Ver mais", o usuário tem acesso à uma lista de imagens relacionadas à um único artista. Essa features consegue ser acessada ao clicar em "+ ver mais" em algum Card de Foto no aplicativo.
+
+![see-more-screen](https://github.com/gabrielbmmaia/PicView/assets/109977155/e0ed0b61-778d-4dd3-b052-69d6c2b929b5)
 
 # Api
 https://unsplash.com/documentation ( utilizada 03/06/2023 )
